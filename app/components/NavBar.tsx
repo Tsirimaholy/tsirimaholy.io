@@ -34,14 +34,14 @@ export function Navbar() {
     if (activeLink) {
       const rect = activeLink.getBoundingClientRect();
       setUnderlineStyle({
-        left: rect.left-12,
+        left: rect.left - 12, // Adjust for padding
         width: rect.width,
       });
     }
   }, [activeSection]);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-md z-50">
+    <header className="fixed top-0 left-0 w-full bg-white/10 backdrop-blur-lg shadow-md z-50">
       <nav className="container mx-auto flex items-center justify-between py-4 px-6 relative">
         {/* Logo */}
         <div className="text-2xl font-bold text-gray-900 font-shadow-into-light">
@@ -80,11 +80,12 @@ export function Navbar() {
 
         {/* Animated Underline */}
         <span
-          className="absolute bottom-0 h-[3px] bg-primary rounded-full transition-all duration-300"
+          className="absolute bottom-0 h-[3px] rounded-full transition-all duration-300"
           style={{
             left: underlineStyle.left,
             width: underlineStyle.width,
-            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+            background: "linear-gradient(90deg, #ff7eb3, #ff758c)", // Gradient color
+            boxShadow: "0px 8px 15px rgba(255, 117, 140, 0.5)", // Blurry shadow
           }}
         ></span>
       </nav>

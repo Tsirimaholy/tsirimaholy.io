@@ -7,6 +7,7 @@ import type { MetaFunction } from "react-router";
 import React, { useEffect } from "react";
 import type { Route } from "./+types";
 import { data } from "react-router";
+import { Navbar } from "~/components/NavBar";
 
 export const meta: MetaFunction = ({}) => {
   return [
@@ -22,7 +23,8 @@ export const loader = async () => {
 export default function HomePage({ loaderData }: Route.ComponentProps) {
   const { name, createdAt } = loaderData;
   return (
-    <main className="flex min-h-screen flex-col bg-backgroud">
+    <main className="flex min-h-screen flex-col bg-background">
+      <Navbar />
       <Hero />
       <About />
       <Skills />
