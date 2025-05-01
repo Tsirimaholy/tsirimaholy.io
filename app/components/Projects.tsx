@@ -41,7 +41,7 @@ export function Projects() {
         "ERP solution used to manage both employees and a high formation center.",
       image: "/kis-present.gif",
       tags: ["TypeScript", "React", "Python", "Django", "PostgreSQL"],
-      liveUrl: "https://project1.com",
+      liveUrl: "",
       githubUrl: "https://github.com/Tsirimaholy/project1",
       detailedDescription:
         "This is a comprehensive ERP solution built with React and Django. It features user management, real-time data synchronization, and a responsive UI.",
@@ -58,7 +58,9 @@ export function Projects() {
     },
     // Add more projects here
   ];
-
+  const filteredProjects = projects.filter(
+    (project) => filter === "All" || project.tags.includes(filter)
+  );
   // Close modal on outside click
   useEffect(() => {
     if (!selected) return;
@@ -132,17 +134,13 @@ export function Projects() {
           viewport={{ once: true }}
           className="grid gap-8 mt-4 md:grid-cols-2 lg:grid-cols-3"
         >
-          {projects
-            .filter(
-              (project) => filter === "All" || project.tags.includes(filter)
-            )
-            .map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onSelect={() => setSelected(project)}
-              />
-            ))}
+          {filteredProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onSelect={() => setSelected(project)}
+            />
+          ))}
         </motion.div>
       </div>
 

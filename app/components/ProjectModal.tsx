@@ -27,11 +27,11 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="fixed top-1/2 left-1/2 w-[90%] max-w-3xl max-h-[85vh] overflow-y-auto bg-white rounded-xl p-6 transform -translate-x-1/2 -translate-y-1/2 z-50 sketchy-border-sm shadow-sketchy-lg"
+          className="fixed top-1/2 left-1/2 w-[90%] max-w-3xl max-h-[85vh] overflow-y-auto bg-white rounded-xl p-6 transform -translate-x-1/2 -translate-y-1/2 z-50 shadow-sketchy-lg"
         >
           <button
             onClick={() => onCloseClicked(null)}
-            className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors sketchy-border-sm shadow-sketchy-sm"
+            className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -39,7 +39,7 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-64 object-cover rounded-lg mb-4 sketchy-border-sm shadow-sketchy-sm"
+            className="w-full h-64 object-cover rounded-lg mb-4 shadow-sketchy-sm"
           />
           <h3
             className="text-2xl font-bold mb-2 text-gray-800"
@@ -71,24 +71,27 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
             ))}
           </ul>
           <div className="flex gap-4">
-            <Button
-              asChild
-              className="bg-gradient-to-r from-primary to-green-500 hover:from-primary/90 hover:to-green-500/90 sketchy-border-sm shadow-sketchy-sm"
-            >
-              <Link
-                to={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex gap-2"
+            {project.liveUrl && (
+              <Button
+                asChild
+                disabled={!project.liveUrl}
+                className="bg-gradient-to-r from-primary to-green-500 hover:from-primary/90 hover:to-green-500/90 shadow-sketchy-sm"
               >
-                <Globe className="h-5 w-5" />
-                View Demo
-              </Link>
-            </Button>
+                <Link
+                  to={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex gap-2"
+                >
+                  <Globe className="h-5 w-5" />
+                  View Demo
+                </Link>
+              </Button>
+            )}
             <Button
               variant="outline"
               asChild
-              className="gap-2 sketchy-border-sm shadow-sketchy-sm"
+              className="gap-2 shadow-sketchy-sm"
             >
               <Link
                 to={project.githubUrl}
