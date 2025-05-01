@@ -34,7 +34,7 @@ export function Contact() {
           transition={{ duration: 0.5 }}
           className="relative flex flex-col items-center justify-center gap-4 text-center max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl bg-gradient-to-r from-primary to-green-500 bg-clip-text text-transparent">
             Get in Touch
           </h2>
           <p className="text-muted-foreground">
@@ -137,7 +137,7 @@ export function Contact() {
                   <motion.div variants={item}>
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-primary to-purple-500 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20"
+                      className="w-full bg-gradient-to-r from-primary to-green-500 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20"
                     >
                       Send Message
                     </Button>

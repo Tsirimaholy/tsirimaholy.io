@@ -1,16 +1,25 @@
 import { motion } from "motion/react";
 import { Button } from "~/components/ui/button";
-import { ArrowDown, Download, Github, Linkedin, LucideArrowBigDown, Mail } from "lucide-react";
+import {
+  ArrowDown,
+  Download,
+  Github,
+  Linkedin,
+  LucideArrowBigDown,
+  Mail,
+  MoveDownIcon,
+  ThumbsDown,
+} from "lucide-react";
 
 export function Hero() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-purple-500/10 animate-gradient" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-green-400/10 animate-gradient" />
 
       {/* Animated circles in background */}
       <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-pulse" />
-      <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-purple-500/20 blur-3xl animate-pulse delay-700" />
+      <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-green-500/20 blur-3xl animate-pulse delay-700" />
 
       <div className="container relative flex flex-col-reverse md:flex-row items-center justify-between gap-8 px-4">
         {/* Text Content */}
@@ -22,7 +31,7 @@ export function Hero() {
         >
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
             Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-primary via-purple-500 to-primary bg-clip-text text-transparent animate-gradient-x">
+            <span className="bg-gradient-to-r from-primary via-green-300 to-primary bg-clip-text text-transparent animate-gradient-x">
               Tsirimaholy
             </span>
           </h1>
@@ -33,8 +42,8 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-[600px] text-lg text-muted-foreground sm:text-xl backdrop-blur-sm"
           >
-            A passionate <strong className="">full-stack developer</strong> crafting beautiful and functional
-            web experiences
+            A passionate <strong className="decoration-2 decoration-wavy underline decoration-yellow-500">full-stack developer</strong>{" "}
+            crafting beautiful and functional web experiences
           </motion.p>
 
           <motion.div
@@ -83,26 +92,28 @@ export function Hero() {
             </Button>
           </motion.div>
           <div className="flex">
-            <a href="" download={"/Tsirimaholy.jpg"}>
+            {/* <a href="" download={"/Tsirimaholy.jpg"}>
               <Button className="mr-5 cursor-pointer transition-all duration-300 hover:scale-105">
                 Get my CV <Download />{" "}
               </Button>
-            </a>
+            </a> */}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
             >
-              <Button
-                className="bg-gradient-to-r from-primary to-purple-500 hover:opacity-90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm"
+              {/* <Button
+                className="bg-gradient-to-r from-primary to-green-500 hover:opacity-90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm"
                 asChild
               >
-                <a href="#projects">
-                  View My Work
-                </a>
-              </Button>
+                <a href="#projects">View My Work</a>
+              </Button> */}
             </motion.div>
+            <a href="#about" className="scroll-smooth">
+              <h1 className="text-lg font-bold inline-block">Discover my journey into this career</h1>
+              <ArrowDown className="inline animate-bounce" size={20} />
+            </a>
           </div>
         </motion.div>
 
@@ -121,7 +132,7 @@ export function Hero() {
             />
           </div>
           {/* Decorative circle */}
-          <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary to-purple-500 opacity-50 blur-md -z-10" />
+          <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary to-green-500 opacity-50 blur-md -z-10" />
         </motion.div>
       </div>
     </div>
