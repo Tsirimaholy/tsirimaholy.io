@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { Analytics } from "@vercel/analytics/next";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -18,8 +19,8 @@ export const links: Route.LinksFunction = () => [
     crossOrigin: "anonymous",
   },
   {
-    rel : "stylesheet",
-    href : "https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap",
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap",
   },
 ];
 
@@ -34,6 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        <Analytics />
         <ScrollRestoration />
         <Scripts />
       </body>
