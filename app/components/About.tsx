@@ -39,35 +39,64 @@ export function About() {
             <div>
               <h3 className="text-lg font-semibold text-gray-900">
                 First steps into the{" "}
-                <span className="relative inline-block group">
-                  <span className="absolute inset-0 bg-yellow-200 -skew-y-2 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="relative inline-block"
+                >
+                  <span className="absolute inset-0 bg-yellow-200 -skew-y-2 origin-left"></span>
                   <span className="relative">Tech world</span>
-                </span>
+                </motion.span>
               </h3>
               <p className="text-sm text-gray-500 mb-2">July 2022 – Present</p>
               <p className="text-gray-700 leading-relaxed">
-                At 13, I was introduced to the tech world. Initially, I thought
-                tech was just about repairing phones and laptops. But when I
-                learned about{" "}
-                <span className="relative group">
-                  <span className="absolute inset-0 bg-yellow-200 -skew-y-2 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
-                  <span className="relative sparkle group-hover:animate-sparkle">
-                    cybersecurity
+                <span className="relative inline-block">
+                  <motion.span
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="absolute inset-y-1 inset-x-0 bg-blue-100 -skew-y-2 origin-left"
+                  ></motion.span>
+                  <span className="relative">
+                    At 13, I was introduced to the tech world.
                   </span>
+                </span>{" "}
+                Initially, I thought tech was just about repairing phones and
+                laptops. But when I learned about{" "}
+                <span className="relative inline-block">
+                  <motion.span
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="absolute inset-y-1 inset-x-0 bg-blue-100 -skew-y-2 origin-left"
+                  ></motion.span>
+                  <span className="relative">cybersecurity</span>
                 </span>
                 ,{" "}
-                <span className="relative group">
-                  <span className="absolute inset-0 bg-yellow-200 -skew-y-2 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
-                  <span className="relative sparkle group-hover:animate-sparkle">
-                    AI
-                  </span>
+                <span className="relative inline-block">
+                  <motion.span
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className="absolute inset-y-1 inset-x-0 bg-blue-100 -skew-y-2 origin-left"
+                  ></motion.span>
+                  <span className="relative">AI</span>
                 </span>
                 , and{" "}
-                <span className="relative group">
-                  <span className="absolute inset-0 bg-yellow-200 -skew-y-2 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
-                  <span className="relative sparkle group-hover:animate-sparkle">
-                    app development
-                  </span>
+                <span className="relative inline-block">
+                  <motion.span
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                    className="absolute inset-y-1 inset-x-0 bg-blue-100 -skew-y-2 origin-left"
+                  ></motion.span>
+                  <span className="relative">app development</span>
                 </span>
                 , my curiosity was sparked. I dove into Android development, and
                 that passion has driven me ever since.
@@ -89,22 +118,43 @@ export function About() {
             <div>
               <h3 className="text-lg font-semibold text-gray-900">
                 The journey to{" "}
-                <span className="relative inline-block group">
-                  <span className="absolute inset-0 bg-yellow-200 -skew-y-2 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="relative inline-block"
+                >
+                  <span className="absolute inset-0 bg-yellow-200 -skew-y-2 origin-left"></span>
                   <span className="relative">university</span>
-                </span>{" "}
+                </motion.span>{" "}
                 and beyond
               </h3>
               <p className="text-sm text-gray-500 mb-2">2021 – 2024</p>
               <p className="text-gray-700 leading-relaxed">
-                After high school, I faced financial challenges but remained
-                determined. I discovered HEI University, where I honed my
-                skills in{" "}
-                <span className="relative group">
-                  <span className="absolute inset-0 bg-yellow-200 -skew-y-2 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
-                  <span className="relative sparkle group-hover:animate-sparkle">
-                    full-stack development
+                <span className="relative inline-block">
+                  <motion.span
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="absolute inset-y-1 inset-x-0 bg-blue-100 -skew-y-2 origin-left"
+                  ></motion.span>
+                  <span className="relative">
+                    After high school, I faced financial challenges but remained
+                    determined.
                   </span>
+                </span>{" "}
+                I discovered HEI University, where I honed my skills in{" "}
+                <span className="relative inline-block">
+                  <motion.span
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="absolute inset-y-1 inset-x-0 bg-blue-100 -skew-y-2 origin-left"
+                  ></motion.span>
+                  <span className="relative">full-stack development</span>
                 </span>{" "}
                 and landed my first job as a React Native developer within 9
                 months. This experience taught me resilience and the power of
@@ -133,42 +183,6 @@ export function About() {
           </Button>
         </motion.div>
       </div>
-
-      {/* Sparkle Animation CSS */}
-      <style jsx>{`
-        .sparkle {
-          position: relative;
-          display: inline-block;
-          cursor: pointer;
-        }
-        .sparkle::after {
-          content: "✨";
-          position: absolute;
-          top: -10px;
-          right: -10px;
-          opacity: 0;
-          transform: scale(0.5);
-          transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .sparkle:hover::after {
-          opacity: 1;
-          transform: scale(1);
-        }
-        @keyframes sparkle {
-          0% {
-            opacity: 0;
-            transform: scale(0.5);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.2);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-      `}</style>
     </section>
   );
 }
