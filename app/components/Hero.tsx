@@ -1,35 +1,27 @@
 import { motion } from "motion/react";
 import { Button } from "~/components/ui/button";
-import {
-  ArrowDown,
-  Download,
-  Github,
-  Linkedin,
-  LucideArrowBigDown,
-  Mail,
-  MoveDownIcon,
-  ThumbsDown,
-} from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import {Link} from "react-router"
 
 export function Hero() {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background">
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-green-400/10 animate-gradient" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/10 to-green-400/10 animate-gradient" />
 
-      {/* Animated circles in background */}
+      {/* Subtle animated circles */}
       <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-pulse" />
       <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-green-500/20 blur-3xl animate-pulse delay-700" />
 
-      <div className="container relative flex flex-col-reverse md:flex-row items-center justify-between gap-8 px-4">
+      <div className="container relative flex flex-col-reverse md:flex-row items-center justify-between gap-12 px-6">
         {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="flex flex-col items-center md:items-start text-center md:text-left space-y-6"
         >
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
             Hi, I'm{" "}
             <span className="bg-gradient-to-r from-primary via-green-300 to-primary bg-clip-text text-transparent animate-gradient-x">
               Tsirimaholy
@@ -39,89 +31,76 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-[600px] text-lg text-muted-foreground sm:text-xl backdrop-blur-sm"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-[600px] text-lg text-muted-foreground sm:text-xl"
           >
-            A passionate <strong className="decoration-2 decoration-wavy underline decoration-yellow-500">full-stack developer</strong>{" "}
-            crafting beautiful and functional web experiences
+            A passionate{" "}
+            <strong className="decoration-2 decoration-wavy underline decoration-yellow-500">
+              full-stack developer
+            </strong>{" "}
+            crafting beautiful and functional web experiences.
           </motion.p>
 
+          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="flex gap-4"
           >
-            <Button
-              variant="outline"
-              size="icon"
-              className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm"
-              asChild
-            >
-              <a
-                href="https://github.com/Tsirimaholy"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm"
-              asChild
-            >
-              <a
-                href="https://linkedin.com/in/tsirimaholy"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm"
-              asChild
-            >
-              <a href="mailto:tsirimaholy.h@gmail.com">
-                <Mail className="h-5 w-5" />
-              </a>
-            </Button>
-          </motion.div>
-          <div className="flex">
-            {/* <a href="" download={"/Tsirimaholy.jpg"}>
-              <Button className="mr-5 cursor-pointer transition-all duration-300 hover:scale-105">
-                Get my CV <Download />{" "}
-              </Button>
-            </a> */}
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            >
-              {/* <Button
-                className="bg-gradient-to-r from-primary to-green-500 hover:opacity-90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm"
+            {[
+              {
+                href: "https://github.com/Tsirimaholy",
+                icon: Github,
+                label: "GitHub",
+              },
+              {
+                href: "https://linkedin.com/in/tsirimaholy",
+                icon: Linkedin,
+                label: "LinkedIn",
+              },
+              {
+                href: "mailto:tsirimaholy.h@gmail.com",
+                icon: Mail,
+                label: "Email",
+              },
+            ].map(({ href, icon: Icon, label }, index) => (
+              <Button
+                key={index}
+                variant="outline"
+                size="icon"
+                className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm"
                 asChild
               >
-                <a href="#projects">View My Work</a>
-              </Button> */}
-            </motion.div>
-            <a href="#about" className="scroll-smooth">
-              <h1 className="text-lg font-bold inline-block">Discover my journey into this career</h1>
-              <ArrowDown className="inline animate-bounce" size={20} />
-            </a>
-          </div>
+                <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                  <Icon className="h-5 w-5" />
+                </a>
+              </Button>
+            ))}
+          </motion.div>
+
+          {/* Call to Action */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex flex-col items-center md:items-start space-y-4"
+          >
+            <Link
+              to="#about"
+              className="flex items-center gap-2 text-lg font-medium text-primary hover:underline hover:opacity-90 transition-all"
+            >
+              Discover my journey
+              <ArrowDown className="animate-bounce" size={20} />
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* Profile Photo */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="relative"
         >
           <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-background/50 shadow-xl">
@@ -131,7 +110,7 @@ export function Hero() {
               className="w-full h-full object-cover"
             />
           </div>
-          {/* Decorative circle */}
+          {/* Decorative glow */}
           <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary to-green-500 opacity-50 blur-md -z-10" />
         </motion.div>
       </div>

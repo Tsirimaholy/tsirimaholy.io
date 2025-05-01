@@ -6,19 +6,20 @@ import { Textarea } from "~/components/ui/textarea";
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 
 export function Contact() {
-  const container = {
+  // Animation variants for container and items
+  const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
-  const item = {
+  const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 }
+    show: { opacity: 1, y: 0 },
   };
 
   return (
@@ -27,6 +28,7 @@ export function Contact() {
       <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-yellow-500/5 to-background animate-gradient opacity-50" />
 
       <div className="container">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,99 +44,102 @@ export function Contact() {
           </p>
         </motion.div>
 
+        {/* Contact Cards */}
         <motion.div
-          variants={container}
+          variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           className="mx-auto mt-12 grid max-w-6xl gap-8 md:grid-cols-2 relative"
         >
-          <motion.div variants={item}>
+          {/* Contact Information Card */}
+          <motion.div variants={itemVariants}>
             <Card className="h-full group hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm bg-background/80">
               <CardHeader>
-                <CardTitle className="group-hover:text-primary transition-colors">Contact Information</CardTitle>
+                <CardTitle className="group-hover:text-primary transition-colors">
+                  Contact Information
+                </CardTitle>
                 <CardDescription>Here's how you can reach me</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col gap-4">
-                <motion.div
-                  className="flex items-center gap-3 group/item"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <Mail className="h-5 w-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
-                  <a href="mailto:tsirimaholy.h@gmail.com" className="group-hover/item:text-primary transition-colors">
-                    tsirimaholy.h@gmail.com
-                  </a>
-                </motion.div>
-                <motion.div
-                  className="flex items-center gap-3 group/item"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <MapPin className="h-5 w-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
-                  <p className="group-hover/item:text-primary transition-colors">Madagascar</p>
-                </motion.div>
-                <motion.div
-                  className="flex items-center gap-3 group/item"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <Github className="h-5 w-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
-                  <a href="https://github.com/Tsirimaholy" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                    github.com/Tsirimaholy
-                  </a>
-                </motion.div>
-                <motion.div
-                  className="flex items-center gap-3 group/item"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <Linkedin className="h-5 w-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
-                  <a href="https://linkedin.com/in/tsirimaholy" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                    linkedin.com/in/tsirimaholy
-                  </a>
-                </motion.div>
+                {[
+                  {
+                    icon: Mail,
+                    text: "tsirimaholy.h@gmail.com",
+                    href: "mailto:tsirimaholy.h@gmail.com",
+                  },
+                  {
+                    icon: MapPin,
+                    text: "Madagascar",
+                  },
+                  {
+                    icon: Github,
+                    text: "github.com/Tsirimaholy",
+                    href: "https://github.com/Tsirimaholy",
+                  },
+                  {
+                    icon: Linkedin,
+                    text: "linkedin.com/in/tsirimaholy",
+                    href: "https://linkedin.com/in/tsirimaholy",
+                  },
+                ].map(({ icon: Icon, text, href }, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex items-center gap-3 group/item"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <Icon className="h-5 w-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
+                    {href ? (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group-hover/item:text-primary transition-colors"
+                      >
+                        {text}
+                      </a>
+                    ) : (
+                      <p className="group-hover/item:text-primary transition-colors">{text}</p>
+                    )}
+                  </motion.div>
+                ))}
               </CardContent>
             </Card>
           </motion.div>
 
-          <motion.div variants={item}>
+          {/* Send a Message Card */}
+          <motion.div variants={itemVariants}>
             <Card className="group hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm bg-background/80">
               <CardHeader>
-                <CardTitle className="group-hover:text-primary transition-colors">Send a Message</CardTitle>
-                <CardDescription>Fill out the form below and I'll get back to you soon.</CardDescription>
+                <CardTitle className="group-hover:text-primary transition-colors">
+                  Send a Message
+                </CardTitle>
+                <CardDescription>
+                  Fill out the form below and I'll get back to you soon.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <form className="flex flex-col gap-4">
-                  <motion.div
-                    className="grid gap-2"
-                    variants={item}
-                  >
-                    <Input
-                      placeholder="Name"
-                      className="bg-background/50 focus:border-primary transition-colors"
-                    />
-                  </motion.div>
-                  <motion.div
-                    className="grid gap-2"
-                    variants={item}
-                  >
-                    <Input
-                      type="email"
-                      placeholder="Email"
-                      className="bg-background/50 focus:border-primary transition-colors"
-                    />
-                  </motion.div>
-                  <motion.div
-                    className="grid gap-2"
-                    variants={item}
-                  >
+                  {[
+                    { placeholder: "Name", type: "text" },
+                    { placeholder: "Email", type: "email" },
+                  ].map(({ placeholder, type }, index) => (
+                    <motion.div key={index} className="grid gap-2" variants={itemVariants}>
+                      <Input
+                        type={type}
+                        placeholder={placeholder}
+                        className="bg-background/50 focus:border-primary transition-colors"
+                      />
+                    </motion.div>
+                  ))}
+                  <motion.div className="grid gap-2" variants={itemVariants}>
                     <Textarea
                       placeholder="Your message"
                       className="min-h-[150px] bg-background/50 focus:border-primary transition-colors"
                     />
                   </motion.div>
-                  <motion.div variants={item}>
+                  <motion.div variants={itemVariants}>
                     <Button
                       type="submit"
                       className="w-full bg-gradient-to-r from-primary to-green-500 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20"

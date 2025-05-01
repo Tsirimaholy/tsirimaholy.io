@@ -141,7 +141,7 @@ export function About() {
                     className="absolute inset-y-1 inset-x-0 bg-blue-100 -skew-y-2 origin-left"
                   ></motion.span>
                   <span className="relative">
-                    After high school, I faced financial challenges but remained
+                    After high school, I faced challenges but remained
                     determined.
                   </span>
                 </span>{" "}
