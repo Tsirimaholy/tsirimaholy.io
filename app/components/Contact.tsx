@@ -48,7 +48,7 @@ export function Contact() {
           </h2>
           <p
             className="text-muted-foreground"
-            style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+
           >
             Feel free to reach out if you're looking to collaborate or just want to connect!
           </p>
@@ -65,10 +65,7 @@ export function Contact() {
           {/* Contact Information Card */}
           <motion.div variants={itemVariants}>
             <Card
-              className="h-full group hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 bg-white border-2 border-dashed border-gray-400"
-              style={{
-                boxShadow: "5px 5px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-              }}
+              className="h-full group hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 bg-white border-2 border-dashed border-gray-400 shadow-sketchy-md"
             >
               <CardHeader>
                 <CardTitle
@@ -78,7 +75,7 @@ export function Contact() {
                   Contact Information
                 </CardTitle>
                 <CardDescription
-                  style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+
                 >
                   Here's how you can reach me
                 </CardDescription>
@@ -118,14 +115,14 @@ export function Contact() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group-hover/item:text-primary transition-colors"
-                        style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+
                       >
                         {text}
                       </a>
                     ) : (
                       <p
                         className="group-hover/item:text-primary transition-colors"
-                        style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+
                       >
                         {text}
                       </p>
@@ -139,10 +136,7 @@ export function Contact() {
           {/* Send a Message Card */}
           <motion.div variants={itemVariants}>
             <Card
-              className="group hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 bg-white border-2 border-dashed border-gray-400"
-              style={{
-                boxShadow: "5px 5px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-              }}
+              className="group hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 bg-white border-2 border-dashed border-gray-400 shadow-sketchy-lg"
             >
               <CardHeader>
                 <CardTitle
@@ -152,7 +146,7 @@ export function Contact() {
                   Send a Message
                 </CardTitle>
                 <CardDescription
-                  style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+
                 >
                   Fill out the form below and I'll get back to you soon.
                 </CardDescription>
@@ -171,32 +165,20 @@ export function Contact() {
                       <Input
                         type={type}
                         placeholder={placeholder}
-                        className="bg-white border-2 border-dashed border-gray-400 focus:border-primary transition-colors"
-                        style={{
-                          fontFamily: "'Patrick Hand', cursive", // Handwritten font
-                          boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-                        }}
+                        className="bg-white border-2 border-dashed border-gray-400 focus:border-primary transition-colors shadow-sketchy-sm"
                       />
                     </motion.div>
                   ))}
                   <motion.div className="grid gap-2" variants={itemVariants}>
                     <Textarea
                       placeholder="Your message"
-                      className="min-h-[150px] bg-white border-2 border-dashed border-gray-400 focus:border-primary transition-colors"
-                      style={{
-                        fontFamily: "'Patrick Hand', cursive", // Handwritten font
-                        boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-                      }}
+                      className="min-h-[150px] bg-white border-2 border-dashed border-gray-400 focus:border-primary transition-colors shadow-sketchy-sm"
                     />
                   </motion.div>
                   <motion.div variants={itemVariants}>
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-primary to-green-500 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 border-2 border-dashed border-gray-400"
-                      style={{
-                        fontFamily: "'Patrick Hand', cursive", // Handwritten font
-                        boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-                      }}
+                      className="w-full bg-gradient-to-r from-primary to-green-500 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 border-2 border-dashed border-gray-400 shadow-sketchy-sm"
                     >
                       Send Message
                     </Button>

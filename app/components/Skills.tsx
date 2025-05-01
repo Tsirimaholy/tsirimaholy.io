@@ -38,7 +38,7 @@ export function Skills() {
           </h2>
           <p
             className="text-gray-600 mt-2"
-            style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+
           >
             A comprehensive overview of my technical abilities and proficiency
             across different domains.
@@ -53,10 +53,7 @@ export function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="p-6 rounded-lg shadow-md border-2 border-dashed border-blue-400 bg-white"
-            style={{
-              boxShadow: "5px 5px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-            }}
+            className="p-6 rounded-lg border-2 border-dashed border-blue-400 bg-white shadow-sketchy-lg"
           >
             <div className="flex items-center gap-4 mb-4">
               <div className="p-3 rounded-full bg-blue-200 border-2 border-dashed border-blue-400">
@@ -88,11 +85,7 @@ export function Skills() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="px-4 py-2 text-sm font-medium text-blue-800 bg-white border-2 border-dashed border-blue-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                  style={{
-                    fontFamily: "'Patrick Hand', cursive",
-                    boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-                  }}
+                  className="px-4 py-2 text-sm font-medium text-blue-800 bg-white border-2 border-dashed border-blue-200 rounded-lg hover:shadow-md transition-shadow shadow-sketchy-sm"
                 >
                   {skill}
                 </span>
@@ -106,10 +99,7 @@ export function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="p-6 rounded-lg shadow-md border-2 border-dashed border-green-400 bg-white"
-            style={{
-              boxShadow: "5px 5px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-            }}
+            className="p-6 rounded-lg border-2 border-dashed border-green-400 bg-white shadow-sketchy-lg"
           >
             <div className="flex items-center gap-4 mb-4">
               <div className="p-3 rounded-full bg-green-200 border-2 border-dashed border-green-400">
@@ -142,11 +132,7 @@ export function Skills() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="px-4 py-2 text-sm font-medium text-green-800 bg-white border-2 border-dashed border-green-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                  style={{
-                    fontFamily: "'Patrick Hand', cursive",
-                    boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-                  }}
+                  className="px-4 py-2 text-sm font-medium text-green-800 bg-white border-2 border-dashed border-green-200 rounded-lg hover:shadow-md transition-shadow shadow-sketchy-sm"
                 >
                   {skill}
                 </span>
@@ -160,10 +146,7 @@ export function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="p-6 rounded-lg shadow-md border-2 border-dashed border-orange-400 bg-white"
-            style={{
-              boxShadow: "5px 5px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-            }}
+            className="p-6 rounded-lg border-2 border-dashed border-orange-400 bg-white shadow-sketchy-lg"
           >
             <div className="flex items-center gap-4 mb-4">
               <div className="p-3 rounded-full bg-orange-200 border-2 border-dashed border-orange-400">
@@ -193,11 +176,7 @@ export function Skills() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="px-4 py-2 text-sm font-medium text-orange-800 bg-white border-2 border-dashed border-orange-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                  style={{
-                    fontFamily: "'Patrick Hand', cursive",
-                    boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-                  }}
+                  className="px-4 py-2 text-sm font-medium text-orange-800 bg-white border-2 border-dashed border-orange-200 rounded-lg hover:shadow-md transition-shadow shadow-sketchy-sm"
                 >
                   {skill}
                 </span>
@@ -211,10 +190,7 @@ export function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="p-6 rounded-lg shadow-md border-2 border-dashed border-purple-400 bg-white"
-            style={{
-              boxShadow: "5px 5px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-            }}
+            className="p-6 rounded-lg border-2 border-dashed border-purple-400 bg-white shadow-sketchy-lg"
           >
             <div className="flex items-center gap-4 mb-4">
               <div className="p-3 rounded-full bg-purple-200 border-2 border-dashed border-purple-400">
@@ -245,11 +221,7 @@ export function Skills() {
               ].map((practice) => (
                 <span
                   key={practice}
-                  className="px-4 py-2 text-sm font-medium text-purple-800 bg-white border-2 border-dashed border-purple-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                  style={{
-                    fontFamily: "'Patrick Hand', cursive",
-                    boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-                  }}
+                  className="px-4 py-2 text-sm font-medium text-purple-800 bg-white border-2 border-dashed border-purple-200 rounded-lg hover:shadow-md transition-shadow shadow-sketchy-sm"
                 >
                   {practice}
                 </span>
