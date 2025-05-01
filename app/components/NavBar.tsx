@@ -1,16 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-  const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
+  const [activeSection, setActiveSection] = useState("hero");
+  const navRef = useRef<HTMLElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   useEffect(() => {
+    // Observe sections to detect the active section
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -20,7 +21,7 @@ export function Navbar() {
           }
         });
       },
-      { threshold: 0.6 } // Trigger when 60% of the section is visible
+      { threshold: 0.3 } // Trigger when 30% of the section is visible
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -28,66 +29,75 @@ export function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    // Update underline position and width based on the active link
-    const activeLink = document.querySelector(`a[href="#${activeSection}"]`);
-    if (activeLink) {
-      const rect = activeLink.getBoundingClientRect();
-      setUnderlineStyle({
-        left: rect.left - 12, // Adjust for padding
-        width: rect.width,
-      });
-    }
-  }, [activeSection]);
-
   return (
-    <header className="fixed top-0 left-0 w-full bg-white/10 backdrop-blur-lg shadow-md z-50">
-      <nav className="container mx-auto flex items-center justify-between py-4 px-6 relative">
-        {/* Logo */}
-        <div className="text-2xl font-bold text-gray-900 font-shadow-into-light">
-          Tsirimaholy
+    <header ref={navRef} className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-md z-50">
+      <nav className="container mx-auto px-4 py-4 relative">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="text-2xl font-bold text-gray-900 font-shadow-into-light">
+            Tsirimaholy
+          </div>
+
+          {/* Hamburger Icon for Mobile */}
+          <button
+            className="text-gray-700 text-2xl md:hidden"
+            onClick={toggleMenu}
+            aria-label="Toggle Menu"
+          >
+            {isMenuOpen ? <FiX /> : <FiMenu />}
+          </button>
+
+          {/* Desktop Navigation */}
+          <ul className="hidden md:flex items-center gap-8">
+            {["hero", "about", "skills", "projects", "contact"].map((section) => (
+              <li key={section}>
+                <a
+                  href={`#${section}`}
+                  className={`relative py-2 px-1 transition duration-300 ease-in-out ${
+                    activeSection === section
+                      ? "text-primary font-medium"
+                      : "text-gray-700 hover:text-primary"
+                  }`}
+                > {section === "hero" ? "Home" : section.charAt(0).toUpperCase() + section.slice(1)}
+                  {activeSection === section && (
+                    <span
+                      className="absolute bottom-0 left-0 w-full h-[3px] rounded-full"
+                      style={{
+                        background: "linear-gradient(90deg, #ff7eb3, #ff758c)",
+                        boxShadow: "0px 4px 10px rgba(255, 123, 123, 0.3)",
+                      }}
+                    ></span>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Hamburger Icon for Mobile */}
-        <button
-          className="text-gray-700 text-2xl md:hidden"
-          onClick={toggleMenu}
-          aria-label="Toggle Menu"
-        >
-          {isMenuOpen ? <FiX /> : <FiMenu />}
-        </button>
-
-        {/* Navigation Links */}
-        <ul
-          className={`fixed top-16 left-0 w-full bg-white shadow-md md:shadow-none md:static md:flex md:items-center md:gap-6 md:w-auto transition-transform duration-300 ${
-            isMenuOpen ? "translate-y-0" : "-translate-y-full md:translate-y-0"
+        {/* Mobile Navigation */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ${
+            isMenuOpen ? "max-h-screen" : "max-h-0"
           }`}
         >
-          {["hero", "about", "skills", "projects", "contact"].map((section) => (
-            <li key={section} className="border-b md:border-none">
-              <a
-                href={`#${section}`}
-                className={`block py-4 px-6 md:py-0 md:px-0 text-gray-700 hover:text-primary transition relative group`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-                {/* Hover underline */}
-                <span className="absolute inset-x-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Animated Underline */}
-        <span
-          className="absolute bottom-0 h-[3px] rounded-full transition-all duration-300"
-          style={{
-            left: underlineStyle.left,
-            width: underlineStyle.width,
-            background: "linear-gradient(90deg, #ff7eb3, #ff758c)", // Gradient color
-            boxShadow: "0px 8px 15px rgba(255, 117, 140, 0.5)", // Blurry shadow
-          }}
-        ></span>
+          <ul className="flex flex-col pt-4 pb-2 border-t mt-4">
+            {["hero", "about", "skills", "projects", "contact"].map((section) => (
+              <li key={section} className="py-2">
+                <a
+                  href={`#${section}`}
+                  className={`block px-2 py-2 transition duration-300 ${
+                    activeSection === section
+                      ? "text-primary font-medium bg-primary/10 rounded border-l-4 border-primary"
+                      : "text-gray-700 hover:text-primary hover:bg-gray-100 rounded"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </nav>
     </header>
   );
