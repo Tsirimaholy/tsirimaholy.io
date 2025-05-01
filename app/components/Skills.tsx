@@ -1,17 +1,15 @@
 import { motion } from "motion/react";
-import { BrainCircuit, MonitorSmartphone, Server, Cloud, Layers } from "lucide-react";
+import {
+  BrainCircuit,
+  MonitorSmartphone,
+  Server,
+  Cloud,
+  Layers,
+} from "lucide-react";
 
 export function Skills() {
   return (
-    <section
-      className="relative py-16 bg-gray-50"
-      id="skills"
-      style={{
-        backgroundImage: "url('/path-to-grid-paper-bg.png')", // Use a grid paper background image
-        backgroundSize: "cover",
-        backgroundRepeat: "repeat",
-      }}
-    >
+    <section className="relative py-16 bg-gray-50" id="skills">
       <div className="container mx-auto max-w-5xl px-6">
         {/* Header */}
         <motion.div
@@ -78,20 +76,27 @@ export function Skills() {
               Creating responsive and interactive user interfaces.
             </p>
             <div className="flex flex-wrap gap-3">
-              {["React", "React Native", "TypeScript", "Next.js", "Remix(rrv7)", "Tailwind CSS", "CSS3", "JavaScript"].map(
-                (skill) => (
-                  <span
-                    key={skill}
-                    className="px-4 py-2 text-sm font-medium text-blue-800 bg-white border-2 border-dashed border-blue-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                    style={{
-                      fontFamily: "'Patrick Hand', cursive",
-                      boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-                    }}
-                  >
-                    {skill}
-                  </span>
-                )
-              )}
+              {[
+                "React",
+                "React Native",
+                "TypeScript",
+                "Next.js",
+                "Remix(rrv7)",
+                "Tailwind CSS",
+                "CSS3",
+                "JavaScript",
+              ].map((skill) => (
+                <span
+                  key={skill}
+                  className="px-4 py-2 text-sm font-medium text-blue-800 bg-white border-2 border-dashed border-blue-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                  style={{
+                    fontFamily: "'Patrick Hand', cursive",
+                    boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+                  }}
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </motion.div>
 
@@ -124,20 +129,28 @@ export function Skills() {
               Building robust server-side applications and APIs.
             </p>
             <div className="flex flex-wrap gap-3">
-              {["Django", "Spring Boot", "Python - DRF", "Node.js", "Express", "PostgreSQL", "MySQL", "Prisma", "REST APIs"].map(
-                (skill) => (
-                  <span
-                    key={skill}
-                    className="px-4 py-2 text-sm font-medium text-green-800 bg-white border-2 border-dashed border-green-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                    style={{
-                      fontFamily: "'Patrick Hand', cursive",
-                      boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
-                    }}
-                  >
-                    {skill}
-                  </span>
-                )
-              )}
+              {[
+                "Django",
+                "Spring Boot",
+                "Python - DRF",
+                "Node.js",
+                "Express",
+                "PostgreSQL",
+                "MySQL",
+                "Prisma",
+                "REST APIs",
+              ].map((skill) => (
+                <span
+                  key={skill}
+                  className="px-4 py-2 text-sm font-medium text-green-800 bg-white border-2 border-dashed border-green-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                  style={{
+                    fontFamily: "'Patrick Hand', cursive",
+                    boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+                  }}
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </motion.div>
 
@@ -170,7 +183,14 @@ export function Skills() {
               Deployment, automation, and infrastructure management.
             </p>
             <div className="flex flex-wrap gap-3">
-              {["Git", "Docker", "AWS", "Linux", "CI/CD Pipelines", "Shell Scripting"].map((skill) => (
+              {[
+                "Git",
+                "Docker",
+                "AWS",
+                "Linux",
+                "CI/CD Pipelines",
+                "Shell Scripting",
+              ].map((skill) => (
                 <span
                   key={skill}
                   className="px-4 py-2 text-sm font-medium text-orange-800 bg-white border-2 border-dashed border-orange-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"

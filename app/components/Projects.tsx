@@ -56,11 +56,7 @@ export function Projects() {
     <section
       className="relative py-24 bg-gray-50"
       id="projects"
-      style={{
-        backgroundImage: "url('/path-to-grid-paper-bg.png')", // Grid paper background
-        backgroundSize: "cover",
-        backgroundRepeat: "repeat",
-      }}
+
     >
       {/* Header */}
       <motion.div

@@ -26,11 +26,7 @@ export function Contact() {
     <section
       className="relative py-24 flex justify-center"
       id="contact"
-      style={{
-        backgroundImage: "url('/path-to-grid-paper-bg.png')", // Grid paper background
-        backgroundSize: "cover",
-        backgroundRepeat: "repeat",
-      }}
+
     >
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-yellow-500/5 to-background animate-gradient opacity-50" />

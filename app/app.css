@@ -132,3 +132,20 @@ body {
     @apply bg-background text-foreground;
   }
 }
+@keyframes movePen {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(50px, 10px);
+  }
+  50% {
+    transform: translate(100px, 20px);
+  }
+  75% {
+    transform: translate(150px, 10px);
+  }
+  100% {
+    transform: translate(200px, 0);
+  }
+}

@@ -8,11 +8,7 @@ export function Hero() {
   return (
     <div
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background"
-      style={{
-        backgroundImage: "url('/path-to-grid-paper-bg.png')", // Grid paper background
-        backgroundSize: "cover",
-        backgroundRepeat: "repeat",
-      }}
+
     >
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/10 to-green-400/10 animate-gradient" />
