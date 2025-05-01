@@ -43,7 +43,7 @@ export function About() {
             transition={{ duration: 0.5 }}
             className="relative flex items-start gap-4"
           >
-            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border-2 border-dashed border-gray-400 shadow-sketchy-md">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center sketchy-border-sm shadow-sketchy-md">
               <Building className="h-5 w-5 text-primary" />
             </div>
             <div>
@@ -130,7 +130,7 @@ export function About() {
             className="relative flex items-start gap-4"
           >
             <div
-              className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border-2 border-dashed border-gray-400 shadow-sketchy-md"
+              className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center sketchy-border-sm shadow-sketchy-md"
             >
               <University className="h-5 w-5 text-primary" />
             </div>

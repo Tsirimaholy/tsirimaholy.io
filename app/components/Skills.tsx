@@ -25,7 +25,7 @@ export function Skills() {
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, type: "spring" }}
-              className="p-3 bg-gray-200 rounded-full border-2 border-dashed border-gray-400"
+              className="p-3 bg-gray-200 rounded-full sketchy-border-sm"
             >
               <BrainCircuit className="h-7 w-7 text-gray-700" />
             </motion.div>

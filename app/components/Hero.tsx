@@ -79,7 +79,7 @@ export function Hero() {
                 key={index}
                 variant="outline"
                 size="icon"
-                className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm border-2 border-dashed border-gray-400 shadow-sketchy-md"
+                className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm sketchy-border-sm shadow-sketchy-md"
                 asChild
               >
                 <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
