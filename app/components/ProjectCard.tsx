@@ -24,7 +24,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
         show: { opacity: 1, y: 0 },
       }}
       whileHover={{ scale: 1.05 }}
-      className="relative group overflow-hidden rounded-lg bg-white sketchy-border-sm shadow-sketchy-lg"
+      className="relative group overflow-hidden rounded-lg bg-white border-2 shadow-sketchy-lg"
     >
       {/* Image */}
       <div
@@ -43,9 +43,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 
       {/* Content */}
       <div className="p-4">
-        <h3
-          className="text-xl font-semibold text-gray-800 font-shadow-into-light"
-        >
+        <h3 className="text-xl font-semibold text-gray-800 font-shadow-into-light">
           {project.title}
         </h3>
         <p className="text-sm text-gray-600 mt-2 line-clamp-2">
@@ -78,10 +76,10 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
           </a>
         </Button>
         <Button
-          variant="ghost"
+          variant="secondary"
           size="sm"
           onClick={() => onSelect(project)}
-          className="gap-1 sketchy-border-sm shadow-sketchy-sm"
+          className="gap-1 shadow-sketchy-sm"
         >
           Details
           <ExternalLink className="h-4 w-4" />
