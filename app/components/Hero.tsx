@@ -12,11 +12,11 @@ export function Hero() {
 
     >
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/10 to-green-400/10 animate-gradient" />
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/10 to-green-400/10 animate-gradient" /> */}
 
       {/* Subtle animated circles */}
       <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-pulse" />
-      <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-green-500/20 blur-3xl animate-pulse delay-700" />
+      {/* <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-green-500/20 blur-3xl animate-pulse delay-700" /> */}
 
       <div className="container relative flex flex-col-reverse md:flex-row items-center justify-between gap-12 px-6">
         {/* Text Content */}
@@ -122,9 +122,9 @@ export function Hero() {
             />
           </div>
           {/* Decorative glow */}
-          <div
+          {/* <div
             className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary to-green-500 opacity-50 blur-md -z-10 shadow-sketchy-lg"
-          />
+          /> */}
         </motion.div>
       </div>
     </section>
