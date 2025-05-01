@@ -6,7 +6,8 @@ import { Link } from "react-router";
 
 export function Hero() {
   return (
-    <div
+    <section
+      id="hero"
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
 
     >
@@ -26,13 +27,10 @@ export function Hero() {
           className="flex flex-col items-center md:items-start text-center md:text-left space-y-6"
         >
           <h1
-            className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight"
-            style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
+            className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-shadow-into-light"
           >
-            Hi, I'm{" "}
+            Hi, I'm
             <span
-              className="bg-gradient-to-r from-primary via-green-300 to-primary bg-clip-text text-transparent animate-gradient-x"
-
             >
               Tsirimaholy
             </span>
@@ -129,6 +127,6 @@ export function Hero() {
           />
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }

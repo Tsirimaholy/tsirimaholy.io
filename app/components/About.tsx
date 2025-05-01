@@ -1,12 +1,63 @@
-import { Building, University } from "lucide-react";
+import { Building, University, ArrowDownCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { ExternalLink } from "lucide-react";
 import { Link } from "react-router";
+import { useState, useEffect } from "react";
+import { Button } from "./ui/button";
 
 export function About() {
+  const [showNav, setShowNav] = useState(false);
+
+  // Show floating navigation when scrolling into the About section
+  useEffect(() => {
+    const handleScroll = () => {
+      const aboutSection = document.getElementById("about");
+      const scrollPosition = window.scrollY;
+      if (aboutSection) {
+        const aboutTop = aboutSection.offsetTop;
+        const aboutHeight = aboutSection.offsetHeight;
+        setShowNav(scrollPosition > aboutTop && scrollPosition < aboutTop + aboutHeight);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section id="about" className="py-16 bg-white ">
-      <div className="container mx-auto max-w-3xl px-4 ">
+    <section id="about" className="py-16 bg-white relative">
+      <div className="container mx-auto max-w-3xl px-4">
+        {/* Floating Navigation */}
+        {showNav && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-8 right-8 z-50 flex flex-col gap-4 items-center"
+          >
+            {/* Button to jump to Projects */}
+            <button
+              onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+              className="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary-dark transition flex items-center gap-2"
+              title="Go to Projects"
+            >
+              <ArrowDownCircle className="h-6 w-6" />
+              <span className="text-sm font-medium">Projects</span>
+            </button>
+
+            {/* Button to jump to Skills */}
+            <Button
+              onClick={() => document.getElementById("skills-expertise")?.scrollIntoView({ behavior: "smooth" })}
+              className="cursor-pointer text-white p-3 rounded-full shadow-lg hover:bg-secondary-dark transition flex items-center gap-2"
+              title="Go to Skills"
+            >
+              <ArrowDownCircle className="h-6 w-6" />
+              <span className="text-sm font-medium">Skills</span>
+            </Button>
+          </motion.div>
+        )}
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -79,18 +130,17 @@ export function About() {
                 <span className="underline decoration-purple-500">
                   Android app development
                 </span>
-                . I was so curious that I asked them to teach me everything they
-                knew.{" "}
+                . I was so curious that I asked them to teach me some basic things but "especially" i want to learn to build android apps(But i wasn't aware for the pain that comes with it at that time :-) ).{" "}
                 <span className="relative inline-block">
                   <motion.span
                     initial={{ width: 0 }}
                     whileInView={{ width: "100%" }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
+                    transition={{ duration: 0.9, delay: 1 }}
                     className="absolute bg-green-200 origin-left h-2 bottom-1 -skew-y-0.5"
                   ></motion.span>
                   <span className="relative font-semibold text-gray-900">
-                    They agreed, and that’s when my journey truly began.
+                    He agreed, and that’s when my journey truly began.
                   </span>
                 </span>
               </p>
@@ -148,9 +198,9 @@ export function About() {
                   className="relative inline-block"
                 >
                   <span className="absolute inset-0 bg-yellow-300/60 -skew-y-2 origin-left"></span>
-                  <span className="relative">university</span>
-                </motion.span>{" "}
-                and beyond
+                  <span className="relative">university</span>{" "}
+                </motion.span>
+                {" "}and beyond
               </h3>
               <p className="text-sm text-gray-500 mb-2">2021 – 2024</p>
               <p className="text-gray-700 leading-relaxed">

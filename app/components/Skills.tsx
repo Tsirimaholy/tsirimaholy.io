@@ -19,7 +19,10 @@ export function Skills() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <div className="flex items-center justify-center mb-4">
+          <div
+            className="flex items-center justify-center mb-4"
+            id="skills-expertise"
+          >
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
@@ -30,16 +33,10 @@ export function Skills() {
               <BrainCircuit className="h-7 w-7 text-gray-700" />
             </motion.div>
           </div>
-          <h2
-            className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900"
-            style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
-          >
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900 font-shadow-into-light">
             Skills & Expertise
           </h2>
-          <p
-            className="text-gray-600 mt-2"
-
-          >
+          <p className="text-gray-600 mt-2">
             A comprehensive overview of my technical abilities and proficiency
             across different domains.
           </p>

@@ -1,6 +1,12 @@
 import { motion } from "motion/react";
 import { Button } from "~/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
@@ -21,13 +27,30 @@ export function Contact() {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
   };
+  const contactInformations = [
+    {
+      icon: Mail,
+      text: "tsirimaholy.h@gmail.com",
+      href: "mailto:tsirimaholy.h@gmail.com",
+    },
+    {
+      icon: MapPin,
+      text: "Madagascar",
+    },
+    {
+      icon: Github,
+      text: "github.com/Tsirimaholy",
+      href: "https://github.com/Tsirimaholy",
+    },
+    {
+      icon: Linkedin,
+      text: "linkedin.com/in/tsirimaholy",
+      href: "https://linkedin.com/in/tsirimaholy",
+    },
+  ];
 
   return (
-    <section
-      className="relative py-24 flex justify-center"
-      id="contact"
-
-    >
+    <section className="relative py-24 flex justify-center" id="contact">
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-yellow-500/5 to-background animate-gradient opacity-50" />
 
@@ -46,11 +69,9 @@ export function Contact() {
           >
             Get in Touch
           </h2>
-          <p
-            className="text-muted-foreground"
-
-          >
-            Feel free to reach out if you're looking to collaborate or just want to connect!
+          <p className="text-muted-foreground">
+            Feel free to reach out if you're looking to collaborate or just want
+            to connect!
           </p>
         </motion.div>
 
@@ -64,80 +85,53 @@ export function Contact() {
         >
           {/* Contact Information Card */}
           <motion.div variants={itemVariants}>
-            <Card
-              className="h-full group hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 bg-white sketchy-border-sm shadow-sketchy-md"
-            >
+            <Card className="h-full group hover:shadow-lg hover:shadow-primary/20 bg-white sketchy-border-sm shadow-sketchy-md">
               <CardHeader>
                 <CardTitle
-                  className="group-hover:text-primary transition-colors"
-                  style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
+                  className="group-hover:text-primary transition-colors font-shadow-into-light"
                 >
                   Contact Information
                 </CardTitle>
-                <CardDescription
-
-                >
-                  Here's how you can reach me
-                </CardDescription>
+                <CardDescription>Here's how you can reach me</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col gap-4">
-                {[
-                  {
-                    icon: Mail,
-                    text: "tsirimaholy.h@gmail.com",
-                    href: "mailto:tsirimaholy.h@gmail.com",
-                  },
-                  {
-                    icon: MapPin,
-                    text: "Madagascar",
-                  },
-                  {
-                    icon: Github,
-                    text: "github.com/Tsirimaholy",
-                    href: "https://github.com/Tsirimaholy",
-                  },
-                  {
-                    icon: Linkedin,
-                    text: "linkedin.com/in/tsirimaholy",
-                    href: "https://linkedin.com/in/tsirimaholy",
-                  },
-                ].map(({ icon: Icon, text, href }, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-center gap-3 group/item"
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
-                    <Icon className="h-5 w-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
-                    {href ? (
-                      <a
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group-hover/item:text-primary transition-colors"
-
-                      >
-                        {text}
-                      </a>
-                    ) : (
-                      <p
-                        className="group-hover/item:text-primary transition-colors"
-
-                      >
-                        {text}
-                      </p>
-                    )}
-                  </motion.div>
-                ))}
+                {contactInformations.map(
+                  ({ icon: Icon, text, href }, index) => (
+                    <motion.div
+                      key={index}
+                      className="flex items-center gap-3 group/item"
+                      whileHover={{ x: 5 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      }}
+                    >
+                      <Icon className="h-5 w-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
+                      {href ? (
+                        <a
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="transition-colors"
+                        >
+                          {text}
+                        </a>
+                      ) : (
+                        <p className="group-hover/item:text-primary transition-colors">
+                          {text}
+                        </p>
+                      )}
+                    </motion.div>
+                  )
+                )}
               </CardContent>
             </Card>
           </motion.div>
 
           {/* Send a Message Card */}
           <motion.div variants={itemVariants}>
-            <Card
-              className="group hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 bg-white sketchy-border-sm shadow-sketchy-lg"
-            >
+            <Card className="group hover:shadow-primary/20 transition-all duration-300 bg-white sketchy-border-sm shadow-sketchy-lg">
               <CardHeader>
                 <CardTitle
                   className="group-hover:text-primary transition-colors"
@@ -145,9 +139,7 @@ export function Contact() {
                 >
                   Send a Message
                 </CardTitle>
-                <CardDescription
-
-                >
+                <CardDescription>
                   Fill out the form below and I'll get back to you soon.
                 </CardDescription>
               </CardHeader>
@@ -178,7 +170,7 @@ export function Contact() {
                   <motion.div variants={itemVariants}>
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-primary to-green-500 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 sketchy-border-sm shadow-sketchy-sm"
+                      className="w-full bg-gradient-to-r from-primary to-green-500 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20  shadow-sketchy-sm"
                     >
                       Send Message
                     </Button>
