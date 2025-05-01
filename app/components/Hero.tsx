@@ -1,11 +1,19 @@
+
 import { motion } from "motion/react";
 import { Button } from "~/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
-import {Link} from "react-router"
+import { Link } from "react-router";
 
 export function Hero() {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background">
+    <div
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background"
+      style={{
+        backgroundImage: "url('/path-to-grid-paper-bg.png')", // Grid paper background
+        backgroundSize: "cover",
+        backgroundRepeat: "repeat",
+      }}
+    >
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/10 to-green-400/10 animate-gradient" />
 
@@ -21,9 +29,15 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center md:items-start text-center md:text-left space-y-6"
         >
-          <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
+          <h1
+            className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight"
+            style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
+          >
             Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-primary via-green-300 to-primary bg-clip-text text-transparent animate-gradient-x">
+            <span
+              className="bg-gradient-to-r from-primary via-green-300 to-primary bg-clip-text text-transparent animate-gradient-x"
+              style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+            >
               Tsirimaholy
             </span>
           </h1>
@@ -33,6 +47,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-[600px] text-lg text-muted-foreground sm:text-xl"
+            style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
           >
             A passionate{" "}
             <strong className="decoration-2 decoration-wavy underline decoration-yellow-500">
@@ -69,8 +84,11 @@ export function Hero() {
                 key={index}
                 variant="outline"
                 size="icon"
-                className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm"
+                className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm border-2 border-dashed border-gray-400"
                 asChild
+                style={{
+                  boxShadow: "3px 3px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+                }}
               >
                 <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
                   <Icon className="h-5 w-5" />
@@ -89,6 +107,7 @@ export function Hero() {
             <Link
               to="#about"
               className="flex items-center gap-2 text-lg font-medium text-primary hover:underline hover:opacity-90 transition-all"
+              style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
             >
               Discover my journey
               <ArrowDown className="animate-bounce" size={20} />
@@ -103,7 +122,12 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="relative"
         >
-          <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-background/50 shadow-xl">
+          <div
+            className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-xl"
+            style={{
+              boxShadow: "5px 5px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+            }}
+          >
             <img
               src="/Tsirimaholy.jpg"
               alt="Tsirimaholy"
@@ -111,7 +135,12 @@ export function Hero() {
             />
           </div>
           {/* Decorative glow */}
-          <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary to-green-500 opacity-50 blur-md -z-10" />
+          <div
+            className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary to-green-500 opacity-50 blur-md -z-10"
+            style={{
+              boxShadow: "5px 5px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+            }}
+          />
         </motion.div>
       </div>
     </div>

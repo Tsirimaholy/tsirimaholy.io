@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "~/components/ui/button";
 import {
@@ -11,6 +10,7 @@ import {
 } from "~/components/ui/card";
 import { Github, Globe, X, ExternalLink } from "lucide-react";
 import { Badge } from "~/components/ui/badge";
+import { AnimatePresence, motion } from "motion/react";
 
 export function Projects() {
   const [filter, setFilter] = useState("All");
@@ -53,7 +53,15 @@ export function Projects() {
   const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } };
 
   return (
-    <section className="relative py-24 bg-gray-50" id="projects">
+    <section
+      className="relative py-24 bg-gray-50"
+      id="projects"
+      style={{
+        backgroundImage: "url('/path-to-grid-paper-bg.png')", // Grid paper background
+        backgroundSize: "cover",
+        backgroundRepeat: "repeat",
+      }}
+    >
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -62,10 +70,16 @@ export function Projects() {
         transition={{ duration: 0.5 }}
         className="text-center max-w-3xl mx-auto mb-12"
       >
-        <h2 className="text-4xl font-bold bg-gradient-to-r from-primary to-green-500 bg-clip-text text-transparent">
+        <h2
+          className="text-4xl font-bold bg-gradient-to-r from-primary to-green-500 bg-clip-text text-transparent"
+          style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
+        >
           Featured Projects
         </h2>
-        <p className="text-gray-600 mt-2">
+        <p
+          className="text-gray-600 mt-2"
+          style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+        >
           Explore some of my best work. Hover over each card for more details.
         </p>
       </motion.div>
@@ -84,7 +98,11 @@ export function Projects() {
               variant={filter === cat ? "default" : "outline"}
               size="sm"
               onClick={() => setFilter(cat)}
-              className="capitalize cursor-pointer"
+              className="capitalize cursor-pointer border-2 border-dashed border-gray-400"
+              style={{
+                fontFamily: "'Patrick Hand', cursive", // Handwritten font
+                boxShadow: "3px 3px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+              }}
             >
               {cat}
             </Button>
@@ -104,7 +122,10 @@ export function Projects() {
           <motion.div
             variants={item}
             whileHover={{ scale: 1.05 }}
-            className="relative group overflow-hidden rounded-lg shadow-lg bg-white"
+            className="relative group overflow-hidden rounded-lg shadow-lg bg-white border-2 border-dashed border-gray-400"
+            style={{
+              boxShadow: "5px 5px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+            }}
           >
             {/* Image */}
             <div
@@ -145,33 +166,46 @@ export function Projects() {
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <h3 className="text-white text-lg font-semibold">KIS</h3>
+                <h3
+                  className="text-white text-lg font-semibold"
+                  style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+                >
+                  KIS
+                </h3>
               </div>
             </div>
 
             {/* Content */}
             <div className="p-4">
-              <h3 className="text-xl font-semibold text-gray-800">KIS</h3>
-              <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+              <h3
+                className="text-xl font-semibold text-gray-800"
+                style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
+              >
+                KIS
+              </h3>
+              <p
+                className="text-sm text-gray-600 mt-2 line-clamp-2"
+                style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+              >
                 ERP solution used to manage both employees and a high formation
                 center.
               </p>
               <div className="flex flex-wrap gap-2 mt-4">
-                <Badge variant="secondary" className="bg-gray-100 text-gray-800">
-                  TypeScript
-                </Badge>
-                <Badge variant="secondary" className="bg-gray-100 text-gray-800">
-                  React
-                </Badge>
-                <Badge variant="secondary" className="bg-gray-100 text-gray-800">
-                  Python
-                </Badge>
-                <Badge variant="secondary" className="bg-gray-100 text-gray-800">
-                  Django
-                </Badge>
-                <Badge variant="secondary" className="bg-gray-100 text-gray-800">
-                  PostgreSQL
-                </Badge>
+                {["TypeScript", "React", "Python", "Django", "PostgreSQL"].map(
+                  (tag) => (
+                    <Badge
+                      key={tag}
+                      variant="secondary"
+                      className="bg-gray-100 text-gray-800 border-2 border-dashed border-gray-400"
+                      style={{
+                        fontFamily: "'Patrick Hand', cursive", // Handwritten font
+                        boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+                      }}
+                    >
+                      {tag}
+                    </Badge>
+                  )
+                )}
               </div>
             </div>
 
@@ -181,7 +215,11 @@ export function Projects() {
                 variant="outline"
                 size="sm"
                 asChild
-                className="gap-1"
+                className="gap-1 border-2 border-dashed border-gray-400"
+                style={{
+                  fontFamily: "'Patrick Hand', cursive", // Handwritten font
+                  boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+                }}
               >
                 <a
                   href="https://project1.com"
@@ -224,7 +262,11 @@ export function Projects() {
                       "Implementing a reliable offline-first strategy was challenging but solved using a queue-based approach with conflict resolution.",
                   })
                 }
-                className="gap-1"
+                className="gap-1 border-2 border-dashed border-gray-400"
+                style={{
+                  fontFamily: "'Patrick Hand', cursive", // Handwritten font
+                  boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+                }}
               >
                 Details
                 <ExternalLink className="h-4 w-4" />
@@ -256,11 +298,17 @@ export function Projects() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="fixed top-1/2 left-1/2 w-[90%] max-w-3xl max-h-[85vh] overflow-y-auto bg-white rounded-xl p-6 shadow-2xl transform -translate-x-1/2 -translate-y-1/2 z-50"
+              className="fixed top-1/2 left-1/2 w-[90%] max-w-3xl max-h-[85vh] overflow-y-auto bg-white rounded-xl p-6 shadow-2xl transform -translate-x-1/2 -translate-y-1/2 z-50 border-2 border-dashed border-gray-400"
+              style={{
+                boxShadow: "5px 5px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+              }}
             >
               <button
                 onClick={() => setSelected(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+                className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors border-2 border-dashed border-gray-400"
+                style={{
+                  boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+                }}
               >
                 <X className="h-5 w-5" />
               </button>
@@ -268,26 +316,57 @@ export function Projects() {
               <img
                 src={selected.image}
                 alt={selected.title}
-                className="w-full h-64 object-cover rounded-lg mb-4"
+                className="w-full h-64 object-cover rounded-lg mb-4 border-2 border-dashed border-gray-400"
+                style={{
+                  boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+                }}
               />
-              <h3 className="text-2xl font-bold mb-2 text-gray-800">
+              <h3
+                className="text-2xl font-bold mb-2 text-gray-800"
+                style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
+              >
                 {selected.title}
               </h3>
-              <p className="text-gray-600 mb-4">
+              <p
+                className="text-gray-600 mb-4"
+                style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+              >
                 {selected.detailedDescription}
               </p>
-              <h4 className="font-semibold text-lg mb-2">Key Features</h4>
-              <ul className="list-disc pl-5 mb-4 text-gray-600">
+              <h4
+                className="font-semibold text-lg mb-2"
+                style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
+              >
+                Key Features
+              </h4>
+              <ul
+                className="list-disc pl-5 mb-4 text-gray-600"
+                style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+              >
                 {selected.features.map((f: string) => (
                   <li key={f}>{f}</li>
                 ))}
               </ul>
-              <h4 className="font-semibold text-lg mb-2">Challenges</h4>
-              <p className="text-gray-600 mb-4">{selected.challenges}</p>
+              <h4
+                className="font-semibold text-lg mb-2"
+                style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
+              >
+                Challenges
+              </h4>
+              <p
+                className="text-gray-600 mb-4"
+                style={{ fontFamily: "'Patrick Hand', cursive" }} // Handwritten font
+              >
+                {selected.challenges}
+              </p>
               <div className="flex gap-4">
                 <Button
                   asChild
-                  className="bg-gradient-to-r from-primary to-green-500 hover:from-primary/90 hover:to-green-500/90"
+                  className="bg-gradient-to-r from-primary to-green-500 hover:from-primary/90 hover:to-green-500/90 border-2 border-dashed border-gray-400"
+                  style={{
+                    fontFamily: "'Patrick Hand', cursive", // Handwritten font
+                    boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+                  }}
                 >
                   <a
                     href={selected.liveUrl}
@@ -299,7 +378,15 @@ export function Projects() {
                     View Demo
                   </a>
                 </Button>
-                <Button variant="outline" asChild className="gap-2">
+                <Button
+                  variant="outline"
+                  asChild
+                  className="gap-2 border-2 border-dashed border-gray-400"
+                  style={{
+                    fontFamily: "'Patrick Hand', cursive", // Handwritten font
+                    boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.1)", // Sketchy shadow
+                  }}
+                >
                   <a
                     href={selected.githubUrl}
                     target="_blank"
