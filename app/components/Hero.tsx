@@ -5,6 +5,23 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Link } from "react-router";
 
 export function Hero() {
+  const contacts = [
+    {
+      href: "https://github.com/Tsirimaholy",
+      icon: Github,
+      label: "GitHub",
+    },
+    {
+      href: "https://linkedin.com/in/tsirimaholy",
+      icon: Linkedin,
+      label: "LinkedIn",
+    },
+    {
+      href: "mailto:tsirimaholy.h@gmail.com",
+      icon: Mail,
+      label: "Email",
+    },
+  ];
   return (
     <section
       id="hero"
@@ -56,23 +73,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex gap-4"
           >
-            {[
-              {
-                href: "https://github.com/Tsirimaholy",
-                icon: Github,
-                label: "GitHub",
-              },
-              {
-                href: "https://linkedin.com/in/tsirimaholy",
-                icon: Linkedin,
-                label: "LinkedIn",
-              },
-              {
-                href: "mailto:tsirimaholy.h@gmail.com",
-                icon: Mail,
-                label: "Email",
-              },
-            ].map(({ href, icon: Icon, label }, index) => (
+            {contacts.map(({ href, icon: Icon, label }, index) => (
               <Button
                 key={index}
                 variant="outline"
