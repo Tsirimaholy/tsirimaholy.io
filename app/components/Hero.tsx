@@ -1,7 +1,6 @@
-
 import { motion } from "motion/react";
 import { Button } from "~/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Pencil } from "lucide-react";
 import { Link } from "react-router";
 
 export function Hero() {
@@ -26,7 +25,6 @@ export function Hero() {
     <section
       id="hero"
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
-
     >
       {/* Animated gradient background */}
       {/* <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/10 to-green-400/10 animate-gradient" /> */}
@@ -35,7 +33,7 @@ export function Hero() {
       <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-pulse" />
       {/* <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-green-500/20 blur-3xl animate-pulse delay-700" /> */}
 
-      <div className="container relative flex flex-col-reverse md:flex-row items-center justify-between gap-12 px-6">
+      <div className="relative flex flex-col-reverse md:flex-row items-center px-6">
         {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -43,14 +41,9 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center md:items-start text-center md:text-left space-y-6"
         >
-          <h1
-            className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-shadow-into-light"
-          >
+          <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-shadow-into-light">
             Hi, I'm
-            <span
-            >
-              Tsirimaholy
-            </span>
+            <span>Tsirimaholy</span>
           </h1>
 
           <motion.p
@@ -81,7 +74,12 @@ export function Hero() {
                 className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm sketchy-border-sm shadow-sketchy-md"
                 asChild
               >
-                <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                >
                   <Icon className="h-5 w-5" />
                 </a>
               </Button>
@@ -98,7 +96,6 @@ export function Hero() {
             <Link
               to="#about"
               className="flex items-center gap-2 text-lg font-medium text-primary hover:underline hover:opacity-90 transition-all"
-
             >
               Discover my journey
               <ArrowDown className="animate-bounce" size={20} />
@@ -113,9 +110,7 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="relative"
         >
-          <div
-            className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg"
-          >
+          <div className="w-54 h-54 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg">
             <img
               src="/Tsirimaholy.jpg"
               alt="Tsirimaholy"

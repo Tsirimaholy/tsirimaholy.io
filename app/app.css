@@ -133,13 +133,12 @@ body {
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    .sketchy-border-sm {
-      @apply border-2 border-dashed border-gray-400;
-    }
-
   }
   body {
     @apply bg-background text-foreground;
+  }
+  .sketchy-border-sm {
+    @apply border-2 border-dashed border-gray-400;
   }
 }
 
