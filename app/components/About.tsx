@@ -132,26 +132,27 @@ export function About() {
                 </span>
                 . I was so curious that I asked them to teach me some basic things but "especially" i want to learn to build android apps(But i wasn't aware for the pain that comes with it at that time :-) ).{" "}
                 <span className="relative inline-block">
-                  <motion.span
+                  {/* todo: DO NOT WORK WHEN MULTILINED TEXT */}
+                  {/* <motion.span
                     initial={{ width: 0 }}
                     whileInView={{ width: "100%" }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.9, delay: 1 }}
                     className="absolute bg-green-200 origin-left h-2 bottom-1 -skew-y-0.5"
-                  ></motion.span>
-                  <span className="relative font-semibold text-gray-900">
-                    He agreed, and that’s when my journey truly began.
+                  ></motion.span> */}
+                  <span className="relative font-semibold text-gray-900 bg-green-200">
+                    He accepted to teach and that's where my long way into the 🌊ocean of coding really started.
                   </span>
                 </span>
               </p>
               <p className="text-gray-700 leading-relaxed mt-4">
-                Every step of the way, from my first{" "}
+                Every step from the first{" "}
                 <span className="underline decoration-yellow-500">
                   "Hello World"
                 </span>{" "}
-                to building a small{" "}
+                to my first{" "}
                 <span className="underline decoration-green-500">CLI app</span>,
-                blew my mind 🤯. Then, I discovered{" "}
+                was like if I discover a new world, it was like travel to a new world. And like every travel, there was a hard moment, a moment that I was both amazed and blown at the same time. Along the way, I discovered{" "}
                 <Link
                   to="https://www.youtube.com/@programmingwithmosh"
                   target="_blank"
@@ -163,11 +164,7 @@ export function About() {
                     <ExternalLink size={"15"} className="inline" />
                   </span>
                 </Link>
-                , and I was blown away again by how we can organize code, write
-                clean, extensible, and understandable code, and follow best
-                practices. It was like unlocking a whole new level of
-                programming!
-              </p>
+                ,and again I was blown away 🤯by how we can build beautiful , maintainable and extensible codes(aka clean codes and best practices) and even the world and sentences that are used to explain a specific concept become clearer at that point. It was like every step was unlocking a whole new world to me.              </p>
             </div>
           </motion.div>
 
@@ -204,14 +201,12 @@ export function About() {
               </h3>
               <p className="text-sm text-gray-500 mb-2">2021 – 2024</p>
               <p className="text-gray-700 leading-relaxed">
-                After high school, I faced challenges but remained determined. I
-                discovered HEI University, where I honed my skills in{" "}
+                After high school, i applied for an IT specialised University, did the entrance exam and got accpeted but my parent wasn't able to afford the tution fee of the university at that time so i did not finalised my inscription. I was a little bit diapointed and got into the hard way for a time by teaching myself, following the indie hacking and freelancer boys dream, but latter(after ~6 month) i discovered HEI(Haute Ecole d'Informatique) applied and got accepted where i get my skills in
                 <span className="underline decoration-yellow-500">
                   full-stack development
                 </span>{" "}
-                and landed my first job as a React Native developer within 9
-                months. This experience taught me resilience and the power of
-                continuous learning.
+                and landed my first job as React Native Developer within 9 months.
+                <br/>That long run taught me resilience, humility and gratitude and built the current _me_.
               </p>
             </div>
           </motion.div>
