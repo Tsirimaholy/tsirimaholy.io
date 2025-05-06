@@ -4,7 +4,6 @@ import { Skills } from "~/components/Skills";
 import { Projects } from "~/components/Projects";
 import { Contact } from "~/components/Contact";
 import type { MetaFunction } from "react-router";
-import React, { useEffect } from "react";
 import type { Route } from "./+types";
 import { data } from "react-router";
 import { Navbar } from "~/components/NavBar";
