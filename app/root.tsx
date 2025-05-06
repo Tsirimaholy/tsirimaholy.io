@@ -34,7 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="scroll-smooth">
         <Analytics />
         <SpeedInsights />
         {children}
