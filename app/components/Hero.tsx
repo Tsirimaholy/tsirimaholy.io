@@ -1,6 +1,16 @@
 import { motion } from "motion/react";
 import { Button } from "~/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail, Pencil } from "lucide-react";
+import {
+  ArrowDown,
+  DownloadIcon,
+  File,
+  FileDown,
+  FileUp,
+  Github,
+  Linkedin,
+  Mail,
+  Pencil,
+} from "lucide-react";
 import { Link } from "react-router";
 
 export function Hero() {
@@ -85,7 +95,13 @@ export function Hero() {
               </Button>
             ))}
           </motion.div>
+          <div className="flex gap-4">
 
+          <Button asChild>
+            <Link to={"/resume-fr.pdf"} target="_blank">
+              <FileDown/> Get my resume
+            </Link>
+          </Button>
           {/* Call to Action */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -101,6 +117,7 @@ export function Hero() {
               <ArrowDown className="animate-bounce" size={20} />
             </Link>
           </motion.div>
+          </div>
         </motion.div>
 
         {/* Profile Photo */}
