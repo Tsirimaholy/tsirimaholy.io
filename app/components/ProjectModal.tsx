@@ -88,21 +88,23 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
                 </Link>
               </Button>
             )}
-            <Button
-              variant="outline"
-              asChild
-              className="gap-2 shadow-sketchy-sm"
-            >
-              <Link
-                to={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex gap-2"
+            {project.githubUrl && (
+              <Button
+                variant="outline"
+                asChild
+                className="gap-2 shadow-sketchy-sm"
               >
-                <Github className="h-5 w-5" />
-                View Code
-              </Link>
-            </Button>
+                <Link
+                  to={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex gap-2"
+                >
+                  <Github className="h-5 w-5" />
+                  View Code
+                </Link>
+              </Button>
+            )}
           </div>
         </motion.div>
       </>

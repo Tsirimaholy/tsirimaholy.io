@@ -35,31 +35,65 @@ export function Projects() {
   // Projects data
   const projects: TProject[] = [
     {
+      id: 2,
+      title: "I-Kaly",
+      description:
+        "Application for managing restaurant and orders for each customers",
+      image: "/i-kaly/login.png",
+      tags: ["react", "spring boot", "bootstrap", "openapi"],
+      liveUrl: "",
+      githubUrl: "",
+      detailedDescription:
+        "This was one my our first application built during a hackathon that is used to manage a restaurant, manage orders, menues, etc",
+      features: ["Menues creation", "Order system", "..."],
+      challenges: [],
+    },
+    {
       id: 1,
       title: "KIS",
       description:
-        "ERP solution used to manage both employees and a high formation center.",
+        "ERP and Intranet solution used to manage both employees and a high formation center.",
       image: "/kis-present.gif",
       tags: ["TypeScript", "React", "Python", "Django", "PostgreSQL"],
       liveUrl: "",
-      githubUrl: "https://github.com/Tsirimaholy/project1",
+      githubUrl: "",
       detailedDescription:
-        "This is a comprehensive ERP solution built with React and Django. It features user management, real-time data synchronization, and a responsive UI.",
+        "This is a ERP solution built with React and Django rest framework. It features user management and a responsive UI.",
       features: [
         "User authentication and profile management",
-        "Real-time data synchronization",
-        "Offline support with local storage",
-        "Push notifications",
+        "Project and event management using a customised calendar",
+        "Course, Teacher, student, Employees management",
         "Beautiful and responsive UI",
+        "Financial files storage"
       ],
       challenges: [
-        "Implementing a reliable offline-first strategy was challenging but solved using a queue-based approach with conflict resolution.",
+        "",
       ],
     },
-    // Add more projects here
+    {
+      id: 3,
+      title: "Activity Reward",
+      description: "Move more, receive valuable rewards",
+      image: "/activity-reward/landing-home-1.png",
+      tags: ["react", "Django", "DRF", "python", "typescript"],
+      liveUrl: "https://activityrewards.co.uk/",
+      githubUrl: "",
+      detailedDescription:
+        " Employees move more and receive valuable rewards... Boosting workplace happiness!Empower your employees with financial rewards for staying active. Happier teams, better performance, and improved well-being. ",
+      features: [
+        "Real time xp system and pop notifications",
+        "Real time chat for support",
+        "Payment Gateway built on stripe",
+        "Scheduled asyncronous task for tracking ang grouping analytics data",
+      ],
+      challenges: [],
+    },
   ];
   const filteredProjects = projects.filter(
-    (project) => filter === "All" || project.tags.includes(filter)
+    (project) =>
+      filter === "All" ||
+      project.tags.includes(filter) ||
+      project.tags.includes(filter.toLowerCase())
   );
   // Close modal on outside click
   useEffect(() => {

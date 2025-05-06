@@ -64,17 +64,20 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 
       {/* Actions */}
       <div className="p-4 border-t border-gray-200 flex justify-between">
-        <Button
-          variant="outline"
-          size="sm"
-          asChild
-          className="gap-1 sketchy-border-sm shadow-sketchy-sm"
-        >
-          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-            <Globe className="h-4 w-4" />
-            Demo
-          </a>
-        </Button>
+        {project.liveUrl && (
+          <Button
+            variant="outline"
+            size="sm"
+            asChild
+            className="gap-1 sketchy-border-sm shadow-sketchy-sm"
+          >
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+              <Globe className="h-4 w-4" />
+              Demo
+            </a>
+          </Button>
+        )}
+
         <Button
           variant="secondary"
           size="sm"
