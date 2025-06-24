@@ -1,15 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "~/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
-import { Github, Globe, X, ExternalLink } from "lucide-react";
-import { Badge } from "~/components/ui/badge";
 import { AnimatePresence, motion } from "motion/react";
 import { ProjectCard } from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
@@ -30,6 +20,7 @@ export function Projects() {
     "Tailwind CSS",
     "Machine Learning",
     "Docker",
+    "Prisma"
   ];
 
   // Projects data
@@ -45,7 +36,7 @@ export function Projects() {
       githubUrl: "",
       detailedDescription:
         "This was one my our first application built during a hackathon that is used to manage a restaurant, manage orders, menues, etc",
-      features: ["Menues creation", "Order system", "..."],
+      features: ["Menues creation", "Order system"],
       challenges: [],
     },
     {
@@ -54,7 +45,7 @@ export function Projects() {
       description:
         "ERP and Intranet solution used to manage both employees and a high formation center.",
       image: "/kis-present.gif",
-      tags: ["TypeScript", "React", "Python", "Django", "PostgreSQL"],
+      tags: ["TypeScript", "React", "Python", "Django", "PostgreSQL", "Docker"],
       liveUrl: "",
       githubUrl: "",
       detailedDescription:
@@ -64,11 +55,9 @@ export function Projects() {
         "Project and event management using a customised calendar",
         "Course, Teacher, student, Employees management",
         "Beautiful and responsive UI",
-        "Financial files storage"
+        "Financial files storage",
       ],
-      challenges: [
-        "",
-      ],
+      challenges: [""],
     },
     {
       id: 3,
@@ -86,6 +75,19 @@ export function Projects() {
         "Payment Gateway built on stripe",
         "Scheduled asyncronous task for tracking ang grouping analytics data",
       ],
+      challenges: [],
+    },
+    {
+      id: 4,
+      title: "Task man",
+      description: "Yet another project management system",
+      image: "/taskman.png",
+      tags: ["react", "typescript", "prisma", "tailwind"],
+      liveUrl: "https://activityrewards.co.uk/",
+      githubUrl: "",
+      detailedDescription:
+        "A project management system built with React, React Router V7 framework mode, and TypeScript.",
+      features: ["Drag and drop task management"],
       challenges: [],
     },
   ];
@@ -118,7 +120,7 @@ export function Projects() {
   const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } };
 
   return (
-    <section className="relative py-24 bg-gray-50" id="projects">
+    <section id="projects" className="relative py-24 bg-gray-50">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -166,15 +168,25 @@ export function Projects() {
           variants={container}
           whileInView="show"
           viewport={{ once: true }}
-          className="grid gap-8 mt-4 md:grid-cols-2 lg:grid-cols-3"
+          className={`grid gap-8 mt-4 ${
+            filteredProjects.length > 0
+              ? "md:grid-cols-2 lg:grid-cols-3"
+              : "grid-cols-1"
+          }`}
         >
-          {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              onSelect={() => setSelected(project)}
-            />
-          ))}
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                onSelect={() => setSelected(project)}
+              />
+            ))
+          ) : (
+            <h1 className="text-muted-foreground text-xl font-bold text-center self-center">
+              No Project match that tag ...
+            </h1>
+          )}
         </motion.div>
       </div>
 

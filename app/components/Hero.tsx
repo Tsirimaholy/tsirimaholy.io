@@ -2,14 +2,10 @@ import { motion } from "motion/react";
 import { Button } from "~/components/ui/button";
 import {
   ArrowDown,
-  DownloadIcon,
-  File,
   FileDown,
-  FileUp,
   Github,
   Linkedin,
   Mail,
-  Pencil,
 } from "lucide-react";
 import { Link } from "react-router";
 
@@ -46,9 +42,9 @@ export function Hero() {
       <div className="relative flex flex-col-reverse md:flex-row items-center px-6">
         {/* Text Content */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.3 }}
           className="flex flex-col items-center md:items-start text-center md:text-left space-y-6"
         >
           <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-shadow-into-light">
@@ -57,7 +53,7 @@ export function Hero() {
           </h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-[600px] text-lg text-muted-foreground sm:text-xl"
@@ -67,6 +63,7 @@ export function Hero() {
               full-stack developer
             </strong>{" "}
             crafting beautiful and functional web experiences.
+            {/*<Pencil className="absolute" />*/}
           </motion.p>
 
           {/* Social Links */}
@@ -95,8 +92,7 @@ export function Hero() {
               </Button>
             ))}
           </motion.div>
-          <div className="flex gap-4">
-
+          <div className="flex gap-4 mt-10">
           <Button asChild>
             <Link to={"/resume-fr.pdf"} target="_blank">
               <FileDown/> Get my resume
@@ -122,9 +118,9 @@ export function Hero() {
 
         {/* Profile Photo */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
+          // initial={{ opacity: 0, scale: 0.8 }}
+          // animate={{ opacity: 1, scale: 1 }}
+          // transition={{ duration: 0.4 }}
           className="relative"
         >
           <div className="w-54 h-54 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg">
@@ -132,6 +128,7 @@ export function Hero() {
               src="/Tsirimaholy.jpg"
               alt="Tsirimaholy"
               className="w-full h-full object-cover"
+              fetchPriority="high"
             />
           </div>
           {/* Decorative glow */}

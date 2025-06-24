@@ -16,6 +16,7 @@ export const meta: MetaFunction = ({}) => {
     },
   ];
 };
+
 export const loader = async () => {
   return data({ name: "John", createdAt: new Date() });
 };

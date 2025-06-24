@@ -39,7 +39,7 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-64 object-cover rounded-lg mb-4 shadow-sketchy-sm"
+            className="w-full h-auto object-cover rounded-lg mb-4 shadow-sketchy-sm"
           />
           <h3
             className="text-2xl font-bold mb-2 text-gray-800"

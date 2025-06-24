@@ -28,13 +28,14 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
     >
       {/* Image */}
       <div
-        className="relative h-48 overflow-hidden cursor-pointer"
+        className="relative h-48 overflow-hidden cursor-pointer perspective-distant"
         onClick={() => onSelect(project)}
       >
         <img
+          loading="lazy"
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          className="w-full h-auto object-cover transition-transform duration-300 group-hover:rotate-x-15 group-hover:rotate-y-20 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
           <h3 className="text-white text-lg font-semibold">{project.title}</h3>
