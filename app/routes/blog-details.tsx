@@ -1,18 +1,25 @@
-import { ChevronLeft } from "lucide-react";
+import { ArrowLeft, ChevronLeft } from "lucide-react";
 import { Link } from "react-router";
 
 function BlogDetails() {
   return (
-    <div className={"p-5 px-40 mt-10"}>
+    <div className={"p-5 px-40 mt-20"}>
       <Link
         to={"/blog"}
-        className={"flex hover:text-muted-foreground"}
+        className={"flex hover:text-muted-foreground items-center"}
         viewTransition
       >
-        <ChevronLeft className={"cursor-pointer inline "} />{" "}
+        <ArrowLeft size={20} className={"cursor-pointer inline "} />{" "}
         <span>Go Back</span>
       </Link>
-      <h1 className={"text-3xl pt-8"}>Title</h1>
+      <h1 className={"text-4xl font-bold pt-8 sm:text-5xl"}>Title</h1>
+      <p className="text-muted-foreground text-lg text-pretty mb-1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
+        veritatis, maxime, rem officiis quas adipisci et saepe totam, quidem
+        minus veniam? Id quidem officiis nemo architecto praesentium. Excepturi,
+        alias dignissimos!
+      </p>
+      <hr className="my-8"/>
       <p className={""}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur
         illum omnis sint veniam voluptatibus. Ad architecto aspernatur culpa
