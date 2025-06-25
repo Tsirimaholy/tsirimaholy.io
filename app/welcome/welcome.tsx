@@ -41,7 +41,7 @@ export function Welcome() {
   const filteredBlog = blogs.filter((b) => b.summary.includes(searchTerm));
   return (
     <main className="pt-16 pb-4">
-      <header className="text-center flex flex-col items-center">
+      <header className="text-center flex flex-col items-center px-6">
         <h1 className={"text-5xl mt-4 mb-2"}>Blog</h1>
         <p className="text-muted-foreground text-center text-lg w-1/2">
           Insights into my journey as a developer and my thoughts/opinions on
@@ -50,7 +50,7 @@ export function Welcome() {
         </p>
         <Input
           placeholder={"Search blogs..."}
-          className={"w-1/3 justify-self-center mt-4"}
+          className={"md:w-1/3 justify-self-center mt-4"}
           type={"search"}
           onChange={(e) => setSearchTerm(e.currentTarget.value)}
         />

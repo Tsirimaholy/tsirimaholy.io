@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { NavItem } from "~/components/NavItem";
-import { href, Link, useLocation, useMatch, useNavigation } from "react-router";
+import {
+  href,
+  Link,
+  NavLink,
+} from "react-router";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +18,6 @@ export function Navbar() {
 
   useEffect(() => {
     // Observe sections to detect the active section
-    console.log({activeSection})
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -31,6 +34,7 @@ export function Navbar() {
 
     return () => observer.disconnect();
   }, [activeSection]);
+
   return (
     <header
       ref={navRef}
@@ -86,20 +90,38 @@ export function Navbar() {
             {["hero", "about", "skills", "projects", "contact"].map(
               (section) => (
                 <li key={section} className="py-2">
-                  <a
-                    href={`#${section}`}
-                    className={`block px-2 py-2 transition duration-300 ${
-                      activeSection === section
+                  <NavLink
+                    to={`${href("/")}#${section}`}
+                    className={({isActive: isActivePage})=>`block px-2 py-2 transition duration-300 ${
+                        (isActivePage && activeSection===section)
                         ? "text-primary font-medium bg-primary/10 rounded border-l-4 border-primary"
                         : "text-gray-700 hover:text-primary hover:bg-gray-100 rounded"
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {section.charAt(0).toUpperCase() + section.slice(1)}
-                  </a>
+                  </NavLink>
                 </li>
               )
             )}
+            <li key={"blog"} className="py-2">
+              <NavLink
+                to={href("/blog")}
+                className={({ isActive }) =>
+                  `block px-2 py-2 transition duration-300 ${
+                    isActive || activeSection === "blog"
+                      ? "text-primary font-medium bg-primary/10 rounded border-l-4 border-primary"
+                      : "text-gray-700 hover:text-primary hover:bg-gray-100 rounded"
+                  }`
+                }
+                onClick={() => {
+                  setActiveSection("blog");
+                  setIsMenuOpen(false);
+                }}
+              >
+                Blog
+              </NavLink>
+            </li>
           </ul>
         </div>
       </nav>
