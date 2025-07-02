@@ -10,6 +10,7 @@ import {
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { Form } from "react-router";
 
 export function Contact() {
   // Animation variants for container and items
@@ -87,9 +88,7 @@ export function Contact() {
           <motion.div variants={itemVariants}>
             <Card className="h-full group hover:shadow-lg hover:shadow-primary/20 bg-white sketchy-border-sm shadow-sketchy-md">
               <CardHeader>
-                <CardTitle
-                  className="group-hover:text-primary transition-colors font-shadow-into-light"
-                >
+                <CardTitle className="group-hover:text-primary transition-colors font-shadow-into-light">
                   Contact Information
                 </CardTitle>
                 <CardDescription>Here's how you can reach me</CardDescription>
@@ -144,17 +143,18 @@ export function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form className="flex flex-col gap-4">
+                <Form className="flex flex-col gap-4" method="POST">
                   {[
-                    { placeholder: "Name", type: "text" },
-                    { placeholder: "Email", type: "email" },
-                  ].map(({ placeholder, type }, index) => (
+                    { placeholder: "Name", type: "text", name: "name" },
+                    { placeholder: "Email", type: "email", name: "email" },
+                  ].map(({ placeholder, type, name }, index) => (
                     <motion.div
                       key={index}
                       className="grid gap-2"
                       variants={itemVariants}
                     >
                       <Input
+                        name={name}
                         type={type}
                         placeholder={placeholder}
                         className="bg-white sketchy-border-sm focus:border-primary transition-colors shadow-sketchy-sm"
@@ -163,19 +163,22 @@ export function Contact() {
                   ))}
                   <motion.div className="grid gap-2" variants={itemVariants}>
                     <Textarea
+                      name="message"
                       placeholder="Your message"
                       className="min-h-[150px] bg-white sketchy-border-sm focus:border-primary transition-colors shadow-sketchy-sm"
                     />
                   </motion.div>
                   <motion.div variants={itemVariants}>
                     <Button
+                      name="intent"
+                      value={"contact"}
                       type="submit"
-                      className="w-full bg-gradient-to-r from-primary to-green-500 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20  shadow-sketchy-sm"
+                      className="w-full bg-gradient-to-r from-primary to-green-500 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20  shadow-sketchy-sm cursor-pointer"
                     >
                       Send Message
                     </Button>
                   </motion.div>
-                </form>
+                </Form>
               </CardContent>
             </Card>
           </motion.div>
