@@ -1,4 +1,4 @@
-import type { Route } from "./+types/blog";
+import type { Route } from "./+types/blogs";
 import { Welcome } from "~/welcome/welcome";
 import { data } from "react-router";
 

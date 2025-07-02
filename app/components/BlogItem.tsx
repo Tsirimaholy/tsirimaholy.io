@@ -18,7 +18,7 @@ export default function BlogItem({
   return (
     <div
       className={
-        "border-1 rounded-sm lg:max-w-[60%] max-w-[90%] py-5 px-3 hover:shadow-sm transition-shadow"
+        "border-1 rounded-sm w-full lg:max-w-[60%] max-w-[90%] py-5 px-3 hover:shadow-sm transition-shadow"
       }
     >
       <div className="flex gap-2 mb-2">
