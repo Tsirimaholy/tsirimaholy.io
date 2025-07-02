@@ -10,7 +10,7 @@ export default [
   layout("routes/main-layout.tsx", [
     index("routes/index.tsx"),
     ...prefix("blog", [
-      index("routes/blog.tsx"),
+      index("routes/blogs.tsx"),
       route(":id", "routes/blog-details.tsx"),
     ]),
   ]),
