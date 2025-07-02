@@ -27,7 +27,7 @@ export function Navbar() {
           }
         });
       },
-      { threshold: 0.2 } // Trigger when 30% of the section is visible
+      { threshold: 0.3 } // Trigger when 30% of the section is visible
     );
 
     sections.forEach((section) => observer.observe(section));
