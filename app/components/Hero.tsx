@@ -134,7 +134,7 @@ export function Hero() {
               fetchPriority="high"
             />
           </div>
-          <p className="text-sm absolute right-0 top-0 translate-y-[35%] translate-x-[50%] inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-200 border border-green-500 font-medium shadow-sm text-green-950">
+          <p className="text-sm absolute right-0 bottom-0 translate-y-[-40%] translate-x-[40%] inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-200 border border-green-500 font-medium shadow-sm text-green-950 animate-bounce [animation-duration:3s]">
             <div className="border-green-600/70 bg-green-300/80 border rounded-full p-1 animate-pulse [animation-duration:5s]">
               <div className="size-2 bg-green-700 rounded-full"></div>
             </div>
