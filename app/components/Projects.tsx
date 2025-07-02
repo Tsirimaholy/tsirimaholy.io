@@ -83,7 +83,7 @@ export function Projects() {
       description: "Yet another project management system",
       image: "/taskman.png",
       tags: ["react", "typescript", "prisma", "tailwind"],
-      liveUrl: "https://activityrewards.co.uk/",
+      liveUrl: "",
       githubUrl: "",
       detailedDescription:
         "A project management system built with React, React Router V7 framework mode, and TypeScript.",
