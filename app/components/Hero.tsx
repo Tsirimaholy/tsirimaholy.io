@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Button } from "~/components/ui/button";
 import {
   ArrowDown,
+  CircleDot,
   FileDown,
   Github,
   Linkedin,
@@ -47,10 +48,12 @@ export function Hero() {
           transition={{ duration: 0.3 }}
           className="flex flex-col items-center md:items-start text-center md:text-left space-y-6"
         >
-          <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-shadow-into-light">
-            Hi, I'm
-            <span>Tsirimaholy</span>
-          </h1>
+          <div className="relative">
+            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-shadow-into-light">
+              Hi, I'm
+              <span>Tsirimaholy</span>
+            </h1>
+          </div>
 
           <motion.p
             initial={{ opacity: 1, y: 20 }}
@@ -93,26 +96,26 @@ export function Hero() {
             ))}
           </motion.div>
           <div className="flex gap-4 mt-10">
-          <Button asChild>
-            <Link to={"/resume-fr.pdf"} target="_blank">
-              <FileDown/> Get my resume
-            </Link>
-          </Button>
-          {/* Call to Action */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col items-center md:items-start space-y-4"
-          >
-            <Link
-              to="#about"
-              className="flex items-center gap-2 text-lg font-medium text-primary hover:underline hover:opacity-90 transition-all"
+            <Button asChild>
+              <Link to={"/resume-fr.pdf"} target="_blank">
+                <FileDown /> Get my resume
+              </Link>
+            </Button>
+            {/* Call to Action */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex flex-col items-center md:items-start space-y-4"
             >
-              Discover my journey
-              <ArrowDown className="animate-bounce" size={20} />
-            </Link>
-          </motion.div>
+              <Link
+                to="#about"
+                className="flex items-center gap-2 text-lg font-medium text-primary hover:underline hover:opacity-90 transition-all"
+              >
+                Discover my journey
+                <ArrowDown className="animate-bounce" size={20} />
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -121,9 +124,9 @@ export function Hero() {
           // initial={{ opacity: 0, scale: 0.8 }}
           // animate={{ opacity: 1, scale: 1 }}
           // transition={{ duration: 0.4 }}
-          className="relative"
+          className="relative "
         >
-          <div className="w-54 h-54 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg">
+          <div className="w-54 h-54 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg relative">
             <img
               src="/Tsirimaholy.jpg"
               alt="Tsirimaholy"
@@ -131,6 +134,12 @@ export function Hero() {
               fetchPriority="high"
             />
           </div>
+          <p className="text-sm absolute right-0 top-0 translate-y-[35%] translate-x-[50%] inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-200 border border-green-500 font-medium shadow-sm text-green-950">
+            <div className="border-green-600/70 bg-green-300/80 border rounded-full p-1 animate-pulse [animation-duration:5s]">
+              <div className="size-2 bg-green-700 rounded-full"></div>
+            </div>
+            Open to opportunities
+          </p>
           {/* Decorative glow */}
           {/* <div
             className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary to-green-500 opacity-50 blur-md -z-10 shadow-sketchy-lg"
