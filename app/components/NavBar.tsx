@@ -69,7 +69,7 @@ export function Navbar() {
         <Button asChild className="hidden md:block">
           <Link key={"blog"} to={href("/blog")}>
             <div className="size-2 bg-white rounded-full inline-block mr-2"></div>
-            <span>Blog</span>
+            <strong>Blog</strong>
           </Link>
         </Button>
 
