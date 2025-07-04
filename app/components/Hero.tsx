@@ -141,7 +141,6 @@ export function Hero() {
 							height="320"
 						/>
 					</div>
-					
 				</div>
 			</div>
 

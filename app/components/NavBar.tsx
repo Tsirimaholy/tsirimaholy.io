@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { NavItem } from "~/components/NavItem";
 import { href, Link, NavLink } from "react-router";
+import { Button } from "./ui/button";
+import { Dot } from "lucide-react";
 
 export function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,7 +39,7 @@ export function Navbar() {
 			className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-xl shadow-xs z-50"
 		>
 			<nav className="container mx-auto px-4 py-4 relative">
-				<div className="flex items-center justify-between">
+				<div className="flex items-center">
 					{/* Logo */}
 					<Link
 						to={"/#"}
@@ -54,26 +56,32 @@ export function Navbar() {
 					>
 						{isMenuOpen ? <FiX /> : <FiMenu />}
 					</button>
-
-					{/* Desktop Navigation */}
-					<ul className="hidden md:flex items-center gap-8">
-						{["hero", "service", "about", "skills", "projects", "contact"].map(
-							(section) => (
+					<div className="flex justify-center align-center w-full">
+						{/* Desktop Navigation */}
+						<ul className="hidden md:flex items-center gap-8">
+							{[
+								"hero",
+								"service",
+								"about",
+								"skills",
+								"projects",
+								"contact",
+							].map((section) => (
 								<NavItem
 									key={section}
 									section={section}
 									to={`${href("/")}#${section}`}
 									isActive={section === activeSection}
 								/>
-							),
-						)}
-						<NavItem
-							key={"blog"}
-							section={"Blog"}
-							to={href("/blog")}
-							isActive={false}
-						/>
-					</ul>
+							))}
+						</ul>
+					</div>
+					<Button asChild>
+						<Link key={"blog"} to={href("/blog")}>
+							<div className="size-2 bg-white rounded-full inline-block mr-2"></div>
+							<span>Blog</span>
+						</Link>
+					</Button>
 				</div>
 
 				{/* Mobile Navigation */}
