@@ -38,7 +38,7 @@ export function Welcome() {
 	return (
 		<main className="pt-16 pb-4 relative">
 			<header className="text-center flex flex-col items-center px-6">
-				<h1 className={"text-5xl mt-4 mb-2"}>
+				<h1 className={"text-6xl font-bold mt-4 mb-2"}>
 					Blog{" "}
 					<span className="text-xs bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 py-1 rounded-full ml-3 font-medium">
 						Coming Soon

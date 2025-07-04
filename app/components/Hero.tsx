@@ -96,14 +96,7 @@ export function Hero() {
 						))}
 					</motion.div>
 					{/* Open to opportunities */}
-					<p className="text-sm right-[-30%] bottom-[10%] inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-200 border border-dashed border-green-500 font-medium  text-green-800 ">
-						{/* Round dot */}
-						<div className="border-green-600/70 bg-green-300 rounded-full p-1 relative manual-ping border">
-							<div className="absolute inset-0 rounded-full bg-green-300 manual-ping"></div>
-							<div className="size-2 bg-green-700 rounded-full relative z-10"></div>
-						</div>
-						Open to opportunities
-					</p>
+					{<OportunitieOpeninBadge/>}
 					<div className="flex gap-4 mt-25">
 						<Button asChild>
 							<Link to={"/resume-fr.pdf"} target="_blank">
@@ -134,7 +127,7 @@ export function Hero() {
 						<img
 							src="/Tsirimaholy.webp"
 							alt="Tsirimaholy"
-							className="w-full h-full object-cover"
+							// className="w-full h-full object-cover"
 							loading="lazy"
 							decoding="async"
 							width="320"
@@ -155,4 +148,14 @@ export function Hero() {
 			`}</style>
 		</section>
 	);
+}
+function OportunitieOpeninBadge() {
+    return <p className="text-sm inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-200 border border-dashed border-green-500 font-medium  text-green-800 ">
+        {/* Round dot */}
+        <div className="border-green-600/70 bg-green-300 rounded-full p-1 relative manual-ping border">
+            <div className="absolute inset-0 rounded-full bg-green-300 manual-ping"></div>
+            <div className="size-2 bg-green-700 rounded-full relative z-10"></div>
+        </div>
+        Open to opportunities
+    </p>;
 }

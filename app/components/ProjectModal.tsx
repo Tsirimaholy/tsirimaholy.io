@@ -59,17 +59,22 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
 							<li key={f}>{f}</li>
 						))}
 					</ul>
-					<h4
-						className="font-semibold text-lg mb-2"
-						style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
-					>
-						Challenges
-					</h4>
-					<ul>
-						{project.challenges.map((c: string) => (
-							<li key={c}>{c}</li>
-						))}
-					</ul>
+					{project.challenges.length>0 &&(
+  					<>
+     					<h4
+      						className="font-semibold text-lg mb-2"
+      						style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
+     					>
+      						Challenges
+     					</h4>
+     					<ul>
+      						{project.challenges.map((c: string) => (
+     							<li key={c}>{c}</li>
+      						))}
+     					</ul>
+  					</>
+					)
+					}
 					<div className="flex gap-4">
 						{project.liveUrl && (
 							<Button
