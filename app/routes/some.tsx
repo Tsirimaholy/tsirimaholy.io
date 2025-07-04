@@ -1,5 +1,5 @@
 const Some = () => {
-  return <></>;
+	return <></>;
 };
 
 export default Some;

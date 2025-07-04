@@ -1,151 +1,152 @@
 import { motion } from "motion/react";
 import { Button } from "~/components/ui/button";
 import {
-  ArrowDown,
-  CircleDot,
-  FileDown,
-  Github,
-  Linkedin,
-  Mail,
+	ArrowDown,
+	CircleDot,
+	FileDown,
+	Github,
+	Linkedin,
+	Mail,
+	Pencil,
 } from "lucide-react";
 import { Link } from "react-router";
 
 export function Hero() {
-  const contacts = [
-    {
-      href: "https://github.com/Tsirimaholy",
-      icon: Github,
-      label: "GitHub",
-    },
-    {
-      href: "https://linkedin.com/in/tsirimaholy",
-      icon: Linkedin,
-      label: "LinkedIn",
-    },
-    {
-      href: "mailto:tsirimaholy.h@gmail.com",
-      icon: Mail,
-      label: "Email",
-    },
-  ];
-  return (
-    <section
-      id="hero"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
-    >
-      {/* Animated gradient background */}
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/10 to-green-400/10 animate-gradient" /> */}
+	const contacts = [
+		{
+			href: "https://github.com/Tsirimaholy",
+			icon: Github,
+			label: "GitHub",
+		},
+		{
+			href: "https://linkedin.com/in/tsirimaholy",
+			icon: Linkedin,
+			label: "LinkedIn",
+		},
+		{
+			href: "mailto:tsirimaholy.h@gmail.com",
+			icon: Mail,
+			label: "Email",
+		},
+	];
+	return (
+		<section
+			id="hero"
+			className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
+		>
+			{/* Animated gradient background */}
+			{/* <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/10 to-green-400/10 animate-gradient" /> */}
 
-      {/* Subtle animated circles */}
-      <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-pulse" />
-      {/* <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-green-500/20 blur-3xl animate-pulse delay-700" /> */}
+			{/* Subtle animated circles */}
+			<div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-pulse" />
+			{/* <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-green-500/20 blur-3xl animate-pulse delay-700" /> */}
 
-      <div className="relative flex flex-col-reverse md:flex-row items-center px-6">
-        {/* Text Content */}
-        <motion.div
-          initial={{ x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3 }}
-          className="flex flex-col items-center md:items-start text-center md:text-left space-y-6"
-        >
-          <div className="relative">
-            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-shadow-into-light">
-              Hi, I'm
-              <span>Tsirimaholy</span>
-            </h1>
-          </div>
+			<div className="relative flex flex-col-reverse md:flex-row items-center px-6">
+				{/* Text Content */}
+				<motion.div
+					initial={{ x: -20 }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{ duration: 0.3 }}
+					className="flex flex-col items-center md:items-start text-center md:text-left space-y-6"
+				>
+					<div className="relative">
+						<h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-shadow-into-light">
+							Hi, I'm
+							<span>Tsirimaholy</span>
+						</h1>
+					</div>
 
-          <motion.p
-            initial={{ opacity: 1, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-[600px] text-lg text-muted-foreground sm:text-xl"
-          >
-            A passionate{" "}
-            <strong className="decoration-2 decoration-wavy underline decoration-yellow-500">
-              full-stack developer
-            </strong>{" "}
-            crafting beautiful and functional web experiences.
-            {/*<Pencil className="absolute" />*/}
-          </motion.p>
+					<motion.p
+						initial={{ opacity: 1, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.6, delay: 0.2 }}
+						className="max-w-[600px] text-lg text-muted-foreground sm:text-xl"
+					>
+						A passionate{" "}
+						<strong className="decoration-2 decoration-wavy underline decoration-yellow-500">
+							full-stack developer
+						</strong>{" "}
+						crafting beautiful and functional web experiences.
+						<Pencil className="ml-1 inline animate-bounce [animation-duration:2s]" />
+					</motion.p>
 
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex gap-4"
-          >
-            {contacts.map(({ href, icon: Icon, label }, index) => (
-              <Button
-                key={index}
-                variant="outline"
-                size="icon"
-                className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm sketchy-border-sm shadow-sketchy-md"
-                asChild
-              >
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                >
-                  <Icon className="h-5 w-5" />
-                </a>
-              </Button>
-            ))}
-          </motion.div>
-          <div className="flex gap-4 mt-10">
-            <Button asChild>
-              <Link to={"/resume-fr.pdf"} target="_blank">
-                <FileDown /> Get my resume
-              </Link>
-            </Button>
-            {/* Call to Action */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-col items-center md:items-start space-y-4"
-            >
-              <Link
-                to="#about"
-                className="flex items-center gap-2 text-lg font-medium text-primary hover:underline hover:opacity-90 transition-all"
-              >
-                Discover my journey
-                <ArrowDown className="animate-bounce" size={20} />
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
+					{/* Social Links */}
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.6, delay: 0.4 }}
+						className="flex gap-4"
+					>
+						{contacts.map(({ href, icon: Icon, label }, index) => (
+							<Button
+								key={index}
+								variant="outline"
+								size="icon"
+								className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm sketchy-border-sm shadow-sketchy-md"
+								asChild
+							>
+								<a
+									href={href}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={label}
+								>
+									<Icon className="h-5 w-5" />
+								</a>
+							</Button>
+						))}
+					</motion.div>
+					<div className="flex gap-4 mt-10">
+						<Button asChild>
+							<Link to={"/resume-fr.pdf"} target="_blank">
+								<FileDown /> Get my resume
+							</Link>
+						</Button>
+						{/* Call to Action */}
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.6, delay: 0.6 }}
+							className="flex flex-col items-center md:items-start space-y-4"
+						>
+							<Link
+								to="#about"
+								className="flex items-center gap-2 text-lg font-medium text-primary hover:underline hover:opacity-90 transition-all"
+							>
+								Discover my journey
+								<ArrowDown className="animate-bounce" size={20} />
+							</Link>
+						</motion.div>
+					</div>
+				</motion.div>
 
-        {/* Profile Photo */}
-        <motion.div
-          // initial={{ opacity: 0, scale: 0.8 }}
-          // animate={{ opacity: 1, scale: 1 }}
-          // transition={{ duration: 0.4 }}
-          className="relative "
-        >
-          <div className="w-54 h-54 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg relative">
-            <img
-              src="/Tsirimaholy.jpg"
-              alt="Tsirimaholy"
-              className="w-full h-full object-cover"
-              fetchPriority="high"
-            />
-          </div>
-          <p className="text-sm absolute right-0 bottom-0 translate-y-[-40%] translate-x-[40%] inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-200 border border-green-500 font-medium shadow-sm text-green-950 animate-bounce [animation-duration:3s]">
-            <div className="border-green-600/70 bg-green-300/80 border rounded-full p-1 animate-pulse [animation-duration:5s]">
-              <div className="size-2 bg-green-700 rounded-full"></div>
-            </div>
-            Open to opportunities
-          </p>
-          {/* Decorative glow */}
-          {/* <div
+				{/* Profile Photo */}
+				<motion.div
+					// initial={{ opacity: 0, scale: 0.8 }}
+					// animate={{ opacity: 1, scale: 1 }}
+					// transition={{ duration: 0.4 }}
+					className="relative "
+				>
+					<div className="w-54 h-54 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg relative">
+						<img
+							src="/Tsirimaholy.jpg"
+							alt="Tsirimaholy"
+							className="w-full h-full object-cover"
+							fetchPriority="high"
+						/>
+					</div>
+					<p className="border-dashed text-sm absolute right-0 bottom-0 translate-y-[-40%] translate-x-[40%] inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-200 border border-green-500 font-medium shadow-sm text-green-950 animate-bounce [animation-duration:3s]">
+						<div className="border-green-600/70 bg-green-300/80 border rounded-full p-1 animate-pulse [animation-duration:5s]">
+							<div className="size-2 bg-green-700 rounded-full"></div>
+						</div>
+						Open to opportunities
+					</p>
+					{/* Decorative glow */}
+					{/* <div
             className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary to-green-500 opacity-50 blur-md -z-10 shadow-sketchy-lg"
           /> */}
-        </motion.div>
-      </div>
-    </section>
-  );
+				</motion.div>
+			</div>
+		</section>
+	);
 }

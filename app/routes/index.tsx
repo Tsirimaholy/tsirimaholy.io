@@ -10,40 +10,45 @@ import { Navbar } from "~/components/NavBar";
 import { sendEmail } from "~/lib/email";
 
 export const meta: MetaFunction = ({}) => {
-  return [
-    {
-      title: "Tsirimaholy",
-      description: "Tsirimaholy portfolio - Fullstack Developer",
-    },
-  ];
+	return [
+		{
+			title: "Tsirimaholy",
+			description: "Tsirimaholy portfolio - Fullstack Developer",
+		},
+	];
 };
 export const action = async ({ request }: Route.ActionArgs) => {
-  const formData = await request.formData();
-  const intent = formData.get("intent") as string;
-  if (intent === "contact") {
-    // send email
-    const name = formData.get("name") as string;
-    const message = formData.get("message") as string;
-    const email = formData.get("email") as string;
-    if (!message || !email) {
-      return data({success: false, message: "Invalid form data"});
-    }
+	const formData = await request.formData();
+	const intent = formData.get("intent") as string;
+	if (intent === "contact") {
+		// send email
+		const name = formData.get("name") as string;
+		const message = formData.get("message") as string;
+		const email = formData.get("email") as string;
+		if (!message || !email) {
+			return data({ success: false, message: "Invalid form data" });
+		}
 
-    await sendEmail("hei.tsirimaholy@gmail.com", `From portfolio Contact - [${name}]`, message, "Acme <onboarding@resend.dev>")
+		await sendEmail(
+			"hei.tsirimaholy@gmail.com",
+			`From portfolio Contact - [${name}]`,
+			message,
+			"Acme <onboarding@resend.dev>",
+		);
 
-    return data({success: true, message: "Email sent successfully"});
-  }
+		return data({ success: true, message: "Email sent successfully" });
+	}
 };
 
 export default function HomePage({ loaderData }: Route.ComponentProps) {
-  return (
-    <main className="flex min-h-screen flex-col bg-background">
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-    </main>
-  );
+	return (
+		<main className="flex min-h-screen flex-col bg-background">
+			<Navbar />
+			<Hero />
+			<About />
+			<Skills />
+			<Projects />
+			<Contact />
+		</main>
+	);
 }
