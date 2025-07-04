@@ -2,7 +2,6 @@ import { motion } from "motion/react";
 import { Button } from "~/components/ui/button";
 import {
 	ArrowDown,
-	CircleDot,
 	FileDown,
 	Github,
 	Linkedin,
@@ -121,31 +120,27 @@ export function Hero() {
 				</motion.div>
 
 				{/* Profile Photo */}
-				<motion.div
-					// initial={{ opacity: 0, scale: 0.8 }}
-					// animate={{ opacity: 1, scale: 1 }}
-					// transition={{ duration: 0.4 }}
-					className="relative "
-				>
-					<div className="w-54 h-54 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg relative">
+				<div className="relative">
+					<div className="w-54 h-54 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg">
 						<img
-							src="/Tsirimaholy.jpg"
+							src="/Tsirimaholy.webp"
 							alt="Tsirimaholy"
 							className="w-full h-full object-cover"
-							fetchPriority="high"
+							loading="lazy"
+							decoding="async"
+							width="320"
+							height="320"
 						/>
 					</div>
-					<p className="border-dashed text-sm absolute right-0 bottom-0 translate-y-[-40%] translate-x-[40%] inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-200 border border-green-500 font-medium shadow-sm text-green-950 animate-bounce [animation-duration:3s]">
-						<div className="border-green-600/70 bg-green-300/80 border rounded-full p-1 animate-pulse [animation-duration:5s]">
+					{/* Open to opportunities */}
+					<p className="border-dashed text-sm absolute right-[-30%] bottom-[10%] inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-200 border border-green-500 font-medium shadow-sm text-green-950 animate-bounce">
+						{/* Round dot */}
+						<div className="border-green-600/70 bg-green-300/80 border rounded-full p-1">
 							<div className="size-2 bg-green-700 rounded-full"></div>
 						</div>
 						Open to opportunities
 					</p>
-					{/* Decorative glow */}
-					{/* <div
-            className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary to-green-500 opacity-50 blur-md -z-10 shadow-sketchy-lg"
-          /> */}
-				</motion.div>
+				</div>
 			</div>
 		</section>
 	);
