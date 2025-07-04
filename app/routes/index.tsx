@@ -3,6 +3,7 @@ import { About } from "~/components/About";
 import { Skills } from "~/components/Skills";
 import { Projects } from "~/components/Projects";
 import { Contact } from "~/components/Contact";
+import { Service } from "~/components/Service";
 import type { MetaFunction } from "react-router";
 import type { Route } from "./+types";
 import { data } from "react-router";
@@ -46,6 +47,7 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 			<Navbar />
 			<Hero />
 			<About />
+			<Service />
 			<Skills />
 			<Projects />
 			<Contact />

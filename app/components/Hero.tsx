@@ -62,7 +62,7 @@ export function Hero() {
 						className="max-w-[600px] text-lg text-muted-foreground sm:text-xl"
 					>
 						A passionate{" "}
-						<strong className="decoration-2 decoration-wavy underline decoration-yellow-500">
+						<strong className="decoration-2 decoration-wavy underline decoration-yellow-500 text-black">
 							full-stack developer
 						</strong>{" "}
 						crafting beautiful and functional web experiences.
@@ -95,7 +95,16 @@ export function Hero() {
 							</Button>
 						))}
 					</motion.div>
-					<div className="flex gap-4 mt-10">
+					{/* Open to opportunities */}
+					<p className="text-sm right-[-30%] bottom-[10%] inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-200 border border-dashed border-green-500 font-medium  text-green-800 ">
+						{/* Round dot */}
+						<div className="border-green-600/70 bg-green-300 rounded-full p-1 relative manual-ping border">
+							<div className="absolute inset-0 rounded-full bg-green-300 manual-ping"></div>
+							<div className="size-2 bg-green-700 rounded-full relative z-10"></div>
+						</div>
+						Open to opportunities
+					</p>
+					<div className="flex gap-4 mt-25">
 						<Button asChild>
 							<Link to={"/resume-fr.pdf"} target="_blank">
 								<FileDown /> Get my resume
@@ -132,16 +141,19 @@ export function Hero() {
 							height="320"
 						/>
 					</div>
-					{/* Open to opportunities */}
-					<p className="border-dashed text-sm absolute right-[-30%] bottom-[10%] inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-200 border border-green-500 font-medium shadow-sm text-green-950 animate-bounce">
-						{/* Round dot */}
-						<div className="border-green-600/70 bg-green-300/80 border rounded-full p-1">
-							<div className="size-2 bg-green-700 rounded-full"></div>
-						</div>
-						Open to opportunities
-					</p>
+					
 				</div>
 			</div>
+
+			<style>{`
+			@keyframes manual-ping {
+				0% { transform: scale(1)); opacity: 1; }
+				80%, 100% { transform: scale(1.3); opacity: 0.5; }
+			}
+			.manual-ping {
+				animation: manual-ping 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+			}
+			`}</style>
 		</section>
 	);
 }

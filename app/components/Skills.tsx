@@ -9,7 +9,7 @@ import {
 
 export function Skills() {
 	return (
-		<section className="relative py-16 bg-gray-50" id="skills">
+		<section className="relative py-16" id="skills">
 			<div className="container mx-auto max-w-5xl px-6">
 				{/* Header */}
 				<motion.div
