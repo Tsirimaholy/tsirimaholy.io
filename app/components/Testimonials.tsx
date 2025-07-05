@@ -78,9 +78,9 @@ const TestimonialCard: React.FC<{ item: TestimonialItem }> = ({ item }) => {
   return (
     <div className="flex flex-col p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-primary/10">
       <div className="mb-4">
-        <Quote className="w-6 h-6 text-primary/70 transform scale-x-[-1]"/>
+        <Quote className="w-6 h-6 text-primary transform scale-x-[-1]"/>
       </div>
-      <div className="mb-3 flex items-center bg-yellow-50/40 px-2 py-1 rounded-md w-fit">
+      <div className="mb-3 flex items-center bg-yellow-200/20 px-2 py-1 rounded-md w-fit">
         <div className="flex">
           {[...Array(item.rating)].map((_, i) => (
             <Star key={i} className="w-4 h-4 text-yellow-400" fill="currentColor"/>

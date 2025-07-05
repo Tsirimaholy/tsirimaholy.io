@@ -1,17 +1,20 @@
-import { Hero } from "~/components/Hero";
-import { About } from "~/components/About";
-import { Skills } from "~/components/Skills";
-import { Projects } from "~/components/Projects";
-import { Contact } from "~/components/Contact";
-import { Service } from "~/components/Service";
-import { Testimonials } from "~/components/Testimonials";
+import { ArrowUpCircle } from "lucide-react";
+import { useEffect, useState } from "react";
 import type { MetaFunction } from "react-router";
-import type { Route } from "./+types";
 import { data } from "react-router";
+import { About } from "~/components/About";
+import { Contact } from "~/components/Contact";
+import { Hero } from "~/components/Hero";
 import { Navbar } from "~/components/NavBar";
+import { Projects } from "~/components/Projects";
+import { Service } from "~/components/Service";
+import { Skills } from "~/components/Skills";
+import { Testimonials } from "~/components/Testimonials";
+import { Button } from "~/components/ui/button";
 import { sendEmail } from "~/lib/email";
+import type { Route } from "./+types";
 
-export const meta: MetaFunction = ({}) => {
+export const meta: MetaFunction = () => {
 	return [
 		{
 			title: "Tsirimaholy",
@@ -42,7 +45,22 @@ export const action = async ({ request }: Route.ActionArgs) => {
 	}
 };
 
-export default function HomePage({ loaderData }: Route.ComponentProps) {
+export default function HomePage() {
+	const [showToTopBtn, setShowToTopBtn] = useState(false);
+	useEffect(() => {
+		const handleScroll = () => {
+			const heroSection = document.getElementById("hero");
+			const scrollPosition = window.scrollY;
+			if (heroSection) {
+				const heroTop = heroSection.offsetTop - 50;
+				const heroHeight = heroSection.offsetHeight;
+				setShowToTopBtn(scrollPosition < heroTop + heroHeight);
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 	return (
 		<main className="flex min-h-screen flex-col bg-background">
 			<Navbar />
@@ -53,6 +71,19 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 			<Projects />
 			<Testimonials />
 			<Contact />
+			<Button
+				hidden={showToTopBtn}
+				onClick={() =>
+					document
+						.getElementById("hero")
+						?.scrollIntoView({ behavior: "smooth" })
+				}
+				className="p-3 rounded-full fixed bottom-4 right-6 cursor-pointer"
+				title="Go to Projects"
+			>
+				<ArrowUpCircle className="h-6 w-6" />
+				Back to top
+			</Button>
 		</main>
 	);
 }
