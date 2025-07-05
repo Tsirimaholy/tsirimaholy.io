@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { NavItem } from "~/components/NavItem";
 import { href, Link, NavLink } from "react-router";
+import { NavItem } from "~/components/NavItem";
 import { Button } from "./ui/button";
-import { Dot } from "lucide-react";
 
 export function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +30,7 @@ export function Navbar() {
 		sections.forEach((section) => observer.observe(section));
 
 		return () => observer.disconnect();
-	}, [activeSection]);
+	}, []);
 
 	return (
 		<header
@@ -48,6 +47,7 @@ export function Navbar() {
 				</div>
 				<div className="flex items-center justify-center md:flex-1">
 					<button
+						type="button"
 						className="text-gray-700 text-2xl md:hidden"
 						onClick={toggleMenu}
 						aria-label="Toggle Menu"
@@ -56,16 +56,22 @@ export function Navbar() {
 					</button>
 					{/* Desktop Navigation */}
 					<ul className="hidden md:flex items-center gap-8">
-						{["hero", "about", "service", "skills", "projects", "testimonials", "contact"].map(
-							(section) => (
-								<NavItem
-									key={section}
-									section={section}
-									to={`${href("/")}#${section}`}
-									isActive={section === activeSection}
-								/>
-							),
-						)}
+						{[
+							"hero",
+							"about",
+							"service",
+							"skills",
+							"projects",
+							"testimonials",
+							"contact",
+						].map((section) => (
+							<NavItem
+								key={section}
+								section={section}
+								to={`${href("/")}#${section}`}
+								isActive={section === activeSection}
+							/>
+						))}
 					</ul>
 				</div>
 				<Button asChild className="hidden md:block">
@@ -82,25 +88,31 @@ export function Navbar() {
 					}`}
 				>
 					<ul className="flex flex-col pt-4 pb-2 border-t mt-4">
-						{["hero", "about", "service", "skills", "projects", "testimonials", "contact"].map(
-							(section) => (
-								<li key={section} className="py-2">
-									<NavLink
-										to={`${href("/")}#${section}`}
-										className={({ isActive: isActivePage }) =>
-											`block px-2 py-2 transition duration-300 ${
-												isActivePage && activeSection === section
-													? "text-primary font-medium bg-primary/10 rounded border-l-4 border-primary"
-													: "text-gray-700 hover:text-primary hover:bg-gray-100 rounded"
-											}`
-										}
-										onClick={() => setIsMenuOpen(false)}
-									>
-										{section.charAt(0).toUpperCase() + section.slice(1)}
-									</NavLink>
-								</li>
-							),
-						)}
+						{[
+							"hero",
+							"about",
+							"service",
+							"skills",
+							"projects",
+							"testimonials",
+							"contact",
+						].map((section) => (
+							<li key={section} className="py-2">
+								<NavLink
+									to={`${href("/")}#${section}`}
+									className={({ isActive: isActivePage }) =>
+										`block px-2 py-2 transition duration-300 ${
+											isActivePage && activeSection === section
+												? "text-primary font-medium bg-primary/10 rounded border-l-4 border-primary"
+												: "text-gray-700 hover:text-primary hover:bg-gray-100 rounded"
+										}`
+									}
+									onClick={() => setIsMenuOpen(false)}
+								>
+									{section.charAt(0).toUpperCase() + section.slice(1)}
+								</NavLink>
+							</li>
+						))}
 						<li key={"blog"} className="py-2">
 							<NavLink
 								to={href("/blog")}
