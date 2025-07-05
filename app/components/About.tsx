@@ -1,12 +1,29 @@
-import { Building, University, ArrowDownCircle } from "lucide-react";
+import {
+	ArrowDownCircle,
+	Building,
+	ExternalLink,
+	University,
+} from "lucide-react";
 import { motion } from "motion/react";
-import { ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 
 export function About() {
 	const [showNav, setShowNav] = useState(false);
+	const [expandedSections, setExpandedSections] = useState<{
+		[key: string]: boolean;
+	}>({
+		firstSteps: false,
+		university: false,
+	});
+
+	const toggleSection = (section: string) => {
+		setExpandedSections((prev) => ({
+			...prev,
+			[section]: !prev[section],
+		}));
+	};
 
 	// Show floating navigation when scrolling into the About section
 	useEffect(() => {
@@ -87,11 +104,34 @@ export function About() {
 						</strong>
 					</p>
 				</motion.div>
-				<img
+				<motion.img
 					src="/path-to-there.svg"
 					alt=""
 					sizes=""
-					className="border-2 w-[70%] mx-auto mb-10"
+					className="border-2 w-[50%] mx-auto mb-10 rounded-lg shadow-lg"
+					initial={{
+						opacity: 0,
+						y: -200,
+						rotate: -15,
+						scale: 0.5,
+					}}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						rotate: 0,
+						scale: 1,
+					}}
+					viewport={{ once: true }}
+					transition={{
+						type: "spring",
+						damping: 8,
+						stiffness: 100,
+						mass: 1,
+						duration: 1.2,
+						delay: 0.3,
+					}}
+					whileHover={{ scale: 1.05, rotate: 1 }}
+					whileTap={{ scale: 0.95 }}
 				/>
 				{/* Timeline */}
 				<div className="space-y-12">
@@ -122,70 +162,90 @@ export function About() {
 							</h3>
 							<p className="text-sm text-gray-500 mb-2">July 2015 – Present</p>
 							<p className="text-gray-700 leading-relaxed">
-								At 13, I thought tech was just about{" "}
-								<span className="line-through text-gray-500">
-									fixing my grandma's phone
-								</span>{" "}
-								and{" "}
-								<span className="line-through text-gray-500">
-									rebooting the Wi-Fi
-								</span>
-								. But one day, I met someone who introduced me to the real{" "}
-								<span className="underline decoration-yellow-500">
-									meaning of tech
-								</span>
-								. They showed me things like cybersecurity , Basic explanation
-								about AI, and{" "}
-								<span className="underline decoration-purple-500">
-									Android app development
-								</span>
-								. I was so curious that I asked them to teach me some basic
-								things but "especially" i want to learn to build android
-								apps(But i wasn't aware for the pain that comes with it at that
-								time :-) ).{" "}
-								<span className="relative inline-block">
-									{/* todo: DO NOT WORK WHEN MULTILINED TEXT */}
-									{/* <motion.span
-                    initial={{ width: 0 }}
-                    whileInView={{ width: "100%" }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.9, delay: 1 }}
-                    className="absolute bg-green-200 origin-left h-2 bottom-1 -skew-y-0.5"
-                  ></motion.span> */}
-									<span className="relative font-semibold text-gray-900 bg-green-200">
-										He accepted to teach and that's where my long way into the
-										🌊ocean of coding really started.
-									</span>
-								</span>
+								At 13, I thought tech was just about fixing phones and rebooting
+								Wi-Fi. But one day, someone introduced me to the real world of
+								tech - cybersecurity, AI, and Android development. That's where
+								my coding journey truly began.
 							</p>
-							<p className="text-gray-700 leading-relaxed mt-4">
-								Every step from the first{" "}
-								<span className="underline decoration-yellow-500">
-									"Hello World"
-								</span>{" "}
-								to my first{" "}
-								<span className="underline decoration-green-500">CLI app</span>,
-								was like if I discover a new world, it was like travel to a new
-								world. And like every travel, there was a hard moment, a moment
-								that I was both amazed and blown at the same time. Along the
-								way, I discovered{" "}
-								<Link
-									to="https://www.youtube.com/@programmingwithmosh"
-									target="_blank"
-									className="relative underline decoration-blue-500 hover:cursor-pointer group"
+
+							{!expandedSections.firstSteps && (
+								<button
+									onClick={() => toggleSection("firstSteps")}
+									className="text-primary hover:text-primary/80 text-sm font-medium mt-2 underline decoration-dotted"
 								>
-									<span className="absolute inset-0 w-0 origin-left bg-blue-200 transition-all duration-300 ease-out group-hover:w-full"></span>
-									<span className="relative">
-										CodeWithMosh's course{" "}
-										<ExternalLink size={"15"} className="inline" />
-									</span>
-								</Link>
-								,and again I was blown away 🤯by how we can build beautiful ,
-								maintainable and extensible codes(aka clean codes and best
-								practices) and even the world and sentences that are used to
-								explain a specific concept become clearer at that point. It was
-								like every step was unlocking a whole new world to me.{" "}
-							</p>
+									Want to know the full story? 📖
+								</button>
+							)}
+
+							{expandedSections.firstSteps && (
+								<>
+									<p className="text-gray-700 leading-relaxed mt-4">
+										At 13, I thought tech was just about{" "}
+										<span className="line-through text-gray-500">
+											fixing my grandma's phone
+										</span>{" "}
+										and{" "}
+										<span className="line-through text-gray-500">
+											rebooting the Wi-Fi
+										</span>
+										. But one day, I met someone who introduced me to the real{" "}
+										<span className="underline decoration-yellow-500">
+											meaning of tech
+										</span>
+										. They showed me things like cybersecurity , Basic
+										explanation about AI, and{" "}
+										<span className="underline decoration-purple-500">
+											Android app development
+										</span>
+										. I was so curious that I asked them to teach me some basic
+										things but "especially" i want to learn to build android
+										apps(But i wasn't aware for the pain that comes with it at
+										that time :-) ).{" "}
+										<span className="relative inline-block">
+											<span className="relative font-semibold text-gray-900 bg-green-200">
+												He accepted to teach and that's where my long way into
+												the 🌊ocean of coding really started.
+											</span>
+										</span>
+									</p>
+									<p className="text-gray-700 leading-relaxed mt-4">
+										Every step from the first{" "}
+										<span className="underline decoration-yellow-500">
+											"Hello World"
+										</span>{" "}
+										to my first{" "}
+										<span className="underline decoration-green-500">
+											CLI app
+										</span>
+										, was like if I discover a new world, it was like travel to
+										a new world. And like every travel, there was a hard moment,
+										a moment that I was both amazed and blown at the same time.
+										Along the way, I discovered{" "}
+										<Link
+											to="https://www.youtube.com/@programmingwithmosh"
+											target="_blank"
+											className="relative underline decoration-blue-500 hover:cursor-pointer group"
+										>
+											<span className="absolute inset-0 w-0 origin-left bg-blue-200 transition-all duration-300 ease-out group-hover:w-full"></span>
+											<span className="relative">
+												CodeWithMosh's course{" "}
+												<ExternalLink size={"15"} className="inline" />
+											</span>
+										</Link>
+										,and again I was blown away 🤯by how we can build beautiful
+										, maintainable and extensible codes(aka clean codes and best
+										practices) and even the world and sentences that are used to
+										explain a specific concept become clearer at that point. It
+										was like every step was unlocking a whole new world to me.{" "}
+									</p>
+									<button
+										onClick={() => toggleSection("firstSteps")}
+										className="text-gray-500 hover:text-gray-700 text-sm font-medium mt-2 underline decoration-dotted"
+									>
+										Show less ↑
+									</button>
+								</>
+							)}
 						</div>
 					</motion.div>
 
@@ -220,23 +280,50 @@ export function About() {
 							</h3>
 							<p className="text-sm text-gray-500 mb-2">2021 – 2024</p>
 							<p className="text-gray-700 leading-relaxed">
-								After high school, i applied for an IT specialised University,
-								did the entrance exam and got accpeted but my parent wasn't able
-								to afford the tution fee of the university at that time so i did
-								not finalised my inscription. I was a little bit diapointed and
-								got into the hard way for a time by teaching myself, following
-								the indie hacking and freelancer boys dream, but latter(after ~6
-								month) i discovered HEI(Haute Ecole d'Informatique) applied and
-								got accepted where i get my skills in{" "}
-								<span className="underline decoration-yellow-500">
-									full-stack development
-								</span>{" "}
-								and landed my first job as React Native Developer within 9
-								months.
-								<br />
-								That long run taught me resilience, humility and gratitude and
-								built the current _me_.
+								After high school, I faced challenges getting into university
+								due to financial constraints. Eventually, I found HEI where I
+								developed my full-stack skills and landed my first job as a
+								React Native Developer within 9 months.
 							</p>
+
+							{!expandedSections.university && (
+								<button
+									onClick={() => toggleSection("university")}
+									className="text-primary hover:text-primary/80 text-sm font-medium mt-2 underline decoration-dotted"
+								>
+									Read the detailed journey 🎓
+								</button>
+							)}
+
+							{expandedSections.university && (
+								<>
+									<p className="text-gray-700 leading-relaxed mt-4">
+										After high school, i applied for an IT specialised
+										University, did the entrance exam and got accpeted but my
+										parent wasn't able to afford the tution fee of the
+										university at that time so i did not finalised my
+										inscription. I was a little bit diapointed and got into the
+										hard way for a time by teaching myself, following the indie
+										hacking and freelancer boys dream, but latter(after ~6
+										month) i discovered HEI(Haute Ecole d'Informatique) applied
+										and got accepted where i get my skills in{" "}
+										<span className="underline decoration-yellow-500">
+											full-stack development
+										</span>{" "}
+										and landed my first job as React Native Developer within 9
+										months.
+										<br />
+										That long run taught me resilience, humility and gratitude
+										and built the current _me_.
+									</p>
+									<button
+										onClick={() => toggleSection("university")}
+										className="text-gray-500 hover:text-gray-700 text-sm font-medium mt-2 underline decoration-dotted"
+									>
+										Show less ↑
+									</button>
+								</>
+							)}
 						</div>
 					</motion.div>
 				</div>
