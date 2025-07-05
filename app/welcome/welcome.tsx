@@ -1,10 +1,3 @@
-import {
-	ArrowRight,
-	Calendar,
-	ChevronRight,
-	Clock,
-	MoveRight,
-} from "lucide-react";
 import { useState } from "react";
 import type { BlogItemProps } from "~/components/BlogItem";
 import BlogItem from "~/components/BlogItem";

@@ -1,8 +1,9 @@
-import { motion } from "motion/react";
-import { Button } from "./ui/button";
 import { Github, Globe, X } from "lucide-react";
+import { motion } from "motion/react";
 import React from "react";
 import { Link } from "react-router";
+import { Button } from "./ui/button";
+
 type ProjectModalProps = {
 	project: TProject;
 	onCloseCliked: (project: TProject | null) => void;
@@ -30,6 +31,7 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
 					className="fixed top-1/2 left-1/2 w-[90%] max-w-3xl max-h-[85vh] overflow-y-auto bg-white rounded-xl p-6 transform -translate-x-1/2 -translate-y-1/2 z-50 shadow-sketchy-lg"
 				>
 					<button
+						type="button"
 						onClick={() => onCloseClicked(null)}
 						className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
 					>

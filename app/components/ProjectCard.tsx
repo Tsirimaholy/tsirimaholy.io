@@ -1,7 +1,7 @@
+import { ExternalLink, Globe } from "lucide-react";
 import { motion } from "motion/react";
-import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
-import { Globe, ExternalLink } from "lucide-react";
+import { Button } from "~/components/ui/button";
 
 interface ProjectCardProps {
 	project: {
@@ -26,7 +26,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 			whileHover={{ scale: 1.05 }}
 			className="relative group overflow-hidden rounded-lg bg-white border-2 shadow-sketchy-lg"
 		>
-			{/* Image */}
+			{/* Project Image */}
 			<div
 				className="relative h-48 overflow-hidden cursor-pointer perspective-distant"
 				onClick={() => onSelect(project)}

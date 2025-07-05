@@ -170,7 +170,7 @@ export function About() {
 
 							{!expandedSections.firstSteps && (
 								<button
-						      type="button"
+									type="button"
 									onClick={() => toggleSection("firstSteps")}
 									className="text-primary hover:text-primary/80 text-sm font-medium mt-2 underline decoration-dotted"
 								>
@@ -193,19 +193,19 @@ export function About() {
 										<span className="underline decoration-yellow-500">
 											meaning of tech
 										</span>
-										. They showed me things like cybersecurity , Basic explanation
-										about AI, and{" "}
+										. They showed me things like cybersecurity , Basic
+										explanation about AI, and{" "}
 										<span className="underline decoration-purple-500">
 											Android app development
 										</span>
 										. I was so curious that I asked them to teach me some basic
 										things but "especially" i want to learn to build android
-										apps(But i wasn't aware for the pain that comes with it at that
-										time :-) ).{" "}
+										apps(But i wasn't aware for the pain that comes with it at
+										that time :-) ).{" "}
 										<span className="relative inline-block">
 											<span className="relative font-semibold text-gray-900 bg-green-200">
-												He accepted to teach and that's where my long way into the
-												🌊ocean of coding really started.
+												He accepted to teach and that's where my long way into
+												the 🌊ocean of coding really started.
 											</span>
 										</span>
 									</p>
@@ -240,6 +240,7 @@ export function About() {
 										was like every step was unlocking a whole new world to me.{" "}
 									</p>
 									<button
+										type="button"
 										onClick={() => toggleSection("firstSteps")}
 										className="text-gray-500 hover:text-gray-700 text-sm font-medium mt-2 underline decoration-dotted"
 									>
@@ -289,6 +290,7 @@ export function About() {
 
 							{!expandedSections.university && (
 								<button
+									type="button"
 									onClick={() => toggleSection("university")}
 									className="text-primary hover:text-primary/80 text-sm font-medium mt-2 underline decoration-dotted"
 								>
@@ -318,6 +320,7 @@ export function About() {
 										and built the current _me_.
 									</p>
 									<button
+							      type="button"
 										onClick={() => toggleSection("university")}
 										className="text-gray-500 hover:text-gray-700 text-sm font-medium mt-2 underline decoration-dotted"
 									>
