@@ -4,6 +4,7 @@ import { Skills } from "~/components/Skills";
 import { Projects } from "~/components/Projects";
 import { Contact } from "~/components/Contact";
 import { Service } from "~/components/Service";
+import { Testimonials } from "~/components/Testimonials";
 import type { MetaFunction } from "react-router";
 import type { Route } from "./+types";
 import { data } from "react-router";
@@ -50,6 +51,7 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 			<Service />
 			<Skills />
 			<Projects />
+			<Testimonials />
 			<Contact />
 		</main>
 	);
