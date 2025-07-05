@@ -148,7 +148,7 @@ function OportunitieOpeningBadge() {
 					{/* <div className="absolute inset-0 rounded-full bg-green-300 manual-ping"></div> */}
 					<div className="size-1.5 bg-green-700 rounded-full z-10 m-0.5"></div>
 				</div>
-				Open to oportunities
+				Open to new projects
 			</div>
 			<style>{`
   			@keyframes manual-ping {

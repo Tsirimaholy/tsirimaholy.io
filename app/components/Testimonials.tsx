@@ -133,7 +133,7 @@ export const Testimonials: React.FC = () => {
                 <Star key={i} className="w-5 h-5 text-yellow-400" fill="currentColor"/>
               ))}
             </div>
-            <span className="ml-2 text-sm font-medium">All clients gave 5-star ratings</span>
+            <span className="ml-2 text-sm font-medium">Consistently delivering exceptional client satisfaction</span>
           </div>
           <p className="text-sm text-muted-foreground max-w-3xl mx-auto mt-2">
             I've had the privilege of working with clients from diverse cultural backgrounds across multiple continents,
