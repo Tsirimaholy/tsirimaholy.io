@@ -56,7 +56,7 @@ export function Navbar() {
 					</button>
 					{/* Desktop Navigation */}
 					<ul className="hidden md:flex items-center gap-8">
-						{["hero", "about", "service", "skills", "projects", "contact"].map(
+						{["hero", "about", "service", "skills", "projects", "testimonials", "contact"].map(
 							(section) => (
 								<NavItem
 									key={section}
@@ -82,7 +82,7 @@ export function Navbar() {
 					}`}
 				>
 					<ul className="flex flex-col pt-4 pb-2 border-t mt-4">
-						{["hero", "about", "service", "skills", "projects", "contact"].map(
+						{["hero", "about", "service", "skills", "projects", "testimonials", "contact"].map(
 							(section) => (
 								<li key={section} className="py-2">
 									<NavLink
