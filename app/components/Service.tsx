@@ -75,8 +75,8 @@ export function Service() {
 						<motion.div
 							key={service.title}
 							className={`relative shadow-sketchy-lg flex flex-col items-start gap-4 pl-8 pr-4 py-8 bg-white rounded-2xl group overflow-hidden before:content-[''] before:absolute before:left-0 before:top-6 before:bottom-6 before:w-1 before:rounded-full before:opacity-20 ${service.accent}`}
-							initial={{ opacity: 0, y:20 }}
-							whileInView={{ opacity: 1, y:0 }}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
 							whileHover={{ y: -4 }}
 							transition={{ type: "spring", stiffness: 300, damping: 28 }}
 						>

@@ -1,11 +1,11 @@
-import { motion } from "motion/react";
 import {
 	BrainCircuit,
-	MonitorSmartphone,
-	Server,
 	Cloud,
 	Layers,
+	MonitorSmartphone,
+	Server,
 } from "lucide-react";
+import { motion } from "motion/react";
 
 export function Skills() {
 	return (

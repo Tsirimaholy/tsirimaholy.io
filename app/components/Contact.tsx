@@ -88,7 +88,7 @@ export function Contact() {
 					<motion.div variants={itemVariants}>
 						<Card className="h-full group hover:shadow-lg hover:shadow-primary/20 bg-white sketchy-border-sm shadow-sketchy-md">
 							<CardHeader>
-								<CardTitle className="group-hover:text-primary transition-colors font-shadow-into-light">
+								<CardTitle className="group-hover:text-primary transition-colors">
 									Contact Information
 								</CardTitle>
 								<CardDescription>Here's how you can reach me</CardDescription>
@@ -132,10 +132,7 @@ export function Contact() {
 					<motion.div variants={itemVariants}>
 						<Card className="group hover:shadow-primary/20 transition-all duration-300 bg-white sketchy-border-sm shadow-sketchy-lg">
 							<CardHeader>
-								<CardTitle
-									className="group-hover:text-primary transition-colors"
-									style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
-								>
+								<CardTitle className="group-hover:text-primary transition-colors">
 									Send a Message
 								</CardTitle>
 								<CardDescription>

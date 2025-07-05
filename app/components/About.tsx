@@ -27,7 +27,7 @@ export function About() {
 	}, []);
 
 	return (
-		<section id="about" className="py-16 bg-white relative">
+		<section id="about" className="py-24 bg-white relative">
 			<div className="container mx-auto max-w-3xl px-4">
 				{/* Floating Navigation */}
 				{showNav && (
