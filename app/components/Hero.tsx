@@ -31,7 +31,7 @@ export function Hero() {
 	return (
 		<section
 			id="hero"
-			className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
+			className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-24 md:pt-0"
 		>
 			{/* Animated gradient background */}
 			{/* <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/10 to-green-400/10 animate-gradient" /> */}
