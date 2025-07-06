@@ -1,5 +1,3 @@
-import { motion } from "motion/react";
-import { Button } from "~/components/ui/button";
 import {
 	ArrowDown,
 	FileDown,
@@ -8,7 +6,9 @@ import {
 	Mail,
 	Pencil,
 } from "lucide-react";
+import { motion } from "motion/react";
 import { Link } from "react-router";
+import { Button } from "~/components/ui/button";
 
 export function Hero() {
 	const contacts = [
@@ -63,9 +63,20 @@ export function Hero() {
 						className="max-w-[600px] text-lg text-muted-foreground sm:text-xl"
 					>
 						A passionate{" "}
-						<strong className="decoration-2 decoration-wavy underline decoration-yellow-500 text-black">
-							full-stack developer
-						</strong>{" "}
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.6, delay: 1 }}
+							className="relative inline-block p-1 mr-2 border border-blue-400/20 rotate-4"
+						>
+							<div className="absolute -top-0.5 -left-0.5 border-t-3 border-l-3 border-blue-400 w-3 h-3"></div>
+							<div className="absolute -bottom-0.5 -right-0.5 border-b-3 border-r-3 border-blue-400 w-3 h-3"></div>
+							<div className="absolute -top-0.5 -right-0.5 border-t-3 border-r-3 border-blue-400 w-3 h-3"></div>
+							<div className="absolute -bottom-0.5 -left-0.5 border-b-3 border-l-3 border-blue-400 w-3 h-3"></div>
+							<strong className="md:text-2xl decoration-2   text-black">
+								full-stack developer
+							</strong>{" "}
+						</motion.div>
 						crafting beautiful and functional web experiences.
 						<Pencil className="ml-1 inline animate-bounce [animation-duration:2s]" />
 					</motion.p>
