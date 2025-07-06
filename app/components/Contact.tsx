@@ -1,4 +1,6 @@
+import { Github, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
 import { motion } from "motion/react";
+import { Form } from "react-router";
 import { Button } from "~/components/ui/button";
 import {
 	Card,
@@ -9,8 +11,6 @@ import {
 } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
-import { Form } from "react-router";
 
 export function Contact() {
 	// Animation variants for container and items
@@ -47,6 +47,11 @@ export function Contact() {
 			icon: Linkedin,
 			text: "linkedin.com/in/tsirimaholy",
 			href: "https://linkedin.com/in/tsirimaholy",
+		},
+		{
+			icon: Twitter,
+			text: "x.com/tsirimaholy",
+			href: "https://x.com/tsirimaholy",
 		},
 	];
 

@@ -4,7 +4,9 @@ import {
 	Github,
 	Linkedin,
 	Mail,
+	MousePointer2,
 	Pencil,
+	Twitter,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "react-router";
@@ -27,6 +29,11 @@ export function Hero() {
 			icon: Mail,
 			label: "Email",
 		},
+		{
+					href: "https://x.com/tsirimaholy",
+					icon: Twitter,
+					label: "X",
+				},
 	];
 	return (
 		<section
@@ -76,9 +83,10 @@ export function Hero() {
 							<strong className="md:text-2xl decoration-2   text-black">
 								full-stack developer
 							</strong>{" "}
+							<MousePointer2 className="absolute right-0 text-black"/>
 						</motion.div>
 						crafting beautiful and functional web experiences.
-						<Pencil size={17} className="ml-1 inline animate-bounce [animation-duration:2s]" />
+						{/* <Pencil size={17} className="ml-1 inline animate-bounce [animation-duration:2s]" /> */}
 					</motion.p>
 
 					{/* Social Links */}
@@ -96,14 +104,14 @@ export function Hero() {
 								className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm sketchy-border-sm shadow-sketchy-md"
 								asChild
 							>
-								<a
-									href={href}
+								<Link
+									to={href}
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label={label}
 								>
 									<Icon className="h-5 w-5" />
-								</a>
+								</Link>
 							</Button>
 						))}
 					</motion.div>
@@ -138,7 +146,7 @@ export function Hero() {
 						<img
 							src="/Tsirimaholy.webp"
 							alt="Tsirimaholy"
-							// className="w-full h-full object-cover"
+							className="w-full h-full object-cover"
 							loading="lazy"
 							decoding="async"
 							width="320"
