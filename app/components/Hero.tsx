@@ -78,7 +78,7 @@ export function Hero() {
 							</strong>{" "}
 						</motion.div>
 						crafting beautiful and functional web experiences.
-						<Pencil className="ml-1 inline animate-bounce [animation-duration:2s]" />
+						<Pencil size={17} className="ml-1 inline animate-bounce [animation-duration:2s]" />
 					</motion.p>
 
 					{/* Social Links */}
