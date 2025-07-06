@@ -179,7 +179,7 @@ export function About() {
 							)}
 
 							{expandedSections.firstSteps && (
-								<>
+								<div className="border-l-2 pl-2">
 									<p className="text-gray-700 leading-relaxed mt-4">
 										At 13, I thought tech was just about{" "}
 										<span className="line-through text-gray-500">
@@ -246,7 +246,7 @@ export function About() {
 									>
 										Show less ↑
 									</button>
-								</>
+								</div>
 							)}
 						</div>
 					</motion.div>
@@ -299,7 +299,7 @@ export function About() {
 							)}
 
 							{expandedSections.university && (
-								<>
+								<div className="border-l-2 pl-2">
 									<p className="text-gray-700 leading-relaxed mt-4">
 										After high school, i applied for an IT specialised
 										University, did the entrance exam and got accpeted but my
@@ -326,7 +326,7 @@ export function About() {
 									>
 										Show less ↑
 									</button>
-								</>
+								</div>
 							)}
 						</div>
 					</motion.div>
