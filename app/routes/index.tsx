@@ -46,7 +46,7 @@ export const action = async ({ request }: Route.ActionArgs) => {
 };
 
 export default function HomePage() {
-	const [showToTopBtn, setShowToTopBtn] = useState(false);
+	const [showToTopBtn, setShowToTopBtn] = useState(true);
 	useEffect(() => {
 		const handleScroll = () => {
 			const heroSection = document.getElementById("hero");
@@ -78,7 +78,7 @@ export default function HomePage() {
 						.getElementById("hero")
 						?.scrollIntoView({ behavior: "smooth" })
 				}
-				className="p-3 rounded-full fixed bottom-4 right-6 cursor-pointer"
+				className="p-3 border-blue-500 rounded-full fixed bottom-4 right-6 cursor-pointer"
 				title="Go to Projects"
 			>
 				<ArrowUpCircle className="h-6 w-6" />
