@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "motion/react";
 import { Form } from "react-router";
 import { Button } from "~/components/ui/button";
@@ -49,7 +50,7 @@ export function Contact() {
 			href: "https://linkedin.com/in/tsirimaholy",
 		},
 		{
-			icon: Twitter,
+			icon: FaXTwitter,
 			text: "x.com/tsirimaholy",
 			href: "https://x.com/tsirimaholy",
 		},

@@ -5,9 +5,8 @@ import {
 	Linkedin,
 	Mail,
 	MousePointer2,
-	Pencil,
-	Twitter,
 } from "lucide-react";
+import {FaXTwitter} from "react-icons/fa6"
 import { motion } from "motion/react";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
@@ -31,7 +30,7 @@ export function Hero() {
 		},
 		{
 					href: "https://x.com/tsirimaholy",
-					icon: Twitter,
+					icon: FaXTwitter,
 					label: "X",
 				},
 	];
@@ -74,13 +73,13 @@ export function Hero() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6, delay: 1 }}
-							className="relative inline-block p-1 mr-2 border border-blue-400/20 rotate-4"
+							className="relative inline-block p-1 mr-2 border border-blue-400/20 bg-blue-400/10 rotate-4"
 						>
 							<div className="absolute -top-0.5 -left-0.5 border-t-3 border-l-3 border-blue-400 w-3 h-3"></div>
 							<div className="absolute -bottom-0.5 -right-0.5 border-b-3 border-r-3 border-blue-400 w-3 h-3"></div>
 							<div className="absolute -top-0.5 -right-0.5 border-t-3 border-r-3 border-blue-400 w-3 h-3"></div>
 							<div className="absolute -bottom-0.5 -left-0.5 border-b-3 border-l-3 border-blue-400 w-3 h-3"></div>
-							<strong className="md:text-2xl decoration-2   text-black">
+							<strong className="md:text-2xl decoration-2 text-black">
 								full-stack developer
 							</strong>{" "}
 							<MousePointer2 className="absolute right-0 text-black"/>
