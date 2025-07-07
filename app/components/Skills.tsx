@@ -65,7 +65,6 @@ export function Skills() {
 						</div>
 						<p
 							className="text-sm text-blue-700 mb-4"
-							style={{ fontFamily: "'Patrick Hand', cursive" }}
 						>
 							Creating responsive and interactive user interfaces.
 						</p>
@@ -111,7 +110,6 @@ export function Skills() {
 						</div>
 						<p
 							className="text-sm text-green-700 mb-4"
-							style={{ fontFamily: "'Patrick Hand', cursive" }}
 						>
 							Building robust server-side applications and APIs.
 						</p>
@@ -150,15 +148,13 @@ export function Skills() {
 								<Cloud className="h-8 w-8 text-orange-600" />
 							</div>
 							<h3
-								className="text-xl font-semibold text-orange-800"
-								style={{ fontFamily: "'Shadows Into Light', cursive" }}
+								className="text-xl font-semibold text-orange-800 font-shadow-into-light"
 							>
 								DevOps & Infrastructure
 							</h3>
 						</div>
 						<p
 							className="text-sm text-orange-700 mb-4"
-							style={{ fontFamily: "'Patrick Hand', cursive" }}
 						>
 							Deployment, automation, and infrastructure management.
 						</p>
@@ -202,7 +198,6 @@ export function Skills() {
 						</div>
 						<p
 							className="text-sm text-purple-700 mb-4"
-							style={{ fontFamily: "'Patrick Hand', cursive" }}
 						>
 							Methodologies, practices, and approaches to software development.
 						</p>

@@ -141,12 +141,6 @@ body {
 	.sketchy-border-sm {
 		@apply border-2 border-dashed border-gray-400;
 	}
-
-	.patrick-hand-regular {
-		font-family: "Patrick Hand", cursive;
-		font-weight: 400;
-		font-style: normal;
-	}
 }
 
 @keyframes movePen {
