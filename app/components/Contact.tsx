@@ -1,7 +1,14 @@
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
-import { FaXTwitter } from "react-icons/fa6";
+import {
+	CalendarArrowDown,
+	CalendarClockIcon,
+	Github,
+	Linkedin,
+	Mail,
+	MapPin,
+} from "lucide-react";
 import { motion } from "motion/react";
-import { Form } from "react-router";
+import { FaXTwitter } from "react-icons/fa6";
+import { Form, Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import {
 	Card,
@@ -59,7 +66,7 @@ export function Contact() {
 	return (
 		<section className="relative py-24 flex justify-center" id="contact">
 			{/* Animated gradient background */}
-			<div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-yellow-500/5 to-background animate-gradient opacity-50" />
+			{/* <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-yellow-500/5 to-background animate-gradient opacity-50" /> */}
 
 			<div className="container">
 				{/* Section Header */}
@@ -79,6 +86,58 @@ export function Contact() {
 					<p className="text-muted-foreground">
 						Feel free to reach out if you're looking to collaborate or just want
 						to connect!
+					</p>
+				</motion.div>
+
+				{/* Book a Call Button */}
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.5, delay: 0.2 }}
+					className="flex flex-col items-center gap-4 mt-8 mb-8"
+				>
+					<Button
+						asChild
+						size="lg"
+						className="cursor-pointer hover:opacity-90 transition-all duration-300 hover:scale-[1.05] hover:shadow-lg hover:shadow-primary/20 shadow-sketchy-md px-8 py-6 text-lg font-semibold"
+					>
+						<Link
+							to="https://cal.com/tsirimaholy"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<CalendarClockIcon /> Book a Call
+						</Link>
+					</Button>
+					<p className="text-sm text-muted-foreground text-center max-w-md">
+						Or feel free to reach out directly via{" "}
+						<Link
+							to="https://linkedin.com/in/tsirimaholy"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-primary hover:underline"
+						>
+							LinkedIn
+						</Link>
+						,{" "}
+						<Link
+							to="https://wa.me/+261389689872"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-primary hover:underline"
+						>
+							WhatsApp
+						</Link>
+						, or{" "}
+						<Link
+							to="https://x.com/tsirimaholy"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-primary hover:underline"
+						>
+							Twitter
+						</Link>
 					</p>
 				</motion.div>
 
@@ -114,14 +173,14 @@ export function Contact() {
 										>
 											<Icon className="h-5 w-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
 											{href ? (
-												<a
-													href={href}
+												<Link
+													to={href}
 													target="_blank"
 													rel="noopener noreferrer"
 													className="transition-colors"
 												>
 													{text}
-												</a>
+												</Link>
 											) : (
 												<p className="group-hover/item:text-primary transition-colors">
 													{text}

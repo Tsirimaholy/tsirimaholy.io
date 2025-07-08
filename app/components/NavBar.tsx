@@ -65,12 +65,14 @@ export function Navbar() {
 							"skills",
 							"projects",
 							"testimonials",
-							"contact",
+							"blog",
 						].map((section) => (
 							<NavItem
 								key={section}
 								section={section}
-								to={`${href("/")}#${section}`}
+								to={
+									section === "blog" ? href("/blog") : `${href("/")}#${section}`
+								}
 								isActive={section === activeSection}
 							/>
 						))}
@@ -89,7 +91,6 @@ export function Navbar() {
 								"skills",
 								"projects",
 								"testimonials",
-								"contact",
 							].map((section) => (
 								<li key={section} className="py-2">
 									<NavLink
@@ -107,6 +108,7 @@ export function Navbar() {
 									</NavLink>
 								</li>
 							))}
+
 							<li key={"blog"} className="py-2">
 								<NavLink
 									to={href("/blog")}
@@ -125,13 +127,31 @@ export function Navbar() {
 									Blog
 								</NavLink>
 							</li>
+							<li key={"contact"} className="py-2">
+								<NavLink
+									to={"/#contact"}
+									className={() =>
+										`block px-2 py-2 transition duration-300 ${
+											activeSection === "contact"
+												? "text-primary font-medium bg-primary/10 rounded border-l-4 border-primary"
+												: "text-gray-700 hover:text-primary hover:bg-gray-100 rounded"
+										}`
+									}
+									onClick={() => {
+										setActiveSection("contact");
+										setIsMenuOpen(false);
+									}}
+								>
+									Let's talk
+								</NavLink>
+							</li>
 						</ul>
 					</div>
 				</div>
 				<Button asChild className="hidden md:block">
-					<Link key={"blog"} to={href("/blog")}>
+					<Link key={"talk-to-me"} to={`${href("/")}#contact`}>
 						<div className="size-2 bg-white rounded-full inline-block mr-2"></div>
-						<strong>Blog</strong>
+						<strong>Let's talk</strong>
 					</Link>
 				</Button>
 			</nav>
