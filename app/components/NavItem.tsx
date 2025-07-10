@@ -13,7 +13,7 @@ export const NavItem = ({
 	to,
 	isActive = false,
 }: NavItemProps) => {
-	const isBlog = useMatch("/blog");
+	const isBlogRoute = useMatch("/blog");
 	return (
 		<li>
 			<NavLink
@@ -22,7 +22,7 @@ export const NavItem = ({
 				className={({ isActive: isActivePage }) =>
 					cn(
 						`relative py-2 px-1 transition duration-300 ease-in-out capitalize ${
-							(isBlog && isActivePage) || isActive
+							(isBlogRoute && isActivePage) || isActive
 								? "text-primary font-medium"
 								: "text-gray-700 hover:text-primary"
 						}`,
