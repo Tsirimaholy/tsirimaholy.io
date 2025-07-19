@@ -23,7 +23,7 @@ export const NavItem = ({
 					cn(
 						`relative py-2 px-1 transition duration-300 ease-in-out capitalize ${
 							(isBlogRoute && isActivePage) || isActive
-								? "text-primary font-medium"
+								? "text-primary font-bold"
 								: "text-gray-700 hover:text-primary"
 						}`,
 						className,
@@ -31,12 +31,12 @@ export const NavItem = ({
 				}
 			>
 				{section === "hero" ? "Home" : section}
-				{/*{isActive && (*/}
+				{/* {isActive && (*/}
 				{/*    // marker line on the bottom*/}
 				{/*    <span*/}
 				{/*        className="absolute bottom-0 left-0 w-full h-[3px] rounded-full  bg-linear-90 bg-[#ff758c] shadow-sm"*/}
 				{/*    />*/}
-				{/*)}*/}
+				{/*)} */}
 			</NavLink>
 		</li>
 	);

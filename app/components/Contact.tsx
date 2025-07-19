@@ -1,5 +1,4 @@
 import {
-	CalendarArrowDown,
 	CalendarClockIcon,
 	Github,
 	Linkedin,

@@ -63,9 +63,7 @@ export function Skills() {
 								Frontend
 							</h3>
 						</div>
-						<p
-							className="text-sm text-blue-700 mb-4"
-						>
+						<p className="text-sm text-blue-700 mb-4">
 							Creating responsive and interactive user interfaces.
 						</p>
 						<div className="flex flex-wrap gap-3">
@@ -108,9 +106,7 @@ export function Skills() {
 								Backend
 							</h3>
 						</div>
-						<p
-							className="text-sm text-green-700 mb-4"
-						>
+						<p className="text-sm text-green-700 mb-4">
 							Building robust server-side applications and APIs.
 						</p>
 						<div className="flex flex-wrap gap-3">
@@ -147,15 +143,11 @@ export function Skills() {
 							<div className="p-3 rounded-full bg-orange-200 border-2 border-dashed border-orange-400">
 								<Cloud className="h-8 w-8 text-orange-600" />
 							</div>
-							<h3
-								className="text-xl font-semibold text-orange-800 font-shadow-into-light"
-							>
+							<h3 className="text-xl font-semibold text-orange-800 font-shadow-into-light">
 								DevOps & Infrastructure
 							</h3>
 						</div>
-						<p
-							className="text-sm text-orange-700 mb-4"
-						>
+						<p className="text-sm text-orange-700 mb-4">
 							Deployment, automation, and infrastructure management.
 						</p>
 						<div className="flex flex-wrap gap-3">
@@ -196,9 +188,7 @@ export function Skills() {
 								Development Practices
 							</h3>
 						</div>
-						<p
-							className="text-sm text-purple-700 mb-4"
-						>
+						<p className="text-sm text-purple-700 mb-4">
 							Methodologies, practices, and approaches to software development.
 						</p>
 						<div className="flex flex-wrap gap-3">

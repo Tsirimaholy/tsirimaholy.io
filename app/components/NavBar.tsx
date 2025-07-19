@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { href, Link, NavLink } from "react-router";
-import { NavItem } from "~/components/NavItem";
+import { href, Link, NavLink, useMatch } from "react-router";
+import { cn } from "~/lib/utils";
 import { Button } from "./ui/button";
 
 export function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState("hero");
 	const navRef = useRef<HTMLElement>(null);
-
+	const isBlogRoute = useMatch("/blog");
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
@@ -32,6 +32,15 @@ export function Navbar() {
 		return () => observer.disconnect();
 	}, []);
 
+	const navItems = [
+		{ section: "hero", textLabel: "Home" },
+		{ section: "about", textLabel: "About" },
+		{ section: "service", textLabel: "Service" },
+		{ section: "skills", textLabel: "Skills" },
+		{ section: "projects", textLabel: "Projects" },
+		{ section: "testimonials", textLabel: "Testimonials" },
+		{ section: "blog", textLabel: "Blog" },
+	];
 	return (
 		<header
 			ref={navRef}
@@ -58,23 +67,30 @@ export function Navbar() {
 					</button>
 					{/* Desktop Navigation */}
 					<ul className="hidden md:flex items-center gap-8">
-						{[
-							"hero",
-							"about",
-							"service",
-							"skills",
-							"projects",
-							"testimonials",
-							"blog",
-						].map((section) => (
-							<NavItem
-								key={section}
-								section={section}
-								to={
-									section === "blog" ? href("/blog") : `${href("/")}#${section}`
-								}
-								isActive={section === activeSection}
-							/>
+						{navItems.map((nav) => (
+							<li key={nav.section}>
+								<NavLink
+									viewTransition={true}
+									to={
+										nav.section === "blog"
+											? href("/blog")
+											: `${href("/")}#${nav.section}`
+									}
+									className={({ isActive: isActivePage }) => {
+										return cn(
+											"relative py-2 px-1 transition duration-300 ease-in-out capitalize",
+											`${
+												(isBlogRoute && isActivePage) ||
+												activeSection === nav.section
+													? "text-primary font-bold"
+													: "text-gray-700 hover:text-primary"
+											}`,
+										);
+									}}
+								>
+									{nav.textLabel}
+								</NavLink>
+							</li>
 						))}
 					</ul>
 					{/* Mobile Navigation */}
