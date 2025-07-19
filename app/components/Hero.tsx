@@ -1,13 +1,13 @@
 import {
-	ArrowDown,
-	FileDown,
-	Github,
-	Linkedin,
-	Mail,
-	MousePointer2,
+    ArrowDown,
+    FileDown,
+    Github,
+    Linkedin,
+    Mail,
+    MousePointer2,
 } from "lucide-react";
-import {FaXTwitter} from "react-icons/fa6"
 import { motion } from "motion/react";
+import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 
@@ -29,10 +29,10 @@ export function Hero() {
 			label: "Email",
 		},
 		{
-					href: "https://x.com/tsirimaholy",
-					icon: FaXTwitter,
-					label: "X",
-				},
+			href: "https://x.com/tsirimaholy",
+			icon: FaXTwitter,
+			label: "X",
+		},
 	];
 	return (
 		<section
@@ -62,7 +62,7 @@ export function Hero() {
 						<OportunitieOpeningBadge />
 					</div>
 
-					<motion.p
+					<motion.div
 						initial={{ opacity: 1, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6, delay: 0.2 }}
@@ -82,11 +82,11 @@ export function Hero() {
 							<strong className="md:text-2xl decoration-2 text-black">
 								full-stack developer
 							</strong>{" "}
-							<MousePointer2 className="absolute right-0 text-black"/>
+							<MousePointer2 className="absolute right-0 text-black" />
 						</motion.div>
 						crafting beautiful and functional web experiences.
 						{/* <Pencil size={17} className="ml-1 inline animate-bounce [animation-duration:2s]" /> */}
-					</motion.p>
+					</motion.div>
 
 					{/* Social Links */}
 					<motion.div
@@ -143,7 +143,7 @@ export function Hero() {
 				<div className="relative">
 					<div className="w-54 h-54 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg">
 						<img
-							src="/Tsirimaholy.webp"
+							src="/tsirimaholy.png"
 							alt="Tsirimaholy"
 							className="w-full h-full object-cover"
 							loading="lazy"
