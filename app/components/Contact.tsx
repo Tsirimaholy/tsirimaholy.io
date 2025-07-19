@@ -99,7 +99,7 @@ export function Contact() {
 					<Button
 						asChild
 						size="lg"
-						className="cursor-pointer hover:opacity-90 transition-all duration-300 hover:scale-[1.05] hover:shadow-lg hover:shadow-primary/20 shadow-xl px-8 py-6 text-lg font-semibold relative"
+						className="cursor-pointer hover:opacity-90 transition-all duration-300 hover:scale-[1.05] hover:shadow-lg hover:shadow-primary/20 shadow-xl px-8 py-6 text-lg font-semibold relative border-2 border-white"
 					>
 						<Link
 							to="https://cal.com/tsirimaholy"
