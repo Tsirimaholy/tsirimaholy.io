@@ -13,6 +13,15 @@ import type { Route } from "./+types/root";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
+	// Favicon links
+	{ rel: "icon", href: "/favicon.ico", sizes: "any", type: "image/svg+xml" },
+	// { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+	{ rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+	{ rel: "apple-touch-icon", href: "/apple-touch-icon-180x180.png", sizes: "180x180" },
+	{ rel: "icon", href: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+	{ rel: "icon", href: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+	{ rel: "manifest", href: "/site.webmanifest" },
+
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
 	{
 		rel: "preconnect",
