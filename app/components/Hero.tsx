@@ -117,7 +117,7 @@ export function Hero() {
 
 					<div className="flex gap-4 mt-10">
 						<Button asChild>
-							<Link to={"/resume-fr.pdf"} target="_blank">
+							<Link to={"/Fullstack-Tsirimaholy-resume.pdf"} target="_blank">
 								<FileDown /> Get my resume
 							</Link>
 						</Button>
