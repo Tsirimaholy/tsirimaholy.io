@@ -32,6 +32,16 @@ export function Navbar() {
 		return () => observer.disconnect();
 	}, []);
 
+	useEffect(() => {
+		// Handle navigation between blog and home page
+		if (isBlogRoute) {
+			setActiveSection("blog");
+		} else {
+			// When navigating back to home page, reset to hero section
+			setActiveSection("hero");
+		}
+	}, [isBlogRoute]);
+
 	const navItems = [
 		{ section: "hero", textLabel: "Home" },
 		{ section: "about", textLabel: "About" },
