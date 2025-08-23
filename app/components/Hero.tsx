@@ -143,7 +143,7 @@ export function Hero() {
 				<div className="relative">
 					<div className="w-54 h-54 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg">
 						<img
-							src="/tsirimaholy.png"
+							src="/tsirimaholy.webp"
 							alt="Tsirimaholy"
 							className="w-full h-full object-cover"
 							loading="lazy"
