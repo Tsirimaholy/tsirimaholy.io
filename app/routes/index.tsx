@@ -13,10 +13,10 @@ import { Testimonials } from "~/components/Testimonials";
 import { Button } from "~/components/ui/button";
 import { sendEmail } from "~/lib/email";
 import {
-	generateMetaTags,
-	generatePersonStructuredData,
-	DEFAULT_SEO_CONFIG,
-	type StructuredDataPerson
+    DEFAULT_SEO_CONFIG,
+    generateMetaTags,
+    generatePersonStructuredData,
+    type StructuredDataPerson
 } from "~/lib/seo";
 import type { Route } from "./+types";
 
@@ -99,22 +99,11 @@ export const meta: MetaFunction = () => {
 
 	const structuredData = generatePersonStructuredData(personData);
 
-	// Add preload links for critical resources
+// Add preload links for critical resources
 	const preloadLinks = [
-		// Preload critical fonts (adjust paths to your actual font files)
+		// Preload critical font (self-hosted)
 		{ rel: "preload", href: "/fonts/inter-var.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
-
-		// Preload critical images
-		{ rel: "preload", href: "/hero-image.jpg", as: "image", type: "image/jpeg" },
-		{ rel: "preload", href: image, as: "image", type: "image/jpeg" },
-
-		// DNS prefetch for external domains
-		{ rel: "dns-prefetch", href: "//fonts.googleapis.com" },
-		{ rel: "dns-prefetch", href: "//fonts.gstatic.com" },
-
-		// Preconnect to critical third-party origins
-		{ rel: "preconnect", href: "https://fonts.googleapis.com" },
-		{ rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+		// Note: Avoid preloading large images unless proven critical; Lighthouse flags unused preloads.
 	];
 
 	return [...metaTags, ...preloadLinks, structuredData];

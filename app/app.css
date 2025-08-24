@@ -3,6 +3,24 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*@font-face {
+	font-family: "Inter";
+	src: url("/fonts/inter-var.woff2") format("woff2-variations");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}*/
+
+/* Optional italic axis if you add inter-italic-var.woff2
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/inter-italic-var.woff2") format("woff2-variations");
+	font-weight: 100 900;
+	font-style: italic;
+	font-display: swap;
+}
+*/
+
 @theme {
 	--font-sans:
 		"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",

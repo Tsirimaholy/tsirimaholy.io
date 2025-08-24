@@ -100,7 +100,7 @@ export function Hero() {
 								key={index}
 								variant="outline"
 								size="icon"
-								className="hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm sketchy-border-sm shadow-sketchy-md"
+								className="shadow-2xl  hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm sketchy-border-sm shadow-sketchy-md"
 								asChild
 							>
 								<Link

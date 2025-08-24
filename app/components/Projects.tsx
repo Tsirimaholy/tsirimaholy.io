@@ -89,7 +89,19 @@ export function Projects() {
 				"A project management system built with React, React Router V7 framework mode, and TypeScript.",
 			features: ["Drag and drop task management"],
 			challenges: [],
-		},
+		},{
+					id: 5,
+					title: "Grok hero",
+					description: "Reimagined grok hero page",
+					image: "/grok/grok-hero.png",
+					tags: ["react", "typescript", "tailwind", "design", "ui", "landing"],
+					liveUrl: "",
+					githubUrl: "",
+					detailedDescription:
+						"Grok reimagined hero page",
+					features: ["Responsive hero landing page"],
+					challenges: [],
+				},
 	];
 	const filteredProjects = projects.filter(
 		(project) =>

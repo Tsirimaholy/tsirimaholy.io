@@ -97,8 +97,8 @@ export function About() {
 					</h2>
 					<p className="text-gray-600 relative">
 						I’m Tsirimaholy, a full‑stack developer passionate about crafting
-						scalable applications using Django or Spring Boot on the backend and
-						React on the frontend.{" "}
+						scalable applications using <strong>Django or Spring Boot</strong> on the backend and
+						<strong> React </strong>on the frontend.{" "}
 						<strong className="text-center block">
 							This is the path that led me here.
 						</strong>
