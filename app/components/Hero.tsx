@@ -95,9 +95,9 @@ export function Hero() {
 						transition={{ duration: 0.6, delay: 0.4 }}
 						className="flex gap-4"
 					>
-						{contacts.map(({ href, icon: Icon, label }, index) => (
+						{contacts.map(({ href, icon: Icon, label }) => (
 							<Button
-								key={index}
+								key={href}
 								variant="outline"
 								size="icon"
 								className="shadow-2xl  hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm sketchy-border-sm shadow-sketchy-md"
@@ -116,25 +116,23 @@ export function Hero() {
 					</motion.div>
 
 					<div className="flex gap-4 mt-10">
-						<Button asChild>
-							<Link to={"/Fullstack-Tsirimaholy-resume.pdf"} target="_blank">
-								<FileDown /> Get my resume
-							</Link>
-						</Button>
-						{/* Call to Action */}
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6, delay: 0.6 }}
-							className="flex flex-col items-center md:items-start space-y-4"
+							className="flex items-center gap-4"
 						>
-							<Link
-								to="#about"
-								className="flex items-center gap-2 text-lg font-medium text-primary hover:underline hover:opacity-90 transition-all"
-							>
-								Discover my journey
-								<ArrowDown className="animate-bounce" size={20} />
-							</Link>
+							<Button asChild size="lg">
+								<Link to="#contact">
+									Let's work together
+									<ArrowDown className="animate-bounce" size={18} />
+								</Link>
+							</Button>
+							<Button asChild variant="outline">
+								<Link to={"/Fullstack-Tsirimaholy-resume.pdf"} target="_blank">
+									<FileDown /> Resume
+								</Link>
+							</Button>
 						</motion.div>
 					</div>
 				</motion.div>
