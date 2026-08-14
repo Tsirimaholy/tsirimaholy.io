@@ -15,6 +15,11 @@ export interface SEOConfig {
 	noIndex?: boolean;
 }
 
+type MetaTag =
+	| { title: string }
+	| { name: string; content: string }
+	| { property: string; content: string };
+
 export interface StructuredDataPerson {
 	name: string;
 	jobTitle: string;
@@ -76,7 +81,7 @@ export function generateMetaTags(config: SEOConfig) {
 		noIndex = false,
 	} = config;
 
-	const metaTags = [
+	const metaTags: MetaTag[] = [
 		{ title },
 		{ name: "description", content: description },
 		{ name: "viewport", content: "width=device-width, initial-scale=1.0" },

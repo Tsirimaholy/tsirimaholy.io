@@ -5,14 +5,12 @@ export type BlogItemProps = {
 	title: string;
 	summary: string;
 	publishedAt: Date;
-	published: boolean;
 	readDuration: number;
 };
 export default function BlogItem({
 	title,
 	summary,
 	publishedAt,
-	published,
 	readDuration: readTime,
 }: BlogItemProps) {
 	return (

@@ -108,16 +108,21 @@ function RatingStars({ rating, size = 16 }: { rating: number; size?: number }) {
 	const full = Math.floor(rating);
 	const hasHalf = rating - full >= 0.5 && full < 5;
 	const empty = Math.max(0, 5 - full - (hasHalf ? 1 : 0));
+	const fullStarKeys = Array.from({ length: full }, (_, i) => `full-${rating}-${size}-${i + 1}`);
+	const emptyStarKeys = Array.from(
+		{ length: empty },
+		(_, i) => `empty-${rating}-${size}-${i + 1}`,
+	);
 	return (
-		<div className="flex items-center" aria-label={`${rating.toFixed(1)} out of 5 stars`}>
-			{Array.from({ length: full }).map((_, i) => (
-				<Star key={`full-${i}`} className="text-yellow-400" width={size} height={size} fill="currentColor" />
+		<div className="flex items-center" role="img" aria-label={`${rating.toFixed(1)} out of 5 stars`}>
+			{fullStarKeys.map((key) => (
+				<Star key={key} className="text-yellow-400" width={size} height={size} fill="currentColor" />
 			))}
 			{hasHalf && (
 				<StarHalf key="half" className="text-yellow-400" width={size} height={size} fill="currentColor" />
 			)}
-			{Array.from({ length: empty }).map((_, i) => (
-				<Star key={`empty-${i}`} className="text-muted-foreground/40" width={size} height={size} />
+			{emptyStarKeys.map((key) => (
+				<Star key={key} className="text-muted-foreground/40" width={size} height={size} />
 			))}
 		</div>
 	);
