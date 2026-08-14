@@ -6,8 +6,9 @@ import {
 	MapPin,
 } from "lucide-react";
 import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
 import { FaXTwitter } from "react-icons/fa6";
-import { Form, Link } from "react-router";
+import { Link, useFetcher } from "react-router";
 import { Button } from "~/components/ui/button";
 import {
 	Card,
@@ -20,6 +21,17 @@ import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 
 export function Contact() {
+	const fetcher = useFetcher<{ success: boolean; message: string }>();
+	const formRef = useRef<HTMLFormElement>(null);
+	const isSubmitting = fetcher.state !== "idle";
+	const hasResponse = fetcher.data?.message;
+
+	useEffect(() => {
+		if (fetcher.data?.success) {
+			formRef.current?.reset();
+		}
+	}, [fetcher.data]);
+
 	// Animation variants for container and items
 	const containerVariants = {
 		hidden: { opacity: 0 },
@@ -159,9 +171,9 @@ export function Contact() {
 							</CardHeader>
 							<CardContent className="flex flex-col gap-4">
 								{contactInformations.map(
-									({ icon: Icon, text, href }, index) => (
+									({ icon: Icon, text, href }) => (
 										<motion.div
-											key={index}
+											key={href ?? text}
 											className="flex items-center gap-3 group/item"
 											whileHover={{ x: 5 }}
 											transition={{
@@ -204,13 +216,13 @@ export function Contact() {
 								</CardDescription>
 							</CardHeader>
 							<CardContent>
-								<Form className="flex flex-col gap-4" method="POST">
+								<fetcher.Form ref={formRef} className="flex flex-col gap-4" method="POST">
 									{[
 										{ placeholder: "Name", type: "text", name: "name" },
 										{ placeholder: "Email", type: "email", name: "email" },
-									].map(({ placeholder, type, name }, index) => (
+									].map(({ placeholder, type, name }) => (
 										<motion.div
-											key={index}
+											key={name}
 											className="grid gap-2"
 											variants={itemVariants}
 										>
@@ -218,6 +230,7 @@ export function Contact() {
 												name={name}
 												type={type}
 												placeholder={placeholder}
+												required
 												className="bg-white sketchy-border-sm focus:border-primary transition-colors shadow-sketchy-sm"
 											/>
 										</motion.div>
@@ -226,20 +239,34 @@ export function Contact() {
 										<Textarea
 											name="message"
 											placeholder="Your message"
+											required
 											className="min-h-[150px] bg-white sketchy-border-sm focus:border-primary transition-colors shadow-sketchy-sm"
 										/>
 									</motion.div>
+									{hasResponse && (
+										<output
+											className={
+												fetcher.data?.success
+													? "text-sm text-green-700"
+													: "text-sm text-destructive"
+											}
+											aria-live="polite"
+										>
+											{fetcher.data?.message}
+										</output>
+									)}
 									<motion.div variants={itemVariants}>
 										<Button
 											name="intent"
 											value={"contact"}
 											type="submit"
+											disabled={isSubmitting}
 											className="w-full bg-gradient-to-r from-primary to-green-500 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20  shadow-sketchy-sm cursor-pointer"
 										>
-											Send Message
+											{isSubmitting ? "Sending..." : "Send Message"}
 										</Button>
 									</motion.div>
-								</Form>
+								</fetcher.Form>
 							</CardContent>
 						</Card>
 					</motion.div>

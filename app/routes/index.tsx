@@ -121,18 +121,27 @@ export const action = async ({ request }: Route.ActionArgs) => {
 			return data({ success: false, message: "Invalid form data" });
 		}
 
-		await sendEmail(
-			"hei.tsirimaholy@gmail.com",
-			`From portfolio Contact - [${name}]`,
-			message,
-			"Acme <onboarding@resend.dev>",
-		);
+		try {
+			await sendEmail(
+				"hei.tsirimaholy@gmail.com",
+				`From portfolio Contact - [${name}]`,
+				message,
+				"Acme <onboarding@resend.dev>",
+			);
 
-		return data({ success: true, message: "Email sent successfully" });
+			return data({ success: true, message: "Message sent successfully." });
+		} catch {
+			return data({
+				success: false,
+				message: "Unable to send your message right now. Please try again.",
+			});
+		}
 	}
+
+	return data({ success: false, message: "Unsupported action." }, { status: 400 });
 };
 
-export default function HomePage({ loaderData }: Route.ComponentProps) {
+export default function HomePage(_props: Route.ComponentProps) {
 	const [showToTopBtn, setShowToTopBtn] = useState(true);
 	useEffect(() => {
 		const handleScroll = () => {
