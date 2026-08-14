@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import type { Route } from "./+types";
 
-export const loader = async ({ request }: Route.LoaderArgs) => {
+export const loader = async (_args: Route.LoaderArgs) => {
 	try {
 		// Read the favicon file from the public directory
 		const faviconPath = join(process.cwd(), "public", "favicon.ico");

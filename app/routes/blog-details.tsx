@@ -1,4 +1,4 @@
-import { ArrowLeft, Calendar, ChevronLeft, Clock } from "lucide-react";
+import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Link } from "react-router";
 
 function BlogDetails() {
