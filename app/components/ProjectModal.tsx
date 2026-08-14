@@ -2,6 +2,7 @@ import { Github, Globe, X } from "lucide-react";
 import { motion } from "motion/react";
 import React from "react";
 import { Link } from "react-router";
+import type { TProject } from "~/@types";
 import { Button } from "./ui/button";
 
 type ProjectModalProps = {
@@ -10,6 +11,56 @@ type ProjectModalProps = {
 };
 const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
 	({ project, onCloseCliked: onCloseClicked }, ref) => {
+		const closeButtonRef = React.useRef<HTMLButtonElement>(null);
+
+		React.useEffect(() => {
+			closeButtonRef.current?.focus();
+		}, []);
+
+		React.useEffect(() => {
+			function onKeyDown(event: KeyboardEvent) {
+				if (event.key === "Escape") {
+					event.preventDefault();
+					onCloseClicked(null);
+					return;
+				}
+
+				if (event.key !== "Tab") {
+					return;
+				}
+
+				const container = ref && typeof ref !== "function" ? ref.current : null;
+				if (!container) {
+					return;
+				}
+
+				const focusableElements = Array.from(
+					container.querySelectorAll<HTMLElement>(
+						'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+					),
+				).filter((element) => !element.hasAttribute("disabled"));
+
+				if (focusableElements.length === 0) {
+					return;
+				}
+
+				const firstElement = focusableElements[0];
+				const lastElement = focusableElements[focusableElements.length - 1];
+				const activeElement = document.activeElement;
+
+				if (event.shiftKey && activeElement === firstElement) {
+					event.preventDefault();
+					lastElement.focus();
+				} else if (!event.shiftKey && activeElement === lastElement) {
+					event.preventDefault();
+					firstElement.focus();
+				}
+			}
+
+			document.addEventListener("keydown", onKeyDown);
+			return () => document.removeEventListener("keydown", onKeyDown);
+		}, [onCloseClicked, ref]);
+
 		return (
 			<>
 				{/* Backdrop */}
@@ -24,6 +75,9 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
 				{/* Content */}
 				<motion.div
 					ref={ref}
+					role="dialog"
+					aria-modal="true"
+					aria-labelledby="project-modal-title"
 					initial={{ opacity: 0, scale: 0.9 }}
 					animate={{ opacity: 1, scale: 1 }}
 					exit={{ opacity: 0, scale: 0.9 }}
@@ -31,9 +85,11 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
 					className="fixed top-1/2 left-1/2 w-[90%] max-w-3xl max-h-[85vh] overflow-y-auto bg-white rounded-xl p-6 transform -translate-x-1/2 -translate-y-1/2 z-50 shadow-sketchy-lg"
 				>
 					<button
+						ref={closeButtonRef}
 						type="button"
 						onClick={() => onCloseClicked(null)}
 						className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+						aria-label="Close project details"
 					>
 						<X className="h-5 w-5" />
 					</button>
@@ -44,6 +100,7 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
 						className="w-full h-auto object-cover rounded-lg mb-4 shadow-sketchy-sm"
 					/>
 					<h3
+						id="project-modal-title"
 						className="text-2xl font-bold mb-2 text-gray-800"
 						style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
 					>

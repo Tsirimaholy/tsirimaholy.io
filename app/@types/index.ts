@@ -1,4 +1,4 @@
-type TProject = {
+export type TProject = {
 	id: number;
 	title: string;
 	description: string;

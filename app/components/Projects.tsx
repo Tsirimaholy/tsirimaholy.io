@@ -1,13 +1,15 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "~/components/ui/button";
 import { AnimatePresence, motion } from "motion/react";
+import type { TProject } from "~/@types";
 import { ProjectCard } from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
 
 export function Projects() {
 	const [filter, setFilter] = useState("All");
-	const [selected, setSelected] = useState<any | null>(null);
+	const [selected, setSelected] = useState<TProject | null>(null);
 	const modalRef = useRef<HTMLDivElement>(null);
+	const lastTriggerRef = useRef<HTMLElement | null>(null);
 
 	// Categories for filtering
 	const categories = [
@@ -109,21 +111,39 @@ export function Projects() {
 			project.tags.includes(filter) ||
 			project.tags.includes(filter.toLowerCase()),
 	);
+	const closeModal = useCallback(() => {
+		setSelected(null);
+		requestAnimationFrame(() => lastTriggerRef.current?.focus());
+	}, []);
+
 	// Close modal on outside click
 	useEffect(() => {
 		if (!selected) return;
 		function onClick(e: MouseEvent) {
-			if (modalRef.current && !modalRef.current.contains(e.target as any)) {
-				setSelected(null);
+			if (
+				modalRef.current &&
+				e.target instanceof Node &&
+				!modalRef.current.contains(e.target)
+			) {
+				closeModal();
 			}
 		}
+
+		function onKeyDown(e: KeyboardEvent) {
+			if (e.key === "Escape") {
+				closeModal();
+			}
+		}
+
 		document.body.style.overflow = selected ? "hidden" : "auto";
 		document.addEventListener("mousedown", onClick);
+		document.addEventListener("keydown", onKeyDown);
 		return () => {
 			document.body.style.overflow = "auto";
 			document.removeEventListener("mousedown", onClick);
+			document.removeEventListener("keydown", onKeyDown);
 		};
-	}, [selected]);
+	}, [selected, closeModal]);
 
 	const container = {
 		hidden: { opacity: 0 },
@@ -191,12 +211,15 @@ export function Projects() {
 							<ProjectCard
 								key={project.id}
 								project={project}
-								onSelect={() => setSelected(project)}
+								onSelect={(nextProject, trigger) => {
+									lastTriggerRef.current = trigger ?? null;
+									setSelected(nextProject);
+								}}
 							/>
 						))
 					) : (
 						<h1 className="text-muted-foreground text-xl font-bold text-center self-center">
-							No Project match that tag ...
+							No projects match this filter yet.
 						</h1>
 					)}
 				</motion.div>
@@ -207,9 +230,8 @@ export function Projects() {
 				{selected && (
 					<ProjectModal
 						project={selected}
-						onCloseCliked={() => {
-							setSelected(null);
-						}}
+						onCloseCliked={closeModal}
+						ref={modalRef}
 					/>
 				)}
 			</AnimatePresence>

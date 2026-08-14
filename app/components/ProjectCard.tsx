@@ -1,19 +1,12 @@
 import { ExternalLink, Globe } from "lucide-react";
 import { motion } from "motion/react";
+import type { TProject } from "~/@types";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 
 interface ProjectCardProps {
-	project: {
-		id: number;
-		title: string;
-		description: string;
-		image: string;
-		tags: string[];
-		liveUrl: string;
-		githubUrl: string;
-	};
-	onSelect: (project: any) => void;
+	project: TProject;
+	onSelect: (project: TProject, trigger?: HTMLElement) => void;
 }
 
 export function ProjectCard({ project, onSelect }: ProjectCardProps) {
@@ -27,9 +20,11 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 			className="relative group overflow-hidden rounded-lg bg-white border-2 shadow-sketchy-lg"
 		>
 			{/* Project Image */}
-			<div
-				className="relative h-48 overflow-hidden cursor-pointer perspective-distant"
-				onClick={() => onSelect(project)}
+			<button
+				type="button"
+				className="relative h-48 overflow-hidden cursor-pointer perspective-distant w-full text-left"
+				onClick={(event) => onSelect(project, event.currentTarget)}
+				aria-label={`Open details for ${project.title}`}
 			>
 				<img
 					loading="lazy"
@@ -40,7 +35,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 				<div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
 					<h3 className="text-white text-lg font-semibold">{project.title}</h3>
 				</div>
-			</div>
+			</button>
 
 			{/* Content */}
 			<div className="p-4">
@@ -82,7 +77,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 				<Button
 					variant="secondary"
 					size="sm"
-					onClick={() => onSelect(project)}
+				onClick={(event) => onSelect(project, event.currentTarget)}
 					className="gap-1 shadow-sketchy-sm"
 				>
 					Details
