@@ -119,7 +119,7 @@ export function Projects() {
 			liveUrl: "https://activityrewards.co.uk/",
 			githubUrl: "",
 			detailedDescription:
-				" Employees move more and receive valuable rewards... Boosting workplace happiness!Empower your employees with financial rewards for staying active. Happier teams, better performance, and improved well-being. ",
+				"Built during my Backend Developer role at Vertex. Employees move more and receive valuable rewards... Boosting workplace happiness! Empower your employees with financial rewards for staying active. Happier teams, better performance, and improved well-being.",
 			features: [
 				"Real time xp system and pop notifications",
 				"Real time chat for support",
