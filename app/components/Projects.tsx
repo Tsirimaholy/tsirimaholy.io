@@ -28,6 +28,34 @@ export function Projects() {
 	// Projects data
 	const projects: TProject[] = [
 		{
+			id: 6,
+			title: "Aligneurs Français",
+			description:
+				"AF Setup — web & mobile software used by orthodontics practitioners to manage invisible aligner treatments.",
+			image: "/aligneurs-francais/cover.jpg",
+			tags: [
+				"TypeScript",
+				"React",
+				"React Native",
+				"Python",
+				"Django",
+				"PostgreSQL",
+				"Docker",
+			],
+			liveUrl: "https://praticiens.aligneursfrancais.com/notre-logiciel/",
+			githubUrl: "",
+			detailedDescription:
+				"Senior Fullstack Developer at Aligneurs Français, a French health-tech company crafting invisible dental aligners made in France. I build and improve AF Setup, the web and mobile platform (iOS/Android) that dentists and orthodontists use to manage their patients' aligner treatments end to end, and AF Academy, the e-learning platform for practitioners.",
+			features: [
+				"Patient and treatment management with follow-up tracking",
+				"3D visualization of dental setups",
+				"Photos & radiographs management",
+				"Messaging between practitioners and the clinical team",
+				"Mobile app available on the App Store and Play Store",
+			],
+			challenges: [],
+		},
+		{
 			id: 2,
 			title: "I-Kaly",
 			description:
