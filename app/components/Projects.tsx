@@ -63,7 +63,7 @@ export function Projects() {
 			image: "/financeapp/cover.jpg",
 			tags: ["Python", "Django", "PostgreSQL", "Docker", "AWS", "CI/CD"],
 			liveUrl: "",
-			githubUrl: "https://github.com/Tsirimaholy/financeapp",
+			githubUrl: "",
 			detailedDescription:
 				"During my Fullstack Developer mission at Ukatis Consulting, I worked on a retirement situation prediction application. My main responsibilities: setting up the backend foundations of the app, building the AWS infrastructure with Elastic Beanstalk (Docker), automating tests and deployments through a CI/CD pipeline, and writing the deployment documentation.",
 			features: [
