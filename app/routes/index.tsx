@@ -172,10 +172,10 @@ export default function HomePage(_props: Route.ComponentProps) {
 			<div id="main-content">
 				<Hero />
 				<About />
+				<Testimonials />
 				<Service />
 				<Skills />
 				<Projects />
-				<Testimonials />
 				<Contact />
 			</div>
 
