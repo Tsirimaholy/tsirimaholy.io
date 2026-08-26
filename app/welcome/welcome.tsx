@@ -9,7 +9,6 @@ const blogs: BlogItemProps[] = [
 		summary: `
     Simplicity is the ultimate sophistication. - Leonardo da Vinci`,
 		publishedAt: new Date("2023-01-01"),
-		published: true,
 		readDuration: 5,
 	},
 	{
@@ -21,7 +20,6 @@ const blogs: BlogItemProps[] = [
                       Accusantium
                       atque consectetur debitis, dolor et ex harum quia sit soluta ut! Commodi`,
 		publishedAt: new Date("2023-01-01"),
-		published: true,
 		readDuration: 5,
 	},
 ];
@@ -59,13 +57,12 @@ export function Welcome() {
 				}
 			>
 				{filteredBlog.length > 0 ? (
-					filteredBlog.map((blog, index) => (
+					filteredBlog.map((blog) => (
 						<BlogItem
-							key={index}
+							key={blog.title}
 							title={blog.title}
 							summary={blog.summary}
 							publishedAt={blog.publishedAt}
-							published
 							readDuration={blog.readDuration}
 						/>
 					))
