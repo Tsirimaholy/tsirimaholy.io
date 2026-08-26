@@ -61,6 +61,7 @@ const testimonialData: TestimonialItem[] = [
 		company: "ELYTRE",
 		testimonial:
 			"Tsirimaholy s'est montré a l'écoute, réactif et efficace durant notre collaboration",
+		image: "/testimonial/robin.webp",
 		country: "FR",
 		rating: 5,
 		source: "linkedin",
@@ -72,6 +73,7 @@ const testimonialData: TestimonialItem[] = [
 		company: "",
 		testimonial:
 			"Je recommande grandement Tsirimaholy qui a su nous aider durant plusieurs mois à développer notre logiciel métier. Une compréhension rapide des enjeux métier. Une livraison rapide et une parfaite autonomie.",
+		image: "/testimonial/fanny.webp",
 		country: "FR",
 		rating: 5,
 		source: "linkedin",
@@ -83,6 +85,7 @@ const testimonialData: TestimonialItem[] = [
 		company: "",
 		testimonial:
 			"Esprit d'équipe, sérieux, compétant, compréhension des sujets et des enjeux.",
+		image: "/testimonial/arnaud.webp",
 		country: "FR",
 		rating: 5,
 		source: "linkedin",
