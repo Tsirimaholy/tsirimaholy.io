@@ -56,6 +56,27 @@ export function Projects() {
 			challenges: [],
 		},
 		{
+			id: 7,
+			title: "FinanceApp",
+			description:
+				"Retirement situation prediction app with personalized simulation — mission at Ukatis Consulting.",
+			image: "/financeapp/cover.jpg",
+			tags: ["Python", "Django", "PostgreSQL", "Docker", "AWS", "CI/CD"],
+			liveUrl: "",
+			githubUrl: "https://github.com/Tsirimaholy/financeapp",
+			detailedDescription:
+				"During my Fullstack Developer mission at Ukatis Consulting, I worked on a retirement situation prediction application. My main responsibilities: setting up the backend foundations of the app, building the AWS infrastructure with Elastic Beanstalk (Docker), automating tests and deployments through a CI/CD pipeline, and writing the deployment documentation.",
+			features: [
+				"Authentication: signup, login, forgot password",
+				"Multi-step onboarding questionnaire with i18n (FR/EN)",
+				"Personalized retirement situation simulation",
+				"Backend base architecture with Django",
+				"Dockerized deployment on AWS Elastic Beanstalk",
+				"CI/CD pipeline automating tests and deployments",
+			],
+			challenges: [],
+		},
+		{
 			id: 2,
 			title: "I-Kaly",
 			description:
