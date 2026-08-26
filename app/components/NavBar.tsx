@@ -45,10 +45,10 @@ export function Navbar() {
 	const navItems = [
 		{ section: "hero", textLabel: "Home" },
 		{ section: "about", textLabel: "About" },
+		{ section: "testimonials", textLabel: "Testimonials" },
 		{ section: "service", textLabel: "Service" },
 		{ section: "skills", textLabel: "Skills" },
 		{ section: "projects", textLabel: "Projects" },
-		{ section: "testimonials", textLabel: "Testimonials" },
 		{ section: "blog", textLabel: "Blog" },
 	];
 	return (
@@ -113,10 +113,10 @@ export function Navbar() {
 							{[
 								"hero",
 								"about",
+								"testimonials",
 								"service",
 								"skills",
 								"projects",
-								"testimonials",
 							].map((section) => (
 								<li key={section} className="py-2">
 									<NavLink
