@@ -1,5 +1,6 @@
 import {
     ArrowDown,
+    ChevronDown,
     FileDown,
     Github,
     Linkedin,
@@ -7,11 +8,37 @@ import {
     MousePointer2,
 } from "lucide-react";
 import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 
 export function Hero() {
+	const [resumeMenuOpen, setResumeMenuOpen] = useState(false);
+	const resumeMenuRef = useRef<HTMLDivElement>(null);
+
+	// Close the resume menu on outside click or Escape
+	useEffect(() => {
+		if (!resumeMenuOpen) return;
+		const onClick = (e: MouseEvent) => {
+			if (
+				resumeMenuRef.current &&
+				e.target instanceof Node &&
+				!resumeMenuRef.current.contains(e.target)
+			) {
+				setResumeMenuOpen(false);
+			}
+		};
+		const onKey = (e: KeyboardEvent) => {
+			if (e.key === "Escape") setResumeMenuOpen(false);
+		};
+		document.addEventListener("mousedown", onClick);
+		document.addEventListener("keydown", onKey);
+		return () => {
+			document.removeEventListener("mousedown", onClick);
+			document.removeEventListener("keydown", onKey);
+		};
+	}, [resumeMenuOpen]);
 	const contacts = [
 		{
 			href: "https://github.com/Tsirimaholy",
@@ -128,11 +155,45 @@ export function Hero() {
 									<ArrowDown className="animate-bounce" size={18} />
 								</Link>
 							</Button>
-							<Button asChild variant="outline">
-								<Link to={"/Fullstack-Tsirimaholy-resume.pdf"} target="_blank">
+							<div className="relative" ref={resumeMenuRef}>
+								<Button
+									variant="outline"
+									onClick={() => setResumeMenuOpen((open) => !open)}
+									aria-haspopup="menu"
+									aria-expanded={resumeMenuOpen}
+								>
 									<FileDown /> Resume
-								</Link>
-							</Button>
+									<ChevronDown
+										size={16}
+										className={`transition-transform ${resumeMenuOpen ? "rotate-180" : ""}`}
+									/>
+								</Button>
+								{resumeMenuOpen && (
+									<div
+										role="menu"
+										className="absolute left-0 z-50 mt-2 w-40 overflow-hidden rounded-lg bg-white sketchy-border-sm shadow-sketchy-md"
+									>
+										<Link
+											role="menuitem"
+											to="/resume-en.pdf"
+											target="_blank"
+											onClick={() => setResumeMenuOpen(false)}
+											className="flex items-center gap-2 px-4 py-2 text-sm text-gray-800 hover:bg-yellow-100"
+										>
+											🇬🇧 English
+										</Link>
+										<Link
+											role="menuitem"
+											to="/resume-fr.pdf"
+											target="_blank"
+											onClick={() => setResumeMenuOpen(false)}
+											className="flex items-center gap-2 px-4 py-2 text-sm text-gray-800 hover:bg-yellow-100"
+										>
+											🇫🇷 Français
+										</Link>
+									</div>
+								)}
+							</div>
 						</motion.div>
 					</div>
 				</motion.div>
