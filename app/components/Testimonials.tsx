@@ -1,6 +1,9 @@
-import { Quote, Star, StarHalf } from "lucide-react";
+import { Quote, Star, StarHalf, Linkedin } from "lucide-react";
 import { motion } from "motion/react";
+import { SiFreelancer } from "react-icons/si";
 import { Card, CardContent } from "~/components/ui/card";
+
+type TestimonialSource = "linkedin" | "freelancer";
 
 interface TestimonialItem {
 	id: number;
@@ -13,6 +16,8 @@ interface TestimonialItem {
 	country: string;
 	// 1-5 star rating (supports halves like 4.5)
 	rating: number;
+	// Platform where the review/recommendation was published
+	source: TestimonialSource;
 }
 
 const testimonialData: TestimonialItem[] = [
@@ -25,6 +30,7 @@ const testimonialData: TestimonialItem[] = [
 		image: "/testimonial/fernando.webp",
 		country: "PE",
 		rating: 5,
+		source: "freelancer",
 	},
 	{
 		id: 2,
@@ -36,6 +42,7 @@ const testimonialData: TestimonialItem[] = [
 		image: "/testimonial/ayesha.webp",
 		country: "PK",
 		rating: 5,
+		source: "freelancer",
 	},
 	{
 		id: 3,
@@ -45,6 +52,40 @@ const testimonialData: TestimonialItem[] = [
 		testimonial: "Very skillful with node.js. Equally really nice guy.",
 		country: "GB",
 		rating: 5,
+		source: "freelancer",
+	},
+	{
+		id: 4,
+		name: "Robin Lasserye",
+		position: "Architecte IA agentique · Directeur Technique medtech",
+		company: "ELYTRE",
+		testimonial:
+			"Tsirimaholy s'est montré a l'écoute, réactif et efficace durant notre collaboration",
+		country: "FR",
+		rating: 5,
+		source: "linkedin",
+	},
+	{
+		id: 5,
+		name: "Fanny Jan",
+		position: "Product Manager",
+		company: "",
+		testimonial:
+			"Je recommande grandement Tsirimaholy qui a su nous aider durant plusieurs mois à développer notre logiciel métier. Une compréhension rapide des enjeux métier. Une livraison rapide et une parfaite autonomie.",
+		country: "FR",
+		rating: 5,
+		source: "linkedin",
+	},
+	{
+		id: 6,
+		name: "Arnaud Le Roy",
+		position: "Head of Operations",
+		company: "",
+		testimonial:
+			"Esprit d'équipe, sérieux, compétant, compréhension des sujets et des enjeux.",
+		country: "FR",
+		rating: 5,
+		source: "linkedin",
 	},
 ];
 
@@ -104,6 +145,42 @@ function Avatar({ src, alt }: { src?: string; alt: string }) {
 	);
 }
 
+const SOURCE_META: Record<
+	TestimonialSource,
+	{ label: string; href: string; className: string }
+> = {
+	linkedin: {
+		label: "LinkedIn",
+		href: "https://www.linkedin.com/in/tsirimaholy/details/recommendations/",
+		className: "bg-[#0A66C2]/10 text-[#0A66C2]",
+	},
+	freelancer: {
+		label: "Freelancer",
+		href: "https://www.freelancer.com/u/tsirimaholy",
+		className: "bg-[#29B2FE]/15 text-[#0f87ce]",
+	},
+};
+
+function SourceBadge({ source }: { source: TestimonialSource }) {
+	const meta = SOURCE_META[source];
+	return (
+		<a
+			href={meta.href}
+			target="_blank"
+			rel="noopener noreferrer"
+			title={`Verified on ${meta.label}`}
+			className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold transition-opacity hover:opacity-80 ${meta.className}`}
+		>
+			{source === "linkedin" ? (
+				<Linkedin size={13} fill="currentColor" />
+			) : (
+				<SiFreelancer size={13} />
+			)}
+			{meta.label}
+		</a>
+	);
+}
+
 function RatingStars({ rating, size = 16 }: { rating: number; size?: number }) {
 	const full = Math.floor(rating);
 	const hasHalf = rating - full >= 0.5 && full < 5;
@@ -147,7 +224,10 @@ const TestimonialCard: React.FC<{ item: TestimonialItem }> = ({ item }) => {
 			<Card className="p-0 shadow-sm hover:shadow-md transition-shadow border-primary/10">
 				<CardContent className="p-6">
 					<figure className="flex flex-col gap-4">
-						<Quote className="w-6 h-6 text-primary transform scale-x-[-1]" />
+						<div className="flex items-start justify-between">
+							<Quote className="w-6 h-6 text-primary transform scale-x-[-1]" />
+							<SourceBadge source={item.source} />
+						</div>
 						<blockquote className="text-muted-foreground italic">
 							{item.testimonial}
 						</blockquote>
@@ -207,8 +287,8 @@ export const Testimonials: React.FC = () => {
 							Client Testimonials
 						</h2>
 						<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-							What my clients from around the world say about my work and
-							collaboration
+							What clients and colleagues from around the world say about my
+							work and collaboration
 						</p>
 						<div className="flex items-center justify-center mt-3 mb-1">
 							<RatingStars rating={averageRating} size={20} />
