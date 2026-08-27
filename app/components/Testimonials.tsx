@@ -1,4 +1,4 @@
-import { Languages, Quote, Star, StarHalf, Linkedin } from "lucide-react";
+import { Quote, RefreshCw, Star, StarHalf, Linkedin } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { SiFreelancer } from "react-icons/si";
@@ -251,7 +251,7 @@ const TestimonialCard: React.FC<{ item: TestimonialItem }> = ({ item }) => {
 								onClick={() => setShowFr((fr) => !fr)}
 								className="self-end inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
 							>
-								<Languages size={13} />
+								<RefreshCw size={13} />
 								{showFr ? "EN" : "FR"}
 							</button>
 						)}
