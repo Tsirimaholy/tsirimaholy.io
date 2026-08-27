@@ -126,7 +126,7 @@ function Avatar({ src, alt }: { src?: string; alt: string }) {
 				alt={alt}
 				loading="lazy"
 				decoding="async"
-				className="w-10 h-10 rounded-full object-cover"
+				className="w-10 h-10 shrink-0 rounded-full object-cover"
 			/>
 		);
 	}
@@ -141,7 +141,7 @@ function Avatar({ src, alt }: { src?: string; alt: string }) {
 	return (
 		<div
 			aria-hidden="true"
-			className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold"
+			className="w-10 h-10 shrink-0 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold"
 		>
 			{initials}
 		</div>
@@ -235,13 +235,15 @@ const TestimonialCard: React.FC<{ item: TestimonialItem }> = ({ item }) => {
 							{item.testimonial}
 						</blockquote>
 						<figcaption className="mt-2 flex items-center justify-between gap-3">
-							<div className="flex items-center gap-3 min-w-0">
+							<div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
 								<Avatar src={item.image} alt={item.name} />
-								<div className="min-w-0">
-									<p className="font-semibold text-foreground truncate flex items-center">
-										{item.name}
+								<div className="min-w-0 flex-1">
+									<p className="flex min-w-0 items-center font-semibold text-foreground">
+										<span className="truncate" title={item.name.trim()}>
+											{item.name}
+										</span>
 										<span
-											className="ml-2 text-xl"
+											className="ml-2 shrink-0 text-xl"
 											title={`Client from ${getCountryName(item.country)}`}
 										>
 											{getFlagEmoji(item.country)}
@@ -253,7 +255,7 @@ const TestimonialCard: React.FC<{ item: TestimonialItem }> = ({ item }) => {
 									</p>
 								</div>
 							</div>
-							<div className="flex items-center bg-yellow-200/20 px-2 py-1 rounded-md">
+							<div className="flex shrink-0 items-center bg-yellow-200/20 px-2 py-1 rounded-md">
 								<RatingStars rating={item.rating} size={14} />
 								<span className="ml-2 text-xs text-yellow-700 font-medium">
 									{item.rating.toFixed(1)}/5.0
