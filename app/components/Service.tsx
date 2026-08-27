@@ -4,38 +4,39 @@ import { Cloud, MonitorSmartphone, Globe, Server } from "lucide-react";
 export function Service() {
 	const services = [
 		{
-			title: "Web Development",
+			title: "MVP Development",
 			description:
-				"Modern, responsive, and scalable web applications tailored to your needs.",
-			icon: <Globe className="h-12 w-12 text-blue-600" />,
-			accent: "before:bg-blue-600",
-		},
-		{
-			title: "Mobile Apps",
-			description: "Cross-platform mobile app development for iOS and Android.",
+				"From idea to a working product in weeks, not months. I build the MVP your startup needs to launch and start validating.",
 			icon: <MonitorSmartphone className="h-12 w-12 text-green-600" />,
 			accent: "before:bg-green-600",
 		},
 		{
-			title: "API & Integration",
+			title: "Product Rescue",
 			description:
-				"Robust API design, third-party integration, and automation.",
+				"Your app is slow or stuck? I dig into the code and fix what's holding it back — like an analytics page that went from 4 minutes to under a second.",
 			icon: <Server className="h-12 w-12 text-purple-600" />,
 			accent: "before:bg-purple-600",
 		},
 		{
-			title: "DevOps & Deployment",
+			title: "Business Apps & Automation",
 			description:
-				"From CI/CD pipelines to cloud infrastructure, I handle deployment and operations for seamless delivery.",
-			icon: <Cloud className="h-12 w-12 text-orange-500" />,
-			accent: "before:bg-orange-500",
+				"ERP, fintech, SaaS: I automate the workflows your team still does by hand, so the tool works for you — not the other way around.",
+			icon: <Globe className="h-12 w-12 text-blue-600" />,
+			accent: "before:bg-blue-600",
 		},
 		{
-			title: "End-to-End Delivery",
+			title: "Payments & Integrations",
 			description:
-				"I manage the full lifecycle: from development to deployment, ensuring quality and reliability at every step.",
-			icon: <Globe className="h-12 w-12 text-primary" />,
+				"Stripe billing, transactional emails, push notifications, background jobs, third-party APIs — wired up and reliable.",
+			icon: <Server className="h-12 w-12 text-primary" />,
 			accent: "before:bg-primary",
+		},
+		{
+			title: "DevOps & Deployment",
+			description:
+				"AWS, Docker, CI/CD. I ship, monitor, and keep your app running in production, so you can focus on the product.",
+			icon: <Cloud className="h-12 w-12 text-orange-500" />,
+			accent: "before:bg-orange-500",
 		},
 	];
 	return (
@@ -52,9 +53,12 @@ export function Service() {
 						My Services
 					</h2>
 					<p className="text-xl md:text-2xl text-gray-500 font-medium">
-						From <span className="text-primary font-semibold">development</span>{" "}
-						to <span className="text-green-600 font-semibold">deployment</span>,
-						I deliver modern solutions for the web.
+						I build your <span className="text-primary font-semibold">MVP</span>{" "}
+						and bring your{" "}
+						<span className="text-green-600 font-semibold">
+							existing product back to life
+						</span>
+						.
 					</p>
 				</motion.div>
 				<motion.div
