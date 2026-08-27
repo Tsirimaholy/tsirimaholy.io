@@ -1,5 +1,6 @@
-import { Quote, Star, StarHalf, Linkedin } from "lucide-react";
+import { Languages, Quote, Star, StarHalf, Linkedin } from "lucide-react";
 import { motion } from "motion/react";
+import { useState } from "react";
 import { SiFreelancer } from "react-icons/si";
 import { Card, CardContent } from "~/components/ui/card";
 
@@ -18,6 +19,8 @@ interface TestimonialItem {
 	rating: number;
 	// Platform where the review/recommendation was published
 	source: TestimonialSource;
+	// Optional original-language version of the testimonial (for FR/EN toggle)
+	testimonialFr?: string;
 }
 
 const testimonialData: TestimonialItem[] = [
@@ -27,6 +30,8 @@ const testimonialData: TestimonialItem[] = [
 		position: "Architecte IA agentique · Directeur Technique medtech",
 		company: "ELYTRE",
 		testimonial:
+			"Tsirimaholy proved to be attentive, responsive and effective during our collaboration.",
+		testimonialFr:
 			"Tsirimaholy s'est montré a l'écoute, réactif et efficace durant notre collaboration",
 		image: "/testimonial/robin.webp",
 		country: "FR",
@@ -39,6 +44,8 @@ const testimonialData: TestimonialItem[] = [
 		position: "Product Manager",
 		company: "",
 		testimonial:
+			"I highly recommend Tsirimaholy, who helped us over several months to develop our business software. He quickly grasps the business challenges, delivers fast, and works with complete autonomy.",
+		testimonialFr:
 			"Je recommande grandement Tsirimaholy qui a su nous aider durant plusieurs mois à développer notre logiciel métier. Une compréhension rapide des enjeux métier. Une livraison rapide et une parfaite autonomie.",
 		image: "/testimonial/fanny.webp",
 		country: "FR",
@@ -51,6 +58,8 @@ const testimonialData: TestimonialItem[] = [
 		position: "Head of Operations",
 		company: "",
 		testimonial:
+			"Team spirit, hard-working, competent, and a clear grasp of the topics and stakes involved.",
+		testimonialFr:
 			"Esprit d'équipe, sérieux, compétant, compréhension des sujets et des enjeux.",
 		image: "/testimonial/arnaud.webp",
 		country: "FR",
@@ -222,6 +231,8 @@ const itemVariants = {
 };
 
 const TestimonialCard: React.FC<{ item: TestimonialItem }> = ({ item }) => {
+	const [showFr, setShowFr] = useState(false);
+	const hasFr = Boolean(item.testimonialFr);
 	return (
 		<motion.div variants={itemVariants}>
 			<Card className="p-0 shadow-sm hover:shadow-md transition-shadow border-primary/10">
@@ -232,8 +243,18 @@ const TestimonialCard: React.FC<{ item: TestimonialItem }> = ({ item }) => {
 							<SourceBadge source={item.source} />
 						</div>
 						<blockquote className="text-muted-foreground italic">
-							{item.testimonial}
+							{hasFr && showFr ? item.testimonialFr : item.testimonial}
 						</blockquote>
+						{hasFr && (
+							<button
+								type="button"
+								onClick={() => setShowFr((fr) => !fr)}
+								className="self-end inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
+							>
+								<Languages size={13} />
+								{showFr ? "EN" : "FR"}
+							</button>
+						)}
 						<figcaption className="mt-2 flex items-center justify-between gap-3">
 							<div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
 								<Avatar src={item.image} alt={item.name} />
