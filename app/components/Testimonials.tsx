@@ -249,7 +249,10 @@ const TestimonialCard: React.FC<{ item: TestimonialItem }> = ({ item }) => {
 											{getFlagEmoji(item.country)}
 										</span>
 									</p>
-									<p className="text-sm text-muted-foreground truncate">
+									<p
+										className="text-sm text-muted-foreground truncate"
+										title={`${item.position}${item.company ? `, ${item.company}` : ""}`}
+									>
 										{item.position}
 										{item.company ? `, ${item.company}` : ""}
 									</p>
