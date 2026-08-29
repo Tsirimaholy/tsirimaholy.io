@@ -1,11 +1,11 @@
 import {
-    ArrowDown,
-    ChevronDown,
-    FileDown,
-    Github,
-    Linkedin,
-    Mail,
-    MousePointer2,
+	ArrowDown,
+	ChevronDown,
+	FileDown,
+	Github,
+	Linkedin,
+	Mail,
+	MousePointer2,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
@@ -83,8 +83,7 @@ export function Hero() {
 				>
 					<div className="relative">
 						<h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-shadow-into-light">
-							Hi, I'm
-							<span>Tsirimaholy</span>
+							Hi, I'm <span>Tsirimaholy</span>
 						</h1>
 						<OportunitieOpeningBadge />
 					</div>
@@ -203,9 +202,10 @@ export function Hero() {
 					<div className="w-54 h-54 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg">
 						<img
 							src="/tsirimaholy.webp"
-							alt="Tsirimaholy"
+							alt="Tsirimaholy Harison Razanapanala"
 							className="w-full h-full object-cover"
-							loading="lazy"
+							loading="eager"
+							fetchPriority="high"
 							decoding="async"
 							width="320"
 							height="320"

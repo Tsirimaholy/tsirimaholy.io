@@ -60,9 +60,9 @@ export function Navbar() {
 				{/* Logo */}
 				<div className="pb-2.5 pr-1 border-r-2 border-b-2">
 					<NavLink to={"#"}>
-						<h1 className="text-sm font-bold -rotate-10 border p-2 border-blue-500">
+						<span className="block text-sm font-bold -rotate-10 border p-2 border-blue-500">
 							BuildThings
-						</h1>
+						</span>
 					</NavLink>
 					{/* <div className="shadow-sm border-2 border-blue-500 translate-x-2"></div> */}
 				</div>

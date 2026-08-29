@@ -30,7 +30,7 @@ export default function BlogItem({
 			</div>
 			<div>
 				<Link to={"/blog/:one"} className="hover:text-blue-500" viewTransition>
-					<h1 className={"text-xl font-semibold"}>{title}</h1>
+					<h2 className={"text-xl font-semibold"}>{title}</h2>
 				</Link>
 				<p className={"text-muted-foreground text-pretty mb-1"}>{summary}</p>
 				<NavLink
