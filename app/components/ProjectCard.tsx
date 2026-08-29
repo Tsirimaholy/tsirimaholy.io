@@ -16,8 +16,9 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 				hidden: { opacity: 0, y: 20 },
 				show: { opacity: 1, y: 0 },
 			}}
-			whileHover={{ scale: 1.05 }}
-			className="relative group overflow-hidden bg-white border-2 shadow-sketchy-lg"
+			whileHover={{ y: -4 }}
+			transition={{ type: "spring", stiffness: 300, damping: 28 }}
+			className={`relative group flex h-full flex-col overflow-hidden bg-white border-2 shadow-sketchy-lg ${project.featured ? "lg:col-span-4" : "lg:col-span-3"}`}
 		>
 			{/* Project Image */}
 			<button
@@ -32,8 +33,13 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 					alt={project.title}
 					width="640"
 					height="384"
-					className="w-full h-full object-cover transition-transform duration-300 group-hover:rotate-x-15 group-hover:rotate-y-20 group-hover:scale-110"
+					className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
 				/>
+				{project.featured && (
+					<span className="absolute top-3 left-3 border border-slate-900 bg-yellow-300 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-slate-900 shadow-sketchy-sm">
+						Featured
+					</span>
+				)}
 				<div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
 					<span aria-hidden="true" className="text-white text-lg font-semibold">
 						{project.title}
@@ -42,7 +48,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 			</button>
 
 			{/* Content */}
-			<div className="p-4">
+			<div className="flex-1 p-4">
 				<h3 className="text-xl font-semibold text-gray-800 font-shadow-into-light">
 					{project.title}
 				</h3>
@@ -63,7 +69,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 			</div>
 
 			{/* Actions */}
-			<div className="p-4 border-t border-gray-200 flex justify-between">
+			<div className="p-4 border-t border-gray-200 flex items-center gap-3">
 				{project.liveUrl && (
 					<Button
 						variant="outline"
@@ -73,7 +79,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 					>
 						<a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
 							<Globe className="h-4 w-4" />
-							Demo
+							Visit site
 						</a>
 					</Button>
 				)}
@@ -81,8 +87,8 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 				<Button
 					variant="secondary"
 					size="sm"
-				onClick={(event) => onSelect(project, event.currentTarget)}
-					className="gap-1 shadow-sketchy-sm"
+					onClick={(event) => onSelect(project, event.currentTarget)}
+					className="ml-auto gap-1 shadow-sketchy-sm"
 				>
 					Details
 					<ExternalLink className="h-4 w-4" />

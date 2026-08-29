@@ -1,192 +1,180 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { Button } from "~/components/ui/button";
 import { AnimatePresence, motion } from "motion/react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { TProject } from "~/@types";
 import { ProjectCard } from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
 
+const projects: TProject[] = [
+	{
+		id: 6,
+		title: "Aligneurs Français",
+		description:
+			"Web and mobile platform used by dentists and orthodontists to manage invisible aligner treatments.",
+		image: "/aligneurs-francais/cover.jpg",
+		tags: [
+			"TypeScript",
+			"React",
+			"React Native",
+			"Python",
+			"Django",
+			"PostgreSQL",
+			"Docker",
+		],
+		liveUrl: "https://praticiens.aligneursfrancais.com/notre-logiciel/",
+		githubUrl: "",
+		detailedDescription:
+			"As a Full-Stack Developer at Aligneurs Français, I build and improve AF Setup, the web and mobile platform practitioners use to manage aligner treatments end to end, and AF Academy, the company's e-learning platform.",
+		features: [
+			"Patient and treatment management with follow-up tracking",
+			"3D visualization of dental setups",
+			"Photo and radiograph management",
+			"Messaging between practitioners and the clinical team",
+			"Mobile apps for iOS and Android",
+		],
+		challenges: [],
+		featured: true,
+	},
+	{
+		id: 7,
+		title: "FinanceApp",
+		description:
+			"Retirement planning application with personalized simulations, delivered during a mission for Ukatis Consulting.",
+		image: "/financeapp/cover.jpg",
+		tags: ["Python", "Django", "PostgreSQL", "Docker", "AWS", "CI/CD"],
+		liveUrl: "",
+		githubUrl: "",
+		detailedDescription:
+			"During a mission for Ukatis Consulting, I established the Django backend foundations, built the AWS Elastic Beanstalk infrastructure with Docker, automated testing and deployment through CI/CD, and documented the release process.",
+		features: [
+			"Authentication and password recovery",
+			"Multi-step onboarding with French and English localization",
+			"Personalized retirement simulations",
+			"Django backend architecture",
+			"Docker deployment on AWS Elastic Beanstalk",
+			"Automated testing and deployment pipeline",
+		],
+		challenges: [],
+		featured: true,
+	},
+	{
+		id: 3,
+		title: "Activity Reward",
+		description:
+			"Employee wellness platform that turns physical activity into financial rewards.",
+		image: "/activity-reward/landing-home-1.png",
+		tags: ["TypeScript", "React", "Python", "Django", "Stripe"],
+		liveUrl: "https://activityrewards.co.uk/",
+		githubUrl: "",
+		detailedDescription:
+			"Built during my Backend Developer role at Vertex, Activity Reward helps companies encourage movement by converting employee activity into financial rewards and measurable engagement.",
+		features: [
+			"Real-time XP updates and notifications",
+			"Real-time support chat",
+			"Stripe payment integration",
+			"Scheduled background jobs for analytics aggregation",
+		],
+		challenges: [],
+		featured: true,
+	},
+	{
+		id: 1,
+		title: "KIS",
+		description:
+			"ERP and intranet platform for employee, training-center, project, and finance operations.",
+		image: "/kis-present.gif",
+		tags: ["TypeScript", "React", "Python", "Django", "PostgreSQL", "Docker"],
+		liveUrl: "",
+		githubUrl: "",
+		detailedDescription:
+			"An ERP and intranet solution built with React and Django REST Framework to bring employee, training-center, project, and financial workflows into one platform.",
+		features: [
+			"Authentication and profile management",
+			"Project and event management with a custom calendar",
+			"Course, teacher, student, and employee management",
+			"Responsive interface",
+			"Financial document storage",
+		],
+		challenges: [],
+	},
+	{
+		id: 2,
+		title: "I-Kaly",
+		description:
+			"Restaurant and order management application built during a hackathon.",
+		image: "/i-kaly/login.png",
+		tags: ["React", "Spring Boot", "Bootstrap", "OpenAPI"],
+		liveUrl: "",
+		githubUrl: "",
+		detailedDescription:
+			"One of my first team applications, built during a hackathon to manage restaurant menus, customer orders, and day-to-day operations.",
+		features: ["Menu management", "Customer ordering workflow"],
+		challenges: [],
+	},
+	{
+		id: 4,
+		title: "Task Manager",
+		description:
+			"Drag-and-drop project management application built with React Router and Prisma.",
+		image: "/taskman.png",
+		tags: ["TypeScript", "React", "React Router", "Prisma", "Tailwind CSS"],
+		liveUrl: "",
+		githubUrl: "",
+		detailedDescription:
+			"A project management application built with TypeScript and React Router framework mode, focused on a direct drag-and-drop task workflow.",
+		features: ["Drag-and-drop task management"],
+		challenges: [],
+	},
+	{
+		id: 5,
+		title: "Grok Hero Concept",
+		description: "A responsive reimagining of Grok's landing-page hero.",
+		image: "/grok/grok-hero.png",
+		tags: ["TypeScript", "React", "Tailwind CSS", "UI Design"],
+		liveUrl: "",
+		githubUrl: "",
+		detailedDescription:
+			"A focused interface exercise exploring responsive composition, typography, and visual hierarchy through a reimagined Grok hero section.",
+		features: ["Responsive landing-page hero"],
+		challenges: [],
+	},
+];
+
+const container = {
+	hidden: { opacity: 0 },
+	show: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+
 export function Projects() {
-	const [filter, setFilter] = useState("All");
 	const [selected, setSelected] = useState<TProject | null>(null);
 	const modalRef = useRef<HTMLDivElement>(null);
 	const lastTriggerRef = useRef<HTMLElement | null>(null);
 
-	// Categories for filtering
-	const categories = [
-		"All",
-		"TypeScript",
-		"React",
-		"Python",
-		"Django",
-		"PostgreSQL",
-		"Tailwind CSS",
-		"Machine Learning",
-		"Docker",
-		"Prisma",
-	];
-
-	// Projects data
-	const projects: TProject[] = [
-		{
-			id: 6,
-			title: "Aligneurs Français",
-			description:
-				"AF Setup — web & mobile software used by orthodontics practitioners to manage invisible aligner treatments.",
-			image: "/aligneurs-francais/cover.jpg",
-			tags: [
-				"TypeScript",
-				"React",
-				"React Native",
-				"Python",
-				"Django",
-				"PostgreSQL",
-				"Docker",
-			],
-			liveUrl: "https://praticiens.aligneursfrancais.com/notre-logiciel/",
-			githubUrl: "",
-			detailedDescription:
-				"Full-Stack Developer at Aligneurs Français, a French health-tech company crafting invisible dental aligners made in France. I build and improve AF Setup, the web and mobile platform (iOS/Android) that dentists and orthodontists use to manage their patients' aligner treatments end to end, and AF Academy, the e-learning platform for practitioners.",
-			features: [
-				"Patient and treatment management with follow-up tracking",
-				"3D visualization of dental setups",
-				"Photos & radiographs management",
-				"Messaging between practitioners and the clinical team",
-				"Mobile app available on the App Store and Play Store",
-			],
-			challenges: [],
-		},
-		{
-			id: 7,
-			title: "FinanceApp",
-			description:
-				"Retirement situation prediction app with personalized simulation — mission at Ukatis Consulting.",
-			image: "/financeapp/cover.jpg",
-			tags: ["Python", "Django", "PostgreSQL", "Docker", "AWS", "CI/CD"],
-			liveUrl: "",
-			githubUrl: "",
-			detailedDescription:
-				"During my Fullstack Developer mission at Ukatis Consulting, I worked on a retirement situation prediction application. My main responsibilities: setting up the backend foundations of the app, building the AWS infrastructure with Elastic Beanstalk (Docker), automating tests and deployments through a CI/CD pipeline, and writing the deployment documentation.",
-			features: [
-				"Authentication: signup, login, forgot password",
-				"Multi-step onboarding questionnaire with i18n (FR/EN)",
-				"Personalized retirement situation simulation",
-				"Backend base architecture with Django",
-				"Dockerized deployment on AWS Elastic Beanstalk",
-				"CI/CD pipeline automating tests and deployments",
-			],
-			challenges: [],
-		},
-		{
-			id: 2,
-			title: "I-Kaly",
-			description:
-				"Application for managing restaurant and orders for each customers",
-			image: "/i-kaly/login.png",
-			tags: ["react", "spring boot", "bootstrap", "openapi"],
-			liveUrl: "",
-			githubUrl: "",
-			detailedDescription:
-				"This was one my our first application built during a hackathon that is used to manage a restaurant, manage orders, menues, etc",
-			features: ["Menues creation", "Order system"],
-			challenges: [],
-		},
-		{
-			id: 1,
-			title: "KIS",
-			description:
-				"ERP and Intranet solution used to manage both employees and a high formation center.",
-			image: "/kis-present.gif",
-			tags: ["TypeScript", "React", "Python", "Django", "PostgreSQL", "Docker"],
-			liveUrl: "",
-			githubUrl: "",
-			detailedDescription:
-				"This is a ERP solution built with React and Django rest framework. It features user management and a responsive UI.",
-			features: [
-				"User authentication and profile management",
-				"Project and event management using a customised calendar",
-				"Course, Teacher, student, Employees management",
-				"Beautiful and responsive UI",
-				"Financial files storage",
-			],
-			challenges: [""],
-		},
-		{
-			id: 3,
-			title: "Activity Reward",
-			description: "Move more, receive valuable rewards",
-			image: "/activity-reward/landing-home-1.png",
-			tags: ["react", "Django", "DRF", "python", "typescript"],
-			liveUrl: "https://activityrewards.co.uk/",
-			githubUrl: "",
-			detailedDescription:
-				"Built during my Backend Developer role at Vertex. Employees move more and receive valuable rewards... Boosting workplace happiness! Empower your employees with financial rewards for staying active. Happier teams, better performance, and improved well-being.",
-			features: [
-				"Real time xp system and pop notifications",
-				"Real time chat for support",
-				"Payment Gateway built on stripe",
-				"Scheduled asyncronous task for tracking ang grouping analytics data",
-			],
-			challenges: [],
-		},
-		{
-			id: 4,
-			title: "Task man",
-			description: "Yet another project management system",
-			image: "/taskman.png",
-			tags: ["react", "typescript", "prisma", "tailwind"],
-			liveUrl: "",
-			githubUrl: "",
-			detailedDescription:
-				"A project management system built with React, React Router V7 framework mode, and TypeScript.",
-			features: ["Drag and drop task management"],
-			challenges: [],
-		},{
-					id: 5,
-					title: "Grok hero",
-					description: "Reimagined grok hero page",
-					image: "/grok/grok-hero.png",
-					tags: ["react", "typescript", "tailwind", "design", "ui", "landing"],
-					liveUrl: "",
-					githubUrl: "",
-					detailedDescription:
-						"Grok reimagined hero page",
-					features: ["Responsive hero landing page"],
-					challenges: [],
-				},
-	];
-	const filteredProjects = projects.filter(
-		(project) =>
-			filter === "All" ||
-			project.tags.includes(filter) ||
-			project.tags.includes(filter.toLowerCase()),
-	);
 	const closeModal = useCallback(() => {
 		setSelected(null);
 		requestAnimationFrame(() => lastTriggerRef.current?.focus());
 	}, []);
 
-	// Close modal on outside click
 	useEffect(() => {
 		if (!selected) return;
-		function onClick(e: MouseEvent) {
+
+		function onClick(event: MouseEvent) {
 			if (
 				modalRef.current &&
-				e.target instanceof Node &&
-				!modalRef.current.contains(e.target)
+				event.target instanceof Node &&
+				!modalRef.current.contains(event.target)
 			) {
 				closeModal();
 			}
 		}
 
-		function onKeyDown(e: KeyboardEvent) {
-			if (e.key === "Escape") {
-				closeModal();
-			}
+		function onKeyDown(event: KeyboardEvent) {
+			if (event.key === "Escape") closeModal();
 		}
 
-		document.body.style.overflow = selected ? "hidden" : "auto";
+		document.body.style.overflow = "hidden";
 		document.addEventListener("mousedown", onClick);
 		document.addEventListener("keydown", onKeyDown);
+
 		return () => {
 			document.body.style.overflow = "auto";
 			document.removeEventListener("mousedown", onClick);
@@ -194,87 +182,46 @@ export function Projects() {
 		};
 	}, [selected, closeModal]);
 
-	const container = {
-		hidden: { opacity: 0 },
-		show: { opacity: 1, transition: { staggerChildren: 0.1 } },
-	};
-	const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } };
-
 	return (
-		<section id="projects" className="relative py-24 bg-gray-50">
-			{/* Header */}
+		<section id="projects" className="relative bg-gray-50 py-24">
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true }}
 				transition={{ duration: 0.5 }}
-				className="text-center max-w-3xl mx-auto mb-12"
+				className="mx-auto mb-12 max-w-3xl px-6 text-center"
 			>
-				<h2
-					className="text-4xl font-bold bg-gradient-to-r from-primary to-green-500 bg-clip-text text-transparent"
-					style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
-				>
-					Featured Projects
+				<p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-slate-500">
+					Selected work
+				</p>
+				<h2 className="text-4xl font-bold text-gray-900 font-shadow-into-light sm:text-5xl">
+					Products I've built and improved
 				</h2>
-				<p className="text-gray-600 mt-2">
-					Explore some of my best work. Hover over each card for more details.
+				<p className="mt-4 text-lg leading-7 text-gray-600">
+					Production work and selected experiments across health tech, fintech,
+					ERP, and SaaS.
 				</p>
 			</motion.div>
 
-			{/* Filter Bar */}
 			<motion.div
+				variants={container}
 				initial="hidden"
 				whileInView="show"
-				viewport={{ once: true }}
-				variants={container}
-				className="flex flex-wrap justify-center gap-2 mb-8"
+				viewport={{ once: true, amount: 0.05 }}
+				className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-2 lg:grid-cols-12"
 			>
-				{categories.map((cat) => (
-					<motion.div key={cat} variants={item}>
-						<Button
-							variant={filter === cat ? "default" : "outline"}
-							size="sm"
-							onClick={() => setFilter(cat)}
-							className="capitalize cursor-pointer shadow-sketchy-md"
-						>
-							{cat}
-						</Button>
-					</motion.div>
+				{projects.map((project) => (
+					<ProjectCard
+						key={project.id}
+						project={project}
+						onSelect={(nextProject, trigger) => {
+							lastTriggerRef.current = trigger ?? null;
+							setSelected(nextProject);
+						}}
+					/>
 				))}
 			</motion.div>
 
-			{/* Project Grid */}
-			<div className="flex justify-center px-9">
-				<motion.div
-					variants={container}
-					whileInView="show"
-					viewport={{ once: true }}
-					className={`grid gap-8 mt-4 ${
-						filteredProjects.length > 0
-							? "md:grid-cols-2 lg:grid-cols-3"
-							: "grid-cols-1"
-					}`}
-				>
-					{filteredProjects.length > 0 ? (
-						filteredProjects.map((project) => (
-							<ProjectCard
-								key={project.id}
-								project={project}
-								onSelect={(nextProject, trigger) => {
-									lastTriggerRef.current = trigger ?? null;
-									setSelected(nextProject);
-								}}
-							/>
-						))
-					) : (
-						<output className="text-muted-foreground text-xl font-bold text-center self-center">
-							No projects match this filter yet.
-						</output>
-					)}
-				</motion.div>
-			</div>
-
-			{/* Modal */}
 			<AnimatePresence>
 				{selected && (
 					<ProjectModal

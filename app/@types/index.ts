@@ -9,4 +9,5 @@ export type TProject = {
 	detailedDescription: string;
 	features: string[];
 	challenges: string[];
+	featured?: boolean;
 };
