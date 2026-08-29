@@ -34,11 +34,11 @@ export function Skills() {
 						</motion.div>
 					</div>
 					<h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900 font-shadow-into-light">
-						Skills & Expertise
+						Tools I trust in production
 					</h2>
 					<p className="text-gray-600 mt-2">
-						A comprehensive overview of my technical abilities and proficiency
-						across different domains.
+						A focused toolkit built through real products in fintech, ERP,
+						health tech, and SaaS.
 					</p>
 				</motion.div>
 
@@ -64,7 +64,7 @@ export function Skills() {
 							</h3>
 						</div>
 						<p className="text-sm text-blue-700 mb-4">
-							Creating responsive and interactive user interfaces.
+							Interfaces that stay fast and clear on web and mobile.
 						</p>
 						<div className="flex flex-wrap gap-3">
 							{[
@@ -72,9 +72,8 @@ export function Skills() {
 								"React Native",
 								"TypeScript",
 								"Next.js",
-								"Remix(rrv7)",
+								"React Router v7",
 								"Tailwind CSS",
-								"CSS3",
 								"JavaScript",
 							].map((skill) => (
 								<span
@@ -103,22 +102,22 @@ export function Skills() {
 								className="text-xl font-semibold text-green-800"
 								style={{ fontFamily: "'Shadows Into Light', cursive" }}
 							>
-								Backend
+								Backend & Data
 							</h3>
 						</div>
 						<p className="text-sm text-green-700 mb-4">
-							Building robust server-side applications and APIs.
+							APIs, business logic, queues, and databases built for real workloads.
 						</p>
 						<div className="flex flex-wrap gap-3">
 							{[
 								"Django",
+								"Django REST Framework",
 								"Spring Boot",
-								"Python - DRF",
 								"Node.js",
-								"Express",
 								"PostgreSQL",
-								"MySQL",
-								"Prisma",
+								"Redis",
+								"Celery",
+								"WebSockets",
 								"REST APIs",
 							].map((skill) => (
 								<span
@@ -148,16 +147,18 @@ export function Skills() {
 							</h3>
 						</div>
 						<p className="text-sm text-orange-700 mb-4">
-							Deployment, automation, and infrastructure management.
+							Repeatable deployments, monitoring, and hands-on production ownership.
 						</p>
 						<div className="flex flex-wrap gap-3">
 							{[
-								"Git",
 								"Docker",
 								"AWS",
+								"Elastic Beanstalk",
+								"CI/CD",
+								"GitHub Actions",
 								"Linux",
-								"CI/CD Pipelines",
-								"Shell Scripting",
+								"Sentry",
+								"OVH",
 							].map((skill) => (
 								<span
 									key={skill}
@@ -185,21 +186,22 @@ export function Skills() {
 								className="text-xl font-semibold text-purple-800"
 								style={{ fontFamily: "'Shadows Into Light', cursive" }}
 							>
-								Development Practices
+								Engineering Practices
 							</h3>
 						</div>
 						<p className="text-sm text-purple-700 mb-4">
-							Methodologies, practices, and approaches to software development.
+							Habits that keep delivery fast without leaving a maintenance mess.
 						</p>
 						<div className="flex flex-wrap gap-3">
 							{[
-								"Agile/Scrum",
-								"Test-Driven Development",
-								"Code Reviews",
 								"API Design",
+								"SQL Optimization",
+								"N+1 Profiling",
+								"Caching",
+								"Testing",
+								"Code Reviews",
 								"System Design",
 								"Documentation",
-								"Pair Programming",
 							].map((practice) => (
 								<span
 									key={practice}
