@@ -17,7 +17,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 				show: { opacity: 1, y: 0 },
 			}}
 			whileHover={{ scale: 1.05 }}
-			className="relative group overflow-hidden rounded-lg bg-white border-2 shadow-sketchy-lg"
+			className="relative group overflow-hidden bg-white border-2 shadow-sketchy-lg"
 		>
 			{/* Project Image */}
 			<button
