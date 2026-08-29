@@ -5,7 +5,6 @@ import { data } from "react-router";
 import { About } from "~/components/About";
 import { Contact } from "~/components/Contact";
 import { Hero } from "~/components/Hero";
-import { Navbar } from "~/components/NavBar";
 import { Projects } from "~/components/Projects";
 import { Service } from "~/components/Service";
 import { Skills } from "~/components/Skills";
@@ -13,10 +12,11 @@ import { Testimonials } from "~/components/Testimonials";
 import { Button } from "~/components/ui/button";
 import { sendEmail } from "~/lib/email";
 import {
-    DEFAULT_SEO_CONFIG,
-    generateMetaTags,
-    generatePersonStructuredData,
-    type StructuredDataPerson
+	DEFAULT_SEO_CONFIG,
+	generateMetaTags,
+	generatePersonStructuredData,
+	SITE_URL,
+	type StructuredDataPerson,
 } from "~/lib/seo";
 import type { Route } from "./+types";
 
@@ -32,34 +32,31 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
 		origin,
 		// Add any dynamic data that should be available server-side
 		stats: {
-			projectsCompleted: 12,
-			yearsExperience: 3,
-			clientsSatisfied: 5
-		}
+			projectsCompleted: 7,
+			yearsExperience: 4,
+			clientsSatisfied: 8,
+		},
 	};
 
-	return {
-		siteData,
-		// This ensures the page is cached appropriately for SEO
+	return data(siteData, {
 		headers: {
 			"Cache-Control": "public, max-age=3600, s-maxage=86400",
 		},
-	};
+	});
 };
 
 export const meta: MetaFunction = () => {
-	const title = "Tsirimaholy - Fullstack Developer & Software Engineer";
-	const description = "Experienced fullstack developer specializing in React, Django,Node.js, and modern web technologies. Building scalable applications and delivering exceptional user experiences.";
-	// TODO: Buy the domain name
-	const url = "https://tsirimaholy.dev";
-	// TODO: Add og image
-	const image = `${url}/og-image.jpg`;
+	const title =
+		"Tsirimaholy Harison Razanapanala | Senior Full-Stack Developer";
+	const description =
+		"Senior Full-Stack Developer helping startups build MVPs and improve web and mobile products with React, Django, Spring Boot, AWS, and PostgreSQL.";
+	const image = `${SITE_URL}/og-image.jpg`;
 
 	// Generate base meta tags
 	const metaTags = generateMetaTags({
 		title,
 		description,
-		url,
+		url: SITE_URL,
 		image,
 		imageAlt: "Tsirimaholy - Fullstack Developer Portfolio",
 		...DEFAULT_SEO_CONFIG,
@@ -67,46 +64,49 @@ export const meta: MetaFunction = () => {
 
 	// Generate structured data for person
 	const personData: StructuredDataPerson = {
-		name: "Tsirimaholy",
-		jobTitle: "Fullstack Developer",
+		name: "Tsirimaholy Harison Razanapanala",
+		jobTitle: "Senior Full-Stack Developer",
 		description,
-		url,
-		image,
+		url: SITE_URL,
+		image: `${SITE_URL}/tsirimaholy.webp`,
 		sameAs: [
-			"https://github.com/tsirimaholy", // Replace with your actual profiles
+			"https://github.com/tsirimaholy",
 			"https://linkedin.com/in/tsirimaholy",
-			"https://x.com/tsirimaholy"
+			"https://x.com/tsirimaholy",
 		],
 		knowsAbout: [
 			"Django",
 			"JavaScript",
 			"TypeScript",
 			"React",
+			"React Native",
+			"Spring Boot",
+			"PostgreSQL",
+			"AWS",
+			"Docker",
 			"Node.js",
 			"Full Stack Development",
 			"Web Development",
-			"Software Engineering"
+			"Software Engineering",
 		],
 		alumniOf: {
 			"@type": "Organization",
-			name: "HEI - Haute Ecole d'Informatique"
+			name: "HEI - Haute Ecole d'Informatique",
 		},
 		workLocation: {
 			"@type": "Place",
-			name: "Antananarivo, Madagascar"
-		}
+			name: "Antananarivo, Madagascar",
+		},
+		worksFor: {
+			"@type": "Organization",
+			name: "Aligneurs Français",
+			url: "https://www.aligneursfrancais.com/",
+		},
 	};
 
 	const structuredData = generatePersonStructuredData(personData);
 
-// Add preload links for critical resources
-	const preloadLinks = [
-		// Preload critical font (self-hosted)
-		{ rel: "preload", href: "/fonts/inter-var.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
-		// Note: Avoid preloading large images unless proven critical; Lighthouse flags unused preloads.
-	];
-
-	return [...metaTags, ...preloadLinks, structuredData];
+	return [...metaTags, structuredData];
 };
 
 export const action = async ({ request }: Route.ActionArgs) => {
@@ -138,7 +138,10 @@ export const action = async ({ request }: Route.ActionArgs) => {
 		}
 	}
 
-	return data({ success: false, message: "Unsupported action." }, { status: 400 });
+	return data(
+		{ success: false, message: "Unsupported action." },
+		{ status: 400 },
+	);
 };
 
 export default function HomePage(_props: Route.ComponentProps) {
@@ -166,8 +169,6 @@ export default function HomePage(_props: Route.ComponentProps) {
 			>
 				Skip to main content
 			</a>
-
-			<Navbar />
 
 			<div id="main-content">
 				<Hero />

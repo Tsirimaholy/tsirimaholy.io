@@ -18,7 +18,10 @@ export interface SEOConfig {
 type MetaTag =
 	| { title: string }
 	| { name: string; content: string }
-	| { property: string; content: string };
+	| { property: string; content: string }
+	| { tagName: "link"; rel: string; href: string };
+
+export const SITE_URL = "https://tsirimaholy.vercel.app";
 
 export interface StructuredDataPerson {
 	name: string;
@@ -35,6 +38,11 @@ export interface StructuredDataPerson {
 	workLocation?: {
 		"@type": "Place";
 		name: string;
+	};
+	worksFor?: {
+		"@type": "Organization";
+		name: string;
+		url: string;
 	};
 }
 
@@ -84,7 +92,6 @@ export function generateMetaTags(config: SEOConfig) {
 	const metaTags: MetaTag[] = [
 		{ title },
 		{ name: "description", content: description },
-		{ name: "viewport", content: "width=device-width, initial-scale=1.0" },
 		{ name: "theme-color", content: "#3b82f6" },
 	];
 
@@ -100,14 +107,14 @@ export function generateMetaTags(config: SEOConfig) {
 
 	// Robots meta tag
 	if (noIndex) {
-		metaTags.push({ name: "robots", content: "noindex, nofollow" });
+		metaTags.push({ name: "robots", content: "noindex, follow" });
 	} else {
 		metaTags.push({ name: "robots", content: "index, follow" });
 	}
 
 	// Canonical URL
 	if (url) {
-		metaTags.push({ name: "canonical", content: url });
+		metaTags.push({ tagName: "link", rel: "canonical", href: url });
 	}
 
 	// Open Graph tags
@@ -116,7 +123,7 @@ export function generateMetaTags(config: SEOConfig) {
 		{ property: "og:title", content: title },
 		{ property: "og:description", content: description },
 		{ property: "og:site_name", content: siteName },
-		{ property: "og:locale", content: locale }
+		{ property: "og:locale", content: locale },
 	);
 
 	if (url) {
@@ -128,17 +135,23 @@ export function generateMetaTags(config: SEOConfig) {
 			{ property: "og:image", content: image },
 			{ property: "og:image:width", content: "1200" },
 			{ property: "og:image:height", content: "630" },
-			{ property: "og:image:alt", content: imageAlt || title }
+			{ property: "og:image:alt", content: imageAlt || title },
 		);
 	}
 
 	// Article-specific Open Graph tags
 	if (type === "article") {
 		if (publishedTime) {
-			metaTags.push({ property: "article:published_time", content: publishedTime });
+			metaTags.push({
+				property: "article:published_time",
+				content: publishedTime,
+			});
 		}
 		if (modifiedTime) {
-			metaTags.push({ property: "article:modified_time", content: modifiedTime });
+			metaTags.push({
+				property: "article:modified_time",
+				content: modifiedTime,
+			});
 		}
 		if (author) {
 			metaTags.push({ property: "article:author", content: author });
@@ -149,29 +162,22 @@ export function generateMetaTags(config: SEOConfig) {
 	metaTags.push(
 		{ name: "twitter:card", content: "summary_large_image" },
 		{ name: "twitter:title", content: title },
-		{ name: "twitter:description", content: description }
+		{ name: "twitter:description", content: description },
 	);
 
 	if (image) {
 		metaTags.push(
 			{ name: "twitter:image", content: image },
-			{ name: "twitter:image:alt", content: imageAlt || title }
+			{ name: "twitter:image:alt", content: imageAlt || title },
 		);
 	}
 
 	if (twitterHandle) {
 		metaTags.push(
 			{ name: "twitter:creator", content: twitterHandle },
-			{ name: "twitter:site", content: twitterHandle }
+			{ name: "twitter:site", content: twitterHandle },
 		);
 	}
-
-	// Additional SEO tags
-	metaTags.push(
-		{ name: "revisit-after", content: "7 days" },
-		{ name: "rating", content: "general" },
-		{ name: "distribution", content: "global" }
-	);
 
 	return metaTags;
 }
@@ -205,7 +211,11 @@ export function generateArticleStructuredData(data: StructuredDataArticle) {
 /**
  * Generate structured data for a website
  */
-export function generateWebsiteStructuredData(name: string, url: string, description: string) {
+export function generateWebsiteStructuredData(
+	name: string,
+	url: string,
+	description: string,
+) {
 	return {
 		"script:ld+json": {
 			"@context": "https://schema.org",
@@ -225,7 +235,9 @@ export function generateWebsiteStructuredData(name: string, url: string, descrip
 /**
  * Generate breadcrumb structured data
  */
-export function generateBreadcrumbStructuredData(items: Array<{ name: string; url: string }>) {
+export function generateBreadcrumbStructuredData(
+	items: Array<{ name: string; url: string }>,
+) {
 	return {
 		"script:ld+json": {
 			"@context": "https://schema.org",
@@ -262,20 +274,26 @@ export function generateCanonicalUrl(baseUrl: string, path: string): string {
 /**
  * Sanitize and truncate description for meta tags
  */
-export function sanitizeDescription(description: string, maxLength = 160): string {
+export function sanitizeDescription(
+	description: string,
+	maxLength = 160,
+): string {
 	// Remove HTML tags and extra whitespace
-	const cleaned = description.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
-	
+	const cleaned = description
+		.replace(/<[^>]*>/g, "")
+		.replace(/\s+/g, " ")
+		.trim();
+
 	// Truncate if necessary
 	if (cleaned.length <= maxLength) {
 		return cleaned;
 	}
-	
+
 	// Find the last complete word within the limit
 	const truncated = cleaned.substring(0, maxLength);
 	const lastSpaceIndex = truncated.lastIndexOf(" ");
-	
-	return lastSpaceIndex > 0 
+
+	return lastSpaceIndex > 0
 		? `${truncated.substring(0, lastSpaceIndex)}...`
 		: `${truncated}...`;
 }
@@ -283,16 +301,20 @@ export function sanitizeDescription(description: string, maxLength = 160): strin
 /**
  * Generate image URL with proper fallback
  */
-export function generateImageUrl(baseUrl: string, imagePath?: string, fallback = "/og-image.jpg"): string {
+export function generateImageUrl(
+	baseUrl: string,
+	imagePath?: string,
+	fallback = "/og-image.jpg",
+): string {
 	if (!imagePath) {
 		return `${baseUrl}${fallback}`;
 	}
-	
+
 	// If imagePath is already a full URL, return as is
 	if (imagePath.startsWith("http")) {
 		return imagePath;
 	}
-	
+
 	// Ensure path starts with /
 	const cleanPath = imagePath.startsWith("/") ? imagePath : `/${imagePath}`;
 	return `${baseUrl}${cleanPath}`;
@@ -302,21 +324,21 @@ export function generateImageUrl(baseUrl: string, imagePath?: string, fallback =
  * Default SEO configuration for the portfolio
  */
 export const DEFAULT_SEO_CONFIG: Partial<SEOConfig> = {
-	siteName: "Tsirimaholy Portfolio",
+	siteName: "Tsirimaholy Harison Razanapanala",
 	locale: "en_US",
 	type: "website",
-	author: "Tsirimaholy",
+	author: "Tsirimaholy Harison Razanapanala",
 	twitterHandle: "@tsirimaholy",
 	keywords: [
-		"fullstack developer",
-		"react developer",
-		"nodejs",
-		"typescript",
-		"web development",
-		"software engineer",
-		"portfolio",
-		"javascript",
-		"frontend",
-		"backend",
+		"senior full-stack developer",
+		"freelance developer",
+		"MVP development",
+		"React developer",
+		"Django developer",
+		"Spring Boot developer",
+		"TypeScript",
+		"PostgreSQL",
+		"AWS",
+		"Madagascar developer",
 	],
 };
