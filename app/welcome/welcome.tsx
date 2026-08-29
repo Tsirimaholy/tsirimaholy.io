@@ -1,75 +1,31 @@
-import { useState } from "react";
-import type { BlogItemProps } from "~/components/BlogItem";
-import BlogItem from "~/components/BlogItem";
-import { Input } from "~/components/ui/input";
+import { ArrowLeft, PenLine } from "lucide-react";
+import { Link } from "react-router";
+import { Button } from "~/components/ui/button";
 
-const blogs: BlogItemProps[] = [
-	{
-		title: "Simplicity is the ultimate sophistication",
-		summary: `
-    Simplicity is the ultimate sophistication. - Leonardo da Vinci`,
-		publishedAt: new Date("2023-01-01"),
-		readDuration: 5,
-	},
-	{
-		title: "Title1",
-		summary: `
-      loremDesciption Lorem ipsum dolor sit amet,
-                      consectetur
-                      adipisicing elit. Eaque earum nemo obcaecati pariatur quo recusandae sed veritatis!
-                      Accusantium
-                      atque consectetur debitis, dolor et ex harum quia sit soluta ut! Commodi`,
-		publishedAt: new Date("2023-01-01"),
-		readDuration: 5,
-	},
-];
 export function Welcome() {
-	const [searchTerm, setSearchTerm] = useState("");
-	const filteredBlog = blogs.filter((b) => b.summary.includes(searchTerm));
 	return (
-		<main className="pt-16 pb-4 relative">
-			<header className="text-center flex flex-col items-center px-6">
-				<h1 className={"text-6xl font-bold mt-4 mb-2"}>
-					Blog{" "}
-					<span className="text-xs bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 py-1 rounded-full ml-3 font-medium">
-						Coming Soon
-					</span>
-				</h1>
-				<p className="text-muted-foreground text-center text-lg w-1/2">
-					Insights into my journey as a developer and
-					<span className="text-blue-500 font-bold">
-						{" "}
-						my thoughts & opinions
-					</span>{" "}
-					on various topics. Join me on this journey of thought and ideas. Let's
-					explore together!
+		<main className="flex min-h-[80vh] items-center justify-center px-6 pt-24 pb-12">
+			<div className="max-w-xl text-center">
+				<div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+					<PenLine className="h-8 w-8" />
+				</div>
+				<p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+					Writing in progress
 				</p>
-				<Input
-					placeholder={"Search blogs..."}
-					className={"md:w-1/3 justify-self-center mt-4"}
-					type={"search"}
-					onChange={(e) => setSearchTerm(e.currentTarget.value)}
-				/>
-			</header>
-			<section
-				className={
-					"p-10 flex justify-center items-center gap-5 flex-col opacity-50"
-				}
-			>
-				{filteredBlog.length > 0 ? (
-					filteredBlog.map((blog) => (
-						<BlogItem
-							key={blog.title}
-							title={blog.title}
-							summary={blog.summary}
-							publishedAt={blog.publishedAt}
-							readDuration={blog.readDuration}
-						/>
-					))
-				) : (
-					<h1 className="text-2xl text-muted-foreground">No blog found</h1>
-				)}
-			</section>
+				<h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
+					Engineering notes are coming soon
+				</h1>
+				<p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+					I am preparing practical articles about building MVPs, improving
+					Django performance, and shipping reliable products.
+				</p>
+				<Button asChild variant="outline" className="mt-8">
+					<Link to="/#projects">
+						<ArrowLeft className="h-4 w-4" />
+						Explore my projects
+					</Link>
+				</Button>
+			</div>
 		</main>
 	);
 }
