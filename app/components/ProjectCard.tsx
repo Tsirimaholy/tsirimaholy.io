@@ -30,10 +30,14 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 					loading="lazy"
 					src={project.image}
 					alt={project.title}
-					className="w-full h-auto object-cover transition-transform duration-300 group-hover:rotate-x-15 group-hover:rotate-y-20 group-hover:scale-110"
+					width="640"
+					height="384"
+					className="w-full h-full object-cover transition-transform duration-300 group-hover:rotate-x-15 group-hover:rotate-y-20 group-hover:scale-110"
 				/>
 				<div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-					<h3 className="text-white text-lg font-semibold">{project.title}</h3>
+					<span aria-hidden="true" className="text-white text-lg font-semibold">
+						{project.title}
+					</span>
 				</div>
 			</button>
 

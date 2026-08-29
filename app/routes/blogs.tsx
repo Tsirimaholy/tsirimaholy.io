@@ -8,6 +8,8 @@ export function meta(_args: Route.MetaArgs) {
 		description:
 			"Engineering notes and product development lessons from Tsirimaholy. Articles are coming soon.",
 		url: `${SITE_URL}/blog`,
+		image: `${SITE_URL}/og-image.jpg`,
+		imageAlt: "Tsirimaholy Harison Razanapanala, Senior Full-Stack Developer",
 		noIndex: true,
 	});
 }

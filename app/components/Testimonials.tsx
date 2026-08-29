@@ -135,6 +135,8 @@ function Avatar({ src, alt }: { src?: string; alt: string }) {
 				alt={alt}
 				loading="lazy"
 				decoding="async"
+				width="40"
+				height="40"
 				className="w-10 h-10 shrink-0 rounded-full object-cover"
 			/>
 		);

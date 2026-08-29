@@ -94,7 +94,7 @@ export function Service() {
 					}}
 				>
 					{services.map((service) => (
-						<motion.div
+						<motion.article
 							key={service.title}
 							className={`relative flex flex-col gap-4 overflow-hidden rounded-2xl border-2 border-gray-100 bg-white p-6 shadow-sketchy-lg group transition-colors before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1.5 before:opacity-30 before:transition-opacity before:duration-300 group-hover:before:opacity-100 ${service.bar}`}
 							variants={{
@@ -109,15 +109,15 @@ export function Service() {
 							>
 								{service.icon}
 							</span>
-							<span
+							<h3
 								className={`relative pb-1 font-bold text-2xl text-gray-900 font-shadow-into-light after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-1 after:w-0 after:rounded-full after:transition-all after:duration-300 group-hover:after:w-full ${service.underline}`}
 							>
 								{service.title}
-							</span>
-							<span className="text-base text-gray-500 leading-relaxed">
+							</h3>
+							<p className="text-base text-gray-500 leading-relaxed">
 								{service.description}
-							</span>
-						</motion.div>
+							</p>
+						</motion.article>
 					))}
 
 					{/* CTA card filling the last grid slot */}
@@ -134,9 +134,9 @@ export function Service() {
 						<span className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
 							<Sparkles className="h-7 w-7" />
 						</span>
-						<span className="font-bold text-2xl text-gray-900 font-shadow-into-light">
+						<h3 className="font-bold text-2xl text-gray-900 font-shadow-into-light">
 							Something else in mind?
-						</span>
+						</h3>
 						<span className="inline-flex items-center gap-2 text-base font-medium text-primary">
 							Let's talk about it
 							<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

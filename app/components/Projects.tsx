@@ -267,9 +267,9 @@ export function Projects() {
 							/>
 						))
 					) : (
-						<h1 className="text-muted-foreground text-xl font-bold text-center self-center">
+						<output className="text-muted-foreground text-xl font-bold text-center self-center">
 							No projects match this filter yet.
-						</h1>
+						</output>
 					)}
 				</motion.div>
 			</div>

@@ -14,7 +14,7 @@ import "./app.css";
 
 export const links: Route.LinksFunction = () => [
 	// Favicon links
-	{ rel: "icon", href: "/favicon.ico", sizes: "any", type: "image/png" },
+	{ rel: "icon", href: "/favicon.ico", sizes: "any", type: "image/x-icon" },
 	// { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
 	{ rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
 	{
@@ -82,14 +82,18 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 	}
 
 	return (
-		<main className="pt-16 p-4 container mx-auto">
-			<h1>{message}</h1>
-			<p>{details}</p>
-			{stack && (
-				<pre className="w-full p-4 overflow-x-auto">
-					<code>{stack}</code>
-				</pre>
-			)}
-		</main>
+		<>
+			<title>{message} | Tsirimaholy Harison Razanapanala</title>
+			<meta name="robots" content="noindex, nofollow" />
+			<main className="pt-16 p-4 container mx-auto">
+				<h1>{message}</h1>
+				<p>{details}</p>
+				{stack && (
+					<pre className="w-full p-4 overflow-x-auto">
+						<code>{stack}</code>
+					</pre>
+				)}
+			</main>
+		</>
 	);
 }

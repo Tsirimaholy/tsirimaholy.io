@@ -56,7 +56,7 @@ export const meta: MetaFunction = () => {
 	const metaTags = generateMetaTags({
 		title,
 		description,
-		url: SITE_URL,
+		url: `${SITE_URL}/`,
 		image,
 		imageAlt: "Tsirimaholy - Fullstack Developer Portfolio",
 		...DEFAULT_SEO_CONFIG,
@@ -67,7 +67,7 @@ export const meta: MetaFunction = () => {
 		name: "Tsirimaholy Harison Razanapanala",
 		jobTitle: "Senior Full-Stack Developer",
 		description,
-		url: SITE_URL,
+		url: `${SITE_URL}/`,
 		image: `${SITE_URL}/tsirimaholy.webp`,
 		sameAs: [
 			"https://github.com/tsirimaholy",

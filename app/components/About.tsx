@@ -107,7 +107,10 @@ export function About() {
 				<motion.img
 					src="/path-to-there.svg"
 					alt=""
-					sizes=""
+					loading="lazy"
+					decoding="async"
+					width="850"
+					height="482"
 					className="border-2 w-[50%] mx-auto mb-10 rounded-lg shadow-lg"
 					initial={{
 						opacity: 0,
