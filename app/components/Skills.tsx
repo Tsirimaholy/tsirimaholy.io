@@ -7,210 +7,177 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 
+const categories = [
+	{
+		number: "01",
+		title: "Frontend",
+		description: "Interfaces that stay fast and clear on web and mobile.",
+		icon: MonitorSmartphone,
+		accent: "bg-blue-500",
+		iconStyle: "bg-blue-50 text-blue-600 ring-blue-100",
+		skills: [
+			"React",
+			"React Native",
+			"TypeScript",
+			"Next.js",
+			"React Router v7",
+			"Tailwind CSS",
+			"JavaScript",
+		],
+	},
+	{
+		number: "02",
+		title: "Backend & Data",
+		description:
+			"APIs, business logic, queues, and databases built for real workloads.",
+		icon: Server,
+		accent: "bg-green-500",
+		iconStyle: "bg-green-50 text-green-600 ring-green-100",
+		skills: [
+			"Django",
+			"Django REST Framework",
+			"Spring Boot",
+			"Node.js",
+			"PostgreSQL",
+			"Redis",
+			"Celery",
+			"WebSockets",
+			"REST APIs",
+		],
+	},
+	{
+		number: "03",
+		title: "DevOps & Infrastructure",
+		description:
+			"Repeatable deployments, monitoring, and hands-on production ownership.",
+		icon: Cloud,
+		accent: "bg-orange-500",
+		iconStyle: "bg-orange-50 text-orange-600 ring-orange-100",
+		skills: [
+			"Docker",
+			"AWS",
+			"Elastic Beanstalk",
+			"CI/CD",
+			"GitHub Actions",
+			"Linux",
+			"Sentry",
+			"OVH",
+		],
+	},
+	{
+		number: "04",
+		title: "Engineering Practices",
+		description:
+			"Habits that keep delivery fast without leaving a maintenance mess.",
+		icon: Layers,
+		accent: "bg-purple-500",
+		iconStyle: "bg-purple-50 text-purple-600 ring-purple-100",
+		skills: [
+			"API Design",
+			"SQL Optimization",
+			"N+1 Profiling",
+			"Caching",
+			"Testing",
+			"Code Reviews",
+			"System Design",
+			"Documentation",
+		],
+	},
+];
+
+const container = {
+	hidden: {},
+	show: { transition: { staggerChildren: 0.12 } },
+};
+
+const item = {
+	hidden: { opacity: 0, y: 20 },
+	show: { opacity: 1, y: 0 },
+};
+
 export function Skills() {
 	return (
-		<section className="relative py-16" id="skills">
-			<div className="container mx-auto max-w-5xl px-6">
-				{/* Header */}
+		<section className="relative bg-white py-24" id="skills">
+			<div className="container mx-auto max-w-6xl px-6">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.5 }}
-					className="text-center mb-12"
+					className="mx-auto mb-14 max-w-2xl text-center"
+					id="skills-expertise"
 				>
-					<div
-						className="flex items-center justify-center mb-4"
-						id="skills-expertise"
-					>
-						<motion.div
-							initial={{ scale: 0 }}
-							whileInView={{ scale: 1 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5, type: "spring" }}
-							className="p-3 bg-gray-200 rounded-full sketchy-border-sm"
-						>
-							<BrainCircuit className="h-7 w-7 text-gray-700" />
-						</motion.div>
+					<div className="mb-5 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sketchy-sm">
+						<BrainCircuit className="h-4 w-4 text-primary" />
+						Production toolkit
 					</div>
-					<h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900 font-shadow-into-light">
-						Skills & Expertise
+					<h2 className="text-4xl font-bold tracking-tight text-gray-900 font-shadow-into-light sm:text-5xl">
+						Tools I trust in production
 					</h2>
-					<p className="text-gray-600 mt-2">
-						A comprehensive overview of my technical abilities and proficiency
-						across different domains.
+					<p className="mt-4 text-lg leading-relaxed text-gray-600">
+						A focused toolkit built through real products in fintech, ERP,
+						health tech, and SaaS.
 					</p>
 				</motion.div>
 
-				{/* Skill Categories */}
-				<div className="grid gap-8 md:grid-cols-2">
-					{/* Frontend */}
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5 }}
-						className="p-6 rounded-lg border-2 border-dashed border-blue-400 bg-white shadow-sketchy-lg"
-					>
-						<div className="flex items-center gap-4 mb-4">
-							<div className="p-3 rounded-full bg-blue-200 border-2 border-dashed border-blue-400">
-								<MonitorSmartphone className="h-8 w-8 text-blue-600" />
-							</div>
-							<h3
-								className="text-xl font-semibold text-blue-800"
-								style={{ fontFamily: "'Shadows Into Light', cursive" }}
+				<motion.div
+					className="grid items-start gap-6 md:grid-cols-2"
+					initial="hidden"
+					whileInView="show"
+					viewport={{ once: true, amount: 0.15 }}
+					variants={container}
+				>
+					{categories.map((category) => {
+						const Icon = category.icon;
+						return (
+							<motion.article
+								key={category.title}
+								variants={item}
+								whileHover={{ y: -4 }}
+								transition={{ type: "spring", stiffness: 300, damping: 28 }}
+								className="group relative self-start overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sketchy-md transition-shadow hover:shadow-sketchy-lg"
 							>
-								Frontend
-							</h3>
-						</div>
-						<p className="text-sm text-blue-700 mb-4">
-							Creating responsive and interactive user interfaces.
-						</p>
-						<div className="flex flex-wrap gap-3">
-							{[
-								"React",
-								"React Native",
-								"TypeScript",
-								"Next.js",
-								"Remix(rrv7)",
-								"Tailwind CSS",
-								"CSS3",
-								"JavaScript",
-							].map((skill) => (
-								<span
-									key={skill}
-									className="px-4 py-2 text-sm font-medium text-blue-800 bg-white border-2 border-dashed border-blue-200 rounded-lg hover:shadow-md transition-shadow shadow-sketchy-sm"
-								>
-									{skill}
-								</span>
-							))}
-						</div>
-					</motion.div>
+								<div
+									className={`absolute inset-x-0 top-0 h-1 ${category.accent}`}
+								/>
+								<div className="flex items-start justify-between gap-4">
+									<div className="flex min-w-0 items-start gap-4">
+										<div
+											className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ring-1 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 ${category.iconStyle}`}
+										>
+											<Icon className="h-6 w-6" />
+										</div>
+										<div className="min-w-0">
+											<h3 className="text-xl font-bold text-gray-900">
+												{category.title}
+											</h3>
+											<p className="mt-1 text-sm leading-relaxed text-gray-500">
+												{category.description}
+											</p>
+										</div>
+									</div>
+									<span className="shrink-0 font-mono text-3xl font-bold text-gray-200">
+										{category.number}
+									</span>
+								</div>
 
-					{/* Backend */}
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5 }}
-						className="p-6 rounded-lg border-2 border-dashed border-green-400 bg-white shadow-sketchy-lg"
-					>
-						<div className="flex items-center gap-4 mb-4">
-							<div className="p-3 rounded-full bg-green-200 border-2 border-dashed border-green-400">
-								<Server className="h-8 w-8 text-green-600" />
-							</div>
-							<h3
-								className="text-xl font-semibold text-green-800"
-								style={{ fontFamily: "'Shadows Into Light', cursive" }}
-							>
-								Backend
-							</h3>
-						</div>
-						<p className="text-sm text-green-700 mb-4">
-							Building robust server-side applications and APIs.
-						</p>
-						<div className="flex flex-wrap gap-3">
-							{[
-								"Django",
-								"Spring Boot",
-								"Python - DRF",
-								"Node.js",
-								"Express",
-								"PostgreSQL",
-								"MySQL",
-								"Prisma",
-								"REST APIs",
-							].map((skill) => (
-								<span
-									key={skill}
-									className="px-4 py-2 text-sm font-medium text-green-800 bg-white border-2 border-dashed border-green-200 rounded-lg hover:shadow-md transition-shadow shadow-sketchy-sm"
-								>
-									{skill}
-								</span>
-							))}
-						</div>
-					</motion.div>
-
-					{/* DevOps & Infrastructure */}
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5 }}
-						className="p-6 rounded-lg border-2 border-dashed border-orange-400 bg-white shadow-sketchy-lg"
-					>
-						<div className="flex items-center gap-4 mb-4">
-							<div className="p-3 rounded-full bg-orange-200 border-2 border-dashed border-orange-400">
-								<Cloud className="h-8 w-8 text-orange-600" />
-							</div>
-							<h3 className="text-xl font-semibold text-orange-800 font-shadow-into-light">
-								DevOps & Infrastructure
-							</h3>
-						</div>
-						<p className="text-sm text-orange-700 mb-4">
-							Deployment, automation, and infrastructure management.
-						</p>
-						<div className="flex flex-wrap gap-3">
-							{[
-								"Git",
-								"Docker",
-								"AWS",
-								"Linux",
-								"CI/CD Pipelines",
-								"Shell Scripting",
-							].map((skill) => (
-								<span
-									key={skill}
-									className="px-4 py-2 text-sm font-medium text-orange-800 bg-white border-2 border-dashed border-orange-200 rounded-lg hover:shadow-md transition-shadow shadow-sketchy-sm"
-								>
-									{skill}
-								</span>
-							))}
-						</div>
-					</motion.div>
-
-					{/* Development Practices */}
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5 }}
-						className="p-6 rounded-lg border-2 border-dashed border-purple-400 bg-white shadow-sketchy-lg"
-					>
-						<div className="flex items-center gap-4 mb-4">
-							<div className="p-3 rounded-full bg-purple-200 border-2 border-dashed border-purple-400">
-								<Layers className="h-8 w-8 text-purple-600" />
-							</div>
-							<h3
-								className="text-xl font-semibold text-purple-800"
-								style={{ fontFamily: "'Shadows Into Light', cursive" }}
-							>
-								Development Practices
-							</h3>
-						</div>
-						<p className="text-sm text-purple-700 mb-4">
-							Methodologies, practices, and approaches to software development.
-						</p>
-						<div className="flex flex-wrap gap-3">
-							{[
-								"Agile/Scrum",
-								"Test-Driven Development",
-								"Code Reviews",
-								"API Design",
-								"System Design",
-								"Documentation",
-								"Pair Programming",
-							].map((practice) => (
-								<span
-									key={practice}
-									className="px-4 py-2 text-sm font-medium text-purple-800 bg-white border-2 border-dashed border-purple-200 rounded-lg hover:shadow-md transition-shadow shadow-sketchy-sm"
-								>
-									{practice}
-								</span>
-							))}
-						</div>
-					</motion.div>
-				</div>
+								<div className="mt-6 flex flex-wrap gap-2">
+									{category.skills.map((skill) => (
+										<span
+											key={skill}
+											className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:bg-white"
+										>
+											<span
+												className={`h-1.5 w-1.5 rounded-full ${category.accent}`}
+											/>
+											{skill}
+										</span>
+									))}
+								</div>
+							</motion.article>
+						);
+					})}
+				</motion.div>
 			</div>
 		</section>
 	);
