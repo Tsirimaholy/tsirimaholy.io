@@ -168,7 +168,7 @@ export function Navbar() {
 										setIsMenuOpen(false);
 									}}
 								>
-									Let's talk
+									Start a project
 								</NavLink>
 							</li>
 						</ul>
@@ -177,7 +177,7 @@ export function Navbar() {
 				<Button asChild className="hidden md:block">
 					<Link key={"talk-to-me"} to={`${href("/")}#contact`}>
 						<div className="size-2 bg-white rounded-full inline-block mr-2"></div>
-						<strong>Let's talk</strong>
+						<strong>Start a project</strong>
 					</Link>
 				</Button>
 			</nav>

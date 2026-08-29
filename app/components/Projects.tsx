@@ -45,7 +45,7 @@ export function Projects() {
 			liveUrl: "https://praticiens.aligneursfrancais.com/notre-logiciel/",
 			githubUrl: "",
 			detailedDescription:
-				"Senior Fullstack Developer at Aligneurs Français, a French health-tech company crafting invisible dental aligners made in France. I build and improve AF Setup, the web and mobile platform (iOS/Android) that dentists and orthodontists use to manage their patients' aligner treatments end to end, and AF Academy, the e-learning platform for practitioners.",
+				"Full-Stack Developer at Aligneurs Français, a French health-tech company crafting invisible dental aligners made in France. I build and improve AF Setup, the web and mobile platform (iOS/Android) that dentists and orthodontists use to manage their patients' aligner treatments end to end, and AF Academy, the e-learning platform for practitioners.",
 			features: [
 				"Patient and treatment management with follow-up tracking",
 				"3D visualization of dental setups",

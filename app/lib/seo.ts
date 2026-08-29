@@ -330,7 +330,7 @@ export const DEFAULT_SEO_CONFIG: Partial<SEOConfig> = {
 	author: "Tsirimaholy Harison Razanapanala",
 	twitterHandle: "@tsirimaholy",
 	keywords: [
-		"senior full-stack developer",
+		"full-stack developer",
 		"freelance developer",
 		"MVP development",
 		"React developer",

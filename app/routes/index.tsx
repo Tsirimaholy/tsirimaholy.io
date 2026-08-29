@@ -46,10 +46,9 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
 };
 
 export const meta: MetaFunction = () => {
-	const title =
-		"Tsirimaholy Harison Razanapanala | Senior Full-Stack Developer";
+	const title = "Tsirimaholy Harison Razanapanala | Full-Stack Developer";
 	const description =
-		"Senior Full-Stack Developer helping startups build MVPs and improve web and mobile products with React, Django, Spring Boot, AWS, and PostgreSQL.";
+		"Full-Stack Developer helping startups launch MVPs, improve web and mobile products, and solve performance problems with React, Django, Spring Boot, and AWS.";
 	const image = `${SITE_URL}/og-image.jpg`;
 
 	// Generate base meta tags
@@ -65,7 +64,7 @@ export const meta: MetaFunction = () => {
 	// Generate structured data for person
 	const personData: StructuredDataPerson = {
 		name: "Tsirimaholy Harison Razanapanala",
-		jobTitle: "Senior Full-Stack Developer",
+		jobTitle: "Full-Stack Developer",
 		description,
 		url: `${SITE_URL}/`,
 		image: `${SITE_URL}/tsirimaholy.webp`,

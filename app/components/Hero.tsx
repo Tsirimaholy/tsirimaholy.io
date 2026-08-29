@@ -4,14 +4,25 @@ import {
 	FileDown,
 	Github,
 	Linkedin,
-	Mail,
 	MousePointer2,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
+
+const contacts = [
+	{
+		href: "https://github.com/Tsirimaholy",
+		icon: Github,
+		label: "GitHub",
+	},
+	{
+		href: "https://linkedin.com/in/tsirimaholy",
+		icon: Linkedin,
+		label: "LinkedIn",
+	},
+];
 
 export function Hero() {
 	const [resumeMenuOpen, setResumeMenuOpen] = useState(false);
@@ -39,123 +50,74 @@ export function Hero() {
 			document.removeEventListener("keydown", onKey);
 		};
 	}, [resumeMenuOpen]);
-	const contacts = [
-		{
-			href: "https://github.com/Tsirimaholy",
-			icon: Github,
-			label: "GitHub",
-		},
-		{
-			href: "https://linkedin.com/in/tsirimaholy",
-			icon: Linkedin,
-			label: "LinkedIn",
-		},
-		{
-			href: "mailto:tsirimaholy.h@gmail.com",
-			icon: Mail,
-			label: "Email",
-		},
-		{
-			href: "https://x.com/tsirimaholy",
-			icon: FaXTwitter,
-			label: "X",
-		},
-	];
 	return (
 		<section
 			id="hero"
-			className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-24 md:pt-0"
+			className="relative flex min-h-[100svh] items-center overflow-hidden px-6 pt-28 pb-16 md:pt-32 md:pb-20"
 		>
-			{/* Animated gradient background */}
-			{/* <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/10 to-green-400/10 animate-gradient" /> */}
-
-			{/* Subtle animated circles */}
-			{/* <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-pulse" /> */}
-			{/* <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-green-500/20 blur-3xl animate-pulse delay-700" /> */}
-
-			<div className="relative flex flex-col-reverse md:flex-row items-center px-6">
-				{/* Text Content */}
+			<div
+				className="pointer-events-none absolute inset-0 opacity-40"
+				style={{
+					backgroundImage:
+						"radial-gradient(circle at center, rgb(148 163 184 / 0.22) 1px, transparent 1px)",
+					backgroundSize: "28px 28px",
+				}}
+			/>
+			<div className="relative mx-auto grid min-w-0 w-full max-w-6xl items-center gap-14 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-20">
 				<motion.div
 					initial={{ x: -20 }}
-					animate={{ opacity: 1, x: 0 }}
-					transition={{ duration: 0.3 }}
-					className="flex flex-col items-center md:items-start text-center md:text-left space-y-6"
+					animate={{ x: 0 }}
+					transition={{ duration: 0.45 }}
+					className="flex min-w-0 w-full flex-col items-center text-center lg:items-start lg:text-left"
 				>
-					<div className="relative">
-						<h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-shadow-into-light">
-							Hi, I'm <span>Tsirimaholy</span>
-						</h1>
-						<OportunitieOpeningBadge />
-					</div>
+					<AvailabilityBadge />
+					<h1 className="mt-6 max-w-full text-4xl font-extrabold leading-[0.95] tracking-[-0.055em] text-slate-950 font-shadow-into-light sm:text-6xl lg:text-7xl">
+						Hi, I'm <span className="block sm:inline">Tsirimaholy.</span>
+					</h1>
 
 					<motion.div
-						initial={{ opacity: 1, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
+						initial={{ y: 16 }}
+						animate={{ y: 0 }}
 						transition={{ duration: 0.6, delay: 0.2 }}
-						className="max-w-[600px] text-lg text-muted-foreground sm:text-xl"
+						className="mt-7 w-full max-w-2xl text-xl leading-relaxed text-slate-600 sm:text-2xl"
 					>
-						A passionate{" "}
 						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.6, delay: 1 }}
-							className="relative inline-block p-1 mr-2 border border-blue-400/20 bg-blue-400/10 rotate-4"
+							initial={{ rotate: -2 }}
+							animate={{ rotate: 1 }}
+							transition={{ duration: 0.45, delay: 0.55 }}
+							className="relative mx-auto mb-2 block w-fit border border-blue-300 bg-blue-50 px-2 py-0.5 text-slate-950 sm:mr-2 sm:mb-0 sm:inline-block"
 						>
 							<div className="absolute -top-0.5 -left-0.5 border-t-3 border-l-3 border-blue-400 w-3 h-3"></div>
 							<div className="absolute -bottom-0.5 -right-0.5 border-b-3 border-r-3 border-blue-400 w-3 h-3"></div>
 							<div className="absolute -top-0.5 -right-0.5 border-t-3 border-r-3 border-blue-400 w-3 h-3"></div>
 							<div className="absolute -bottom-0.5 -left-0.5 border-b-3 border-l-3 border-blue-400 w-3 h-3"></div>
-							<strong className="md:text-2xl decoration-2 text-black">
-								full-stack developer
-							</strong>{" "}
-							<MousePointer2 className="absolute right-0 text-black" />
+							<strong>Full-stack developer</strong>
+							<MousePointer2 className="absolute -right-3 -bottom-4 h-5 w-5 text-slate-950" />
 						</motion.div>
-						crafting beautiful and functional web experiences.
-						{/* <Pencil size={17} className="ml-1 inline animate-bounce [animation-duration:2s]" /> */}
+						building reliable web and mobile products.
 					</motion.div>
 
-					{/* Social Links */}
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, delay: 0.4 }}
-						className="flex gap-4"
-					>
-						{contacts.map(({ href, icon: Icon, label }) => (
-							<Button
-								key={href}
-								variant="outline"
-								size="icon"
-								className="shadow-2xl  hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 backdrop-blur-sm sketchy-border-sm shadow-sketchy-md"
-								asChild
-							>
-								<Link
-									to={href}
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label={label}
-								>
-									<Icon className="h-5 w-5" />
-								</Link>
-							</Button>
-						))}
-					</motion.div>
+					<p className="mt-5 w-full max-w-xl text-base leading-7 text-slate-600 sm:text-lg">
+						I help startups launch MVPs, improve existing platforms, and solve
+						performance problems with React, Django, Spring Boot, and AWS.
+					</p>
 
-					<div className="flex gap-4 mt-10">
+					<div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
 						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.6, delay: 0.6 }}
-							className="flex items-center gap-4"
+							initial={{ y: 20 }}
+							animate={{ y: 0 }}
+							transition={{ duration: 0.6, delay: 0.4 }}
+							className="flex flex-wrap items-center justify-center gap-3 lg:justify-start"
 						>
-							<Button asChild size="lg">
+							<Button asChild size="lg" className="shadow-sketchy-md">
 								<Link to="#contact">
-									Let's work together
+									Start a project
 									<ArrowDown className="animate-bounce" size={18} />
 								</Link>
 							</Button>
 							<div className="relative" ref={resumeMenuRef}>
 								<Button
+									size="lg"
 									variant="outline"
 									onClick={() => setResumeMenuOpen((open) => !open)}
 									aria-haspopup="menu"
@@ -195,11 +157,37 @@ export function Hero() {
 							</div>
 						</motion.div>
 					</div>
+
+					<motion.div
+						initial={{ y: 12 }}
+						animate={{ y: 0 }}
+						transition={{ duration: 0.6, delay: 0.55 }}
+						className="mt-7 flex items-center gap-5 text-sm font-medium text-slate-600"
+					>
+						<span className="text-slate-400">Find me on</span>
+						{contacts.map(({ href, icon: Icon, label }) => (
+							<Link
+								key={href}
+								to={href}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center gap-1.5 transition-colors hover:text-primary"
+							>
+								<Icon className="h-4 w-4" />
+								{label}
+							</Link>
+						))}
+					</motion.div>
 				</motion.div>
 
-				{/* Profile Photo */}
-				<div className="relative">
-					<div className="w-54 h-54 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-dashed border-gray-400 shadow-sketchy-lg">
+				<motion.div
+					initial={{ scale: 0.9, rotate: 3 }}
+					animate={{ scale: 1, rotate: 0 }}
+					transition={{ duration: 0.6, delay: 0.15, type: "spring" }}
+					className="relative mx-auto lg:col-start-2 lg:row-start-1"
+				>
+					<div className="absolute inset-3 rounded-full bg-amber-50" />
+					<div className="relative h-64 w-64 overflow-hidden rounded-full border-4 border-dashed border-slate-400 bg-amber-50 shadow-sketchy-lg md:h-72 md:w-72 lg:h-96 lg:w-96">
 						<img
 							src="/tsirimaholy.webp"
 							alt="Tsirimaholy Harison Razanapanala"
@@ -207,41 +195,26 @@ export function Hero() {
 							loading="eager"
 							fetchPriority="high"
 							decoding="async"
-							width="320"
-							height="320"
+							width="384"
+							height="384"
 						/>
 					</div>
-				</div>
+					<div className="absolute -right-3 bottom-8 -rotate-3 border-2 border-slate-900 bg-white px-4 py-2 text-sm font-bold text-slate-900 shadow-sketchy-md">
+						Web · Mobile · APIs
+					</div>
+				</motion.div>
 			</div>
 		</section>
 	);
 }
-function OportunitieOpeningBadge() {
+function AvailabilityBadge() {
 	return (
-		<>
-			<div className="text-sm inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-dashed border-green-500 font-medium bg-green-300/30 text-green-700">
-				{/* Round dot */}
-				<div className="relative border-green-600/70 bg-green-300 rounded-full manual-ping">
-					{/* <div className="absolute inset-0 rounded-full bg-green-300 manual-ping"></div> */}
-					<div className="size-1.5 bg-green-700 rounded-full z-10 m-0.5"></div>
-				</div>
-				Open to new projects
-			</div>
-			<style>{`
-  			@keyframes manual-ping {
-  				0% {
-  			    transform: scale(1);
-  					opacity: 1;
-  				}
-  				80%, 100% {
-  				  transform: scale(1.7);
-  					opacity: 0.5;
-  				}
-  			}
-  			.manual-ping {
-  				animation: manual-ping 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
-  			}
-			`}</style>
-		</>
+		<div className="inline-flex items-center gap-2 rounded-full border border-dashed border-green-500 bg-green-100/70 px-3 py-1.5 text-sm font-semibold text-green-700">
+			<span className="relative flex h-2.5 w-2.5">
+				<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-60" />
+				<span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-600" />
+			</span>
+			Open to new projects
+		</div>
 	);
 }
