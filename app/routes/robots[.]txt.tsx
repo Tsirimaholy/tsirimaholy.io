@@ -1,30 +1,11 @@
 import type { Route } from "./+types";
+import { SITE_URL } from "~/lib/seo";
 
-export const loader = async ({ request }: Route.LoaderArgs) => {
-	const url = new URL(request.url);
-	const origin = url.origin;
-
+export const loader = async (_args: Route.LoaderArgs) => {
 	const robotsTxt = `User-agent: *
 Allow: /
 
-# Important pages
-Allow: /blog
-Allow: /#about
-Allow: /#service
-Allow: /#skills
-Allow: /#projects
-Allow: /#testimonials
-Allow: /#contact
-
-# Block unnecessary pages (add any admin or private routes here)
-# Disallow: /admin
-# Disallow: /api
-
-# Sitemap location
-Sitemap: ${origin}/sitemap.xml
-
-# Crawl delay (optional - helps prevent overloading your server)
-Crawl-delay: 1`;
+Sitemap: ${SITE_URL}/sitemap.xml`;
 
 	return new Response(robotsTxt, {
 		status: 200,

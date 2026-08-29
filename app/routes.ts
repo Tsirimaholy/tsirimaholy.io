@@ -7,11 +7,10 @@ import {
 } from "@react-router/dev/routes";
 
 export default [
+	route("robots.txt", "routes/robots[.]txt.tsx"),
+	route("sitemap.xml", "routes/sitemap[.]xml.tsx"),
 	layout("routes/main-layout.tsx", [
 		index("routes/index.tsx"),
-		...prefix("blog", [
-			index("routes/blogs.tsx"),
-			route(":id", "routes/blog-details.tsx"),
-		]),
+		...prefix("blog", [index("routes/blogs.tsx")]),
 	]),
 ] satisfies RouteConfig;
