@@ -8,7 +8,7 @@ export function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState("hero");
 	const navRef = useRef<HTMLElement>(null);
-	const isBlogRoute = useMatch("/blog");
+	const isBlogRoute = useMatch("/blog/*");
 	const isAboutRoute = useMatch("/about");
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
@@ -90,7 +90,7 @@ export function Navbar() {
 											? href("/blog")
 											: nav.section === "about"
 												? href("/about")
-											: `${href("/")}#${nav.section}`
+												: `${href("/")}#${nav.section}`
 									}
 									className={({ isActive: isActivePage }) => {
 										return cn(

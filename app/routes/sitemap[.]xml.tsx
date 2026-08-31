@@ -19,6 +19,11 @@ export const loader = async (_args: Route.LoaderArgs) => {
 		<changefreq>monthly</changefreq>
 		<priority>0.6</priority>
 	</url>
+	<url>
+		<loc>${SITE_URL}/blog/django-n-plus-one-problem</loc>
+		<changefreq>yearly</changefreq>
+		<priority>0.7</priority>
+	</url>
 </urlset>`;
 
 	return new Response(sitemap, {

@@ -13,6 +13,12 @@ export default [
 	layout("routes/main-layout.tsx", [
 		index("routes/index.tsx"),
 		route("about", "routes/about.tsx"),
-		...prefix("blog", [index("routes/blogs.tsx")]),
+		...prefix("blog", [
+			index("routes/blogs.tsx"),
+			route(
+				"django-n-plus-one-problem",
+				"routes/django-n-plus-one-problem.tsx",
+			),
+		]),
 	]),
 ] satisfies RouteConfig;
