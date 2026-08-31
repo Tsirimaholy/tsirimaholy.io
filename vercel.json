@@ -1,0 +1,12 @@
+{
+  "headers": [
+    {
+      "source": "/resume-en.pdf",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    },
+    {
+      "source": "/resume-fr.pdf",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    }
+  ]
+}
