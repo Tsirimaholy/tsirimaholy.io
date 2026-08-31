@@ -89,8 +89,9 @@ export const meta: MetaFunction = () => {
 			"Software Engineering",
 		],
 		alumniOf: {
-			"@type": "Organization",
+			"@type": "CollegeOrUniversity",
 			name: "HEI - Haute Ecole d'Informatique",
+			url: "https://hei.school/",
 		},
 		workLocation: {
 			"@type": "Place",

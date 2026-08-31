@@ -11,6 +11,7 @@ export default [
 	route("sitemap.xml", "routes/sitemap[.]xml.tsx"),
 	layout("routes/main-layout.tsx", [
 		index("routes/index.tsx"),
+		route("about", "routes/about.tsx"),
 		...prefix("blog", [index("routes/blogs.tsx")]),
 	]),
 ] satisfies RouteConfig;

@@ -9,6 +9,7 @@ export function Navbar() {
 	const [activeSection, setActiveSection] = useState("hero");
 	const navRef = useRef<HTMLElement>(null);
 	const isBlogRoute = useMatch("/blog");
+	const isAboutRoute = useMatch("/about");
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
@@ -36,11 +37,13 @@ export function Navbar() {
 		// Handle navigation between blog and home page
 		if (isBlogRoute) {
 			setActiveSection("blog");
+		} else if (isAboutRoute) {
+			setActiveSection("about");
 		} else {
 			// When navigating back to home page, reset to hero section
 			setActiveSection("hero");
 		}
-	}, [isBlogRoute]);
+	}, [isAboutRoute, isBlogRoute]);
 
 	const navItems = [
 		{ section: "hero", textLabel: "Home" },
@@ -84,13 +87,15 @@ export function Navbar() {
 									to={
 										nav.section === "blog"
 											? href("/blog")
+											: nav.section === "about"
+												? href("/about")
 											: `${href("/")}#${nav.section}`
 									}
 									className={({ isActive: isActivePage }) => {
 										return cn(
 											"relative py-2 px-1 transition duration-300 ease-in-out capitalize",
 											`${
-												(isBlogRoute && isActivePage) ||
+												((isBlogRoute || isAboutRoute) && isActivePage) ||
 												activeSection === nav.section
 													? "text-primary font-bold"
 													: "text-gray-700 hover:text-primary"
@@ -120,7 +125,11 @@ export function Navbar() {
 							].map((section) => (
 								<li key={section} className="py-2">
 									<NavLink
-										to={`${href("/")}#${section}`}
+										to={
+											section === "about"
+												? href("/about")
+												: `${href("/")}#${section}`
+										}
 										className={({ isActive: isActivePage }) =>
 											`block px-2 py-2 transition duration-300 ${
 												isActivePage && activeSection === section

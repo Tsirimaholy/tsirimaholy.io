@@ -32,8 +32,9 @@ export interface StructuredDataPerson {
 	sameAs?: string[];
 	knowsAbout?: string[];
 	alumniOf?: {
-		"@type": "Organization";
+		"@type": "CollegeOrUniversity";
 		name: string;
+		url?: string;
 	};
 	workLocation?: {
 		"@type": "Place";
