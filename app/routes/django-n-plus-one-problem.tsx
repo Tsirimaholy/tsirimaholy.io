@@ -176,6 +176,19 @@ export default function DjangoNPlusOneArticle() {
 									load a collection, then runs another query for every item in
 									that collection to load related data.
 								</p>
+								<div className="my-8 rounded-xl border-l-4 border-primary bg-blue-50 p-5 text-blue-950">
+									<p className="font-semibold">The context</p>
+									<p className="mt-2 text-base leading-7">
+										Imagine a{" "}
+										<code className="rounded bg-white px-1.5 py-0.5 text-sm">
+											GET /api/users
+										</code>{" "}
+										endpoint that returns a directory. Each row needs the user’s
+										name, profile details, and assigned roles. Django first
+										loads the users, but the serializer then discovers that it
+										also needs two relationships for every row.
+									</p>
+								</div>
 
 								<div className="my-10 grid gap-4 sm:grid-cols-3">
 									<div className="rounded-xl border border-gray-200 p-5">
@@ -221,8 +234,89 @@ export default function DjangoNPlusOneArticle() {
 								</h2>
 								<p className="mt-5">
 									In a user-management API, each user had one profile and could
-									have multiple roles. The straightforward code looked harmless:
+									have multiple roles. This was the relationship being loaded:
 								</p>
+								<figure
+									aria-labelledby="relationship-schema-caption"
+									className="my-8 rounded-2xl border border-gray-200 bg-gray-50 p-5 md:p-8"
+								>
+									<figcaption
+										id="relationship-schema-caption"
+										className="mb-6 text-center text-sm font-semibold uppercase tracking-widest text-gray-500"
+									>
+										Simplified data model
+									</figcaption>
+									<div className="mx-auto max-w-lg">
+										<div className="mx-auto w-48 rounded-xl border-2 border-gray-950 bg-gray-950 p-4 text-center text-white shadow-md">
+											<Database
+												className="mx-auto mb-2 size-5 text-blue-400"
+												aria-hidden="true"
+											/>
+											<p className="font-mono text-base font-bold">User</p>
+											<p className="mt-1 text-xs text-gray-400">
+												id · name · email
+											</p>
+										</div>
+										<div
+											className="mx-auto h-7 w-px bg-gray-400"
+											aria-hidden="true"
+										/>
+										<div
+											className="mx-auto h-px w-1/2 bg-gray-400"
+											aria-hidden="true"
+										/>
+										<div className="grid grid-cols-2 gap-4">
+											<div className="relative pt-7">
+												<div
+													className="absolute left-1/2 top-0 h-7 w-px bg-gray-400"
+													aria-hidden="true"
+												/>
+												<div className="h-full rounded-xl border-2 border-blue-200 bg-white p-4 text-center">
+													<span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-bold text-blue-700">
+														1 : 1
+													</span>
+													<p className="mt-2 font-mono text-sm font-bold text-gray-950 md:text-base">
+														UserProfile
+													</p>
+													<p className="mt-1 text-xs text-gray-500">
+														phone · address
+													</p>
+												</div>
+											</div>
+											<div className="relative pt-7">
+												<div
+													className="absolute left-1/2 top-0 h-7 w-px bg-gray-400"
+													aria-hidden="true"
+												/>
+												<div className="h-full rounded-xl border-2 border-amber-200 bg-white p-4 text-center">
+													<span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-800">
+														1 : many
+													</span>
+													<p className="mt-2 font-mono text-sm font-bold text-gray-950 md:text-base">
+														Role
+													</p>
+													<p className="mt-1 text-xs text-gray-500">
+														name · permissions
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div className="mt-7 flex flex-wrap items-center justify-center gap-2 border-t border-gray-200 pt-5 font-mono text-xs text-gray-600 md:text-sm">
+										<span className="rounded bg-white px-2 py-1 shadow-sm">
+											1 query: users
+										</span>
+										<span aria-hidden="true">+</span>
+										<span className="rounded bg-red-50 px-2 py-1 text-red-700 shadow-sm">
+											N queries: profiles
+										</span>
+										<span aria-hidden="true">+</span>
+										<span className="rounded bg-red-50 px-2 py-1 text-red-700 shadow-sm">
+											N queries: roles
+										</span>
+									</div>
+								</figure>
+								<p>The straightforward code looked harmless:</p>
 								<CodeBlock label="views.py — before optimization">{`users = User.objects.all()
 
 for user in users:
