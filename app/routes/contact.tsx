@@ -1,6 +1,11 @@
-import type { ActionFunctionArgs } from "react-router";
-import { data } from "react-router";
+import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
+import { data, redirect } from "react-router";
 import { sendEmail } from "~/lib/email";
+
+export async function loader(_args: LoaderFunctionArgs) {
+	// /contact only handles POST submissions; direct visits go to the contact section
+	return redirect("/#contact");
+}
 
 export async function action({ request }: ActionFunctionArgs) {
 	const formData = await request.formData();
