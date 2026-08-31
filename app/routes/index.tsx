@@ -70,7 +70,6 @@ export const meta: MetaFunction = () => {
 		sameAs: [
 			"https://github.com/tsirimaholy",
 			"https://linkedin.com/in/tsirimaholy",
-			"https://x.com/tsirimaholy",
 		],
 		knowsAbout: [
 			"Django",

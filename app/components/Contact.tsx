@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useRef } from "react";
-import { FaXTwitter } from "react-icons/fa6";
 import { Link, useFetcher } from "react-router";
 import { Button } from "~/components/ui/button";
 import {
@@ -66,11 +65,6 @@ export function Contact() {
 			icon: Linkedin,
 			text: "linkedin.com/in/tsirimaholy",
 			href: "https://linkedin.com/in/tsirimaholy",
-		},
-		{
-			icon: FaXTwitter,
-			text: "x.com/tsirimaholy",
-			href: "https://x.com/tsirimaholy",
 		},
 	];
 
@@ -139,15 +133,6 @@ export function Contact() {
 							className="text-primary hover:underline"
 						>
 							WhatsApp
-						</Link>
-						, or{" "}
-						<Link
-							to="https://x.com/tsirimaholy"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-primary hover:underline"
-						>
-							Twitter
 						</Link>
 					</p>
 				</motion.div>
