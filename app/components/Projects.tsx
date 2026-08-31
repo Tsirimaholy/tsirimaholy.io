@@ -63,7 +63,7 @@ const projects: TProject[] = [
 			"Employee wellness platform that turns physical activity into financial rewards.",
 		image: "/activity-reward/landing-home-1.png",
 		tags: ["TypeScript", "React", "Python", "Django", "Stripe"],
-		liveUrl: "https://activityrewards.co.uk/",
+		liveUrl: "",
 		githubUrl: "",
 		detailedDescription:
 			"Built during my Backend Developer role at Vertex, Activity Reward helps companies encourage movement by converting employee activity into financial rewards and measurable engagement.",
