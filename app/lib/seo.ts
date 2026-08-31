@@ -21,7 +21,7 @@ type MetaTag =
 	| { property: string; content: string }
 	| { tagName: "link"; rel: string; href: string };
 
-export const SITE_URL = "https://tsirimaholy.vercel.app";
+export const SITE_URL = "https://www.tsirimaholy.com";
 
 export interface StructuredDataPerson {
 	name: string;
