@@ -216,7 +216,12 @@ export function Contact() {
 								</CardDescription>
 							</CardHeader>
 							<CardContent>
-								<fetcher.Form ref={formRef} className="flex flex-col gap-4" method="POST">
+								<fetcher.Form
+									ref={formRef}
+									className="flex flex-col gap-4"
+									method="POST"
+									action="/?index"
+								>
 									{[
 										{ placeholder: "Name", type: "text", name: "name" },
 										{ placeholder: "Email", type: "email", name: "email" },
