@@ -14,6 +14,11 @@ export const loader = async (_args: Route.LoaderArgs) => {
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
+	<url>
+		<loc>${SITE_URL}/blog</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
 </urlset>`;
 
 	return new Response(sitemap, {

@@ -10,7 +10,7 @@ export function meta(_args: Route.MetaArgs) {
 		url: `${SITE_URL}/blog`,
 		image: `${SITE_URL}/og-image.jpg`,
 		imageAlt: "Tsirimaholy Harison Razanapanala, Full-Stack Developer",
-		noIndex: true,
+		noIndex: false,
 	});
 }
 export default function Blog() {
