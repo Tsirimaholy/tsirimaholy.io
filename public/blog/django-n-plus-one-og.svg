@@ -19,7 +19,7 @@
     <text x="43" y="28" fill="#1e40af" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">DJANGO</text>
   </g>
 
-  <text x="70" y="180" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800" letter-spacing="-2">THE N+1 PROBLEM</text>
+  <text x="70" y="180" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="800" letter-spacing="-2">THE N+1 SELECT PROBLEM</text>
   <text x="70" y="238" fill="#94a3b8" font-family="Arial, Helvetica, sans-serif" font-size="27">Make database work explicit and predictable.</text>
 
   <g transform="translate(70 296)" filter="url(#shadow)">

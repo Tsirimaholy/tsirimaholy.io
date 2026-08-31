@@ -23,17 +23,18 @@ const articleUrl = `${SITE_URL}/blog/${post.slug}`;
 export function meta(_args: Route.MetaArgs) {
 	return [
 		...generateMetaTags({
-			title: `${post.title} | Tsirimaholy`,
+			title: "Django N+1 Select Problem: From 21 Queries to 2",
 			description: post.excerpt,
 			url: articleUrl,
 			image: `${SITE_URL}${post.image}`,
-			imageAlt: "Django N+1 queries reduced from 21 to 2",
+			imageAlt: "Django N+1 select problem reduced from 21 queries to 2",
 			type: "article",
 			author: "Tsirimaholy Harison Razanapanala",
 			publishedTime: post.publishedAt,
 			modifiedTime: post.modifiedAt,
 			keywords: [
-				"Django N+1 problem",
+				"Django N+1 select problem",
+				"N+1 select",
 				"select_related",
 				"prefetch_related",
 				"Django ORM performance",
@@ -109,7 +110,7 @@ export default function DjangoNPlusOneArticle() {
 							<span className="text-gray-500">Real-world case study</span>
 						</div>
 						<h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight font-shadow-into-light md:text-6xl">
-							The Django N+1 Problem: From 21 Queries to 2
+							The Django N+1 Select Problem: From 21 Queries to 2
 						</h1>
 						<p className="mt-6 max-w-3xl text-xl leading-8 text-gray-600">
 							An innocent loop can quietly turn one database query into
@@ -152,7 +153,7 @@ export default function DjangoNPlusOneArticle() {
 											className="hover:text-primary"
 											href="#what-is-n-plus-one"
 										>
-											What N+1 means
+											What N+1 select means
 										</a>
 									</li>
 									<li>
@@ -185,9 +186,9 @@ export default function DjangoNPlusOneArticle() {
 						<div className="min-w-0 text-lg leading-8 text-gray-700">
 							<section id="what-is-n-plus-one" className="scroll-mt-28">
 								<p className="text-xl leading-9 text-gray-800">
-									The N+1 problem happens when an application runs one query to
-									load a collection, then runs another query for every item in
-									that collection to load related data.
+									The N+1 select problem happens when an application runs one
+									query to load a collection, then runs another query for every
+									item in that collection to load related data.
 								</p>
 								<div className="my-8 rounded-xl border-l-4 border-primary bg-blue-50 p-5 text-blue-950">
 									<p className="font-semibold">The context</p>
@@ -462,9 +463,10 @@ for user in users:
 										aria-hidden="true"
 									/>
 									<p>
-										GraphQL does not remove N+1 by itself. A GraphQL resolver
-										can create the same pattern unless the server batches and
-										caches loads with a tool such as DataLoader.
+										GraphQL does not remove the N+1 select problem by itself. A
+										GraphQL resolver can create the same pattern unless the
+										server batches and caches loads with a tool such as
+										DataLoader.
 									</p>
 								</div>
 							</section>
