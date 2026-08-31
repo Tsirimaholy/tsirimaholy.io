@@ -1,7 +1,9 @@
 import type { Route } from "./+types";
+import { blogPosts } from "~/content/blog-posts";
 import { SITE_URL } from "~/lib/seo";
 
 export const loader = async (_args: Route.LoaderArgs) => {
+	const nPlusOnePost = blogPosts[0];
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
@@ -21,6 +23,7 @@ export const loader = async (_args: Route.LoaderArgs) => {
 	</url>
 	<url>
 		<loc>${SITE_URL}/blog/django-n-plus-one-problem</loc>
+		<lastmod>${nPlusOnePost.modifiedAt}</lastmod>
 		<changefreq>yearly</changefreq>
 		<priority>0.7</priority>
 	</url>

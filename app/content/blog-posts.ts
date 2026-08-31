@@ -6,5 +6,8 @@ export const blogPosts = [
 			"A practical guide to finding N+1 queries and choosing between select_related and prefetch_related, based on a real user-management API.",
 		category: "Django",
 		readTime: "8 min read",
+		publishedAt: "2026-08-31",
+		modifiedAt: "2026-08-31",
+		image: "/blog/django-n-plus-one-og.png",
 	},
 ] as const;

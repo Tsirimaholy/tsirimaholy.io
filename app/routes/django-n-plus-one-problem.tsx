@@ -26,10 +26,12 @@ export function meta(_args: Route.MetaArgs) {
 			title: `${post.title} | Tsirimaholy`,
 			description: post.excerpt,
 			url: articleUrl,
-			image: `${SITE_URL}/og-image.jpg`,
+			image: `${SITE_URL}${post.image}`,
 			imageAlt: "Django N+1 queries reduced from 21 to 2",
 			type: "article",
 			author: "Tsirimaholy Harison Razanapanala",
+			publishedTime: post.publishedAt,
+			modifiedTime: post.modifiedAt,
 			keywords: [
 				"Django N+1 problem",
 				"select_related",
@@ -41,8 +43,9 @@ export function meta(_args: Route.MetaArgs) {
 		generateArticleStructuredData({
 			headline: post.title,
 			description: post.excerpt,
-			image: `${SITE_URL}/og-image.jpg`,
-			datePublished: "2026-08-31",
+			image: `${SITE_URL}${post.image}`,
+			datePublished: post.publishedAt,
+			dateModified: post.modifiedAt,
 			author: {
 				"@type": "Person",
 				name: "Tsirimaholy Harison Razanapanala",
@@ -51,6 +54,10 @@ export function meta(_args: Route.MetaArgs) {
 			publisher: {
 				"@type": "Organization",
 				name: "Tsirimaholy",
+				logo: {
+					"@type": "ImageObject",
+					url: `${SITE_URL}/android-chrome-512x512.png`,
+				},
 			},
 			url: articleUrl,
 		}),
@@ -118,6 +125,12 @@ export default function DjangoNPlusOneArticle() {
 									Tsirimaholy Harison Razanapanala
 								</p>
 								<p className="text-sm text-gray-500">Full-Stack Developer</p>
+								<p className="mt-1 text-xs text-gray-500">
+									Published{" "}
+									<time dateTime={post.publishedAt}>August 31, 2026</time>
+									{" · "}Updated{" "}
+									<time dateTime={post.modifiedAt}>August 31, 2026</time>
+								</p>
 							</div>
 						</div>
 					</div>
