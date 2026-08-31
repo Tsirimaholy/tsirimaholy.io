@@ -220,7 +220,7 @@ export function Contact() {
 									ref={formRef}
 									className="flex flex-col gap-4"
 									method="POST"
-									action="/?index"
+									action="/contact"
 								>
 									{[
 										{ placeholder: "Name", type: "text", name: "name" },

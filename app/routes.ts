@@ -9,6 +9,7 @@ import {
 export default [
 	route("robots.txt", "routes/robots[.]txt.tsx"),
 	route("sitemap.xml", "routes/sitemap[.]xml.tsx"),
+	route("contact", "routes/contact.tsx"),
 	layout("routes/main-layout.tsx", [
 		index("routes/index.tsx"),
 		route("about", "routes/about.tsx"),

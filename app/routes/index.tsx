@@ -10,7 +10,6 @@ import { Service } from "~/components/Service";
 import { Skills } from "~/components/Skills";
 import { Testimonials } from "~/components/Testimonials";
 import { Button } from "~/components/ui/button";
-import { sendEmail } from "~/lib/email";
 import {
 	DEFAULT_SEO_CONFIG,
 	generateMetaTags,
@@ -107,41 +106,6 @@ export const meta: MetaFunction = () => {
 	const structuredData = generatePersonStructuredData(personData);
 
 	return [...metaTags, structuredData];
-};
-
-export const action = async ({ request }: Route.ActionArgs) => {
-	const formData = await request.formData();
-	const intent = formData.get("intent") as string;
-	if (intent === "contact") {
-		// send email
-		const name = formData.get("name") as string;
-		const message = formData.get("message") as string;
-		const email = formData.get("email") as string;
-		if (!message || !email) {
-			return data({ success: false, message: "Invalid form data" });
-		}
-
-		try {
-			await sendEmail(
-				"hei.tsirimaholy@gmail.com",
-				`From portfolio Contact - [${name}]`,
-				message,
-				"Acme <onboarding@resend.dev>",
-			);
-
-			return data({ success: true, message: "Message sent successfully." });
-		} catch {
-			return data({
-				success: false,
-				message: "Unable to send your message right now. Please try again.",
-			});
-		}
-	}
-
-	return data(
-		{ success: false, message: "Unsupported action." },
-		{ status: 400 },
-	);
 };
 
 export default function HomePage(_props: Route.ComponentProps) {
