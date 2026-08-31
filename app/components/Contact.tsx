@@ -208,27 +208,54 @@ export function Contact() {
 									action="/contact"
 								>
 									{[
-										{ placeholder: "Name", type: "text", name: "name" },
-										{ placeholder: "Email", type: "email", name: "email" },
-									].map(({ placeholder, type, name }) => (
+										{
+											label: "Your name",
+											placeholder: "Enter your name",
+											type: "text",
+											name: "name",
+											autoComplete: "name",
+										},
+										{
+											label: "Your mail",
+											placeholder: "you@example.com",
+											type: "email",
+											name: "email",
+											autoComplete: "email",
+										},
+									].map(({ label, placeholder, type, name, autoComplete }) => (
 										<motion.div
 											key={name}
 											className="grid gap-2"
 											variants={itemVariants}
 										>
+											<label
+												htmlFor={name}
+												className="text-sm font-medium"
+											>
+												{label}
+											</label>
 											<Input
+												id={name}
 												name={name}
 												type={type}
 												placeholder={placeholder}
 												required
+												autoComplete={autoComplete}
 												className="bg-white sketchy-border-sm focus:border-primary transition-colors shadow-sketchy-sm"
 											/>
 										</motion.div>
 									))}
 									<motion.div className="grid gap-2" variants={itemVariants}>
+										<label
+											htmlFor="message"
+											className="text-sm font-medium"
+										>
+											Your message
+										</label>
 										<Textarea
+											id="message"
 											name="message"
-											placeholder="Your message"
+											placeholder="Write your message"
 											required
 											className="min-h-[150px] bg-white sketchy-border-sm focus:border-primary transition-colors shadow-sketchy-sm"
 										/>
