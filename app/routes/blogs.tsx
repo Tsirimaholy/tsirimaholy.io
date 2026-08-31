@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Database, Gauge } from "lucide-react";
+import { ArrowRight, BookOpen, Gauge } from "lucide-react";
 import { Link } from "react-router";
 import { blogPosts } from "~/content/blog-posts";
 import { generateMetaTags, SITE_URL } from "~/lib/seo";
@@ -51,17 +51,14 @@ export default function Blog() {
 									to={`/blog/${post.slug}`}
 									className="grid md:grid-cols-[14rem_1fr]"
 								>
-									<div className="flex min-h-48 items-center justify-center bg-gray-950 p-8 text-white">
-										<div className="relative">
-											<Database
-												className="size-20 text-blue-400"
-												strokeWidth={1.25}
-												aria-hidden="true"
-											/>
-											<div className="absolute -bottom-3 -right-7 rounded-full bg-yellow-300 px-3 py-1 text-sm font-bold text-gray-950">
-												21 → 2
-											</div>
-										</div>
+									<div className="min-h-48 overflow-hidden bg-gray-950">
+										<img
+											src={post.image}
+											alt="Django N+1 query count reduced from 21 to 2"
+											width="1200"
+											height="630"
+											className="h-full min-h-48 w-full object-cover transition duration-500 group-hover:scale-[1.025]"
+										/>
 									</div>
 									<div className="flex flex-col justify-center p-7 md:p-9">
 										<div className="mb-4 flex flex-wrap items-center gap-3 text-sm">
