@@ -52,6 +52,7 @@ export function Navbar() {
 		{ section: "service", textLabel: "Service" },
 		{ section: "skills", textLabel: "Skills" },
 		{ section: "projects", textLabel: "Projects" },
+		{ section: "contact", textLabel: "Contact" },
 		{ section: "blog", textLabel: "Blog" },
 	];
 	return (
@@ -122,6 +123,7 @@ export function Navbar() {
 								"service",
 								"skills",
 								"projects",
+								"contact",
 							].map((section) => (
 								<li key={section} className="py-2">
 									<NavLink
@@ -160,24 +162,6 @@ export function Navbar() {
 									}}
 								>
 									Blog
-								</NavLink>
-							</li>
-							<li key={"contact"} className="py-2">
-								<NavLink
-									to={"/#contact"}
-									className={() =>
-										`block px-2 py-2 transition duration-300 ${
-											activeSection === "contact"
-												? "text-primary font-medium bg-primary/10 rounded border-l-4 border-primary"
-												: "text-gray-700 hover:text-primary hover:bg-gray-100 rounded"
-										}`
-									}
-									onClick={() => {
-										setActiveSection("contact");
-										setIsMenuOpen(false);
-									}}
-								>
-									Start a project
 								</NavLink>
 							</li>
 						</ul>
