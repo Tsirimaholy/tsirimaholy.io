@@ -343,6 +343,7 @@ export const DEFAULT_SEO_CONFIG: Partial<SEOConfig> = {
 		"Antananarivo software developer",
 		"freelance React developer",
 		"freelance Django developer",
+		"Madagascar developer",
 		"TypeScript",
 		"PostgreSQL",
 		"AWS",
