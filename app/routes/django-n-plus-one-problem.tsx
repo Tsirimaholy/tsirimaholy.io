@@ -149,6 +149,19 @@ export default function DjangoNPlusOneArticle() {
 								</p>
 								<ul className="space-y-3 text-sm text-gray-600">
 									<li>
+										<a className="hover:text-primary" href="#why-it-mattered">
+											Why it mattered
+										</a>
+									</li>
+									<li>
+										<a
+											className="hover:text-primary"
+											href="#impedance-mismatch"
+										>
+											Impedance mismatch
+										</a>
+									</li>
+									<li>
 										<a
 											className="hover:text-primary"
 											href="#what-is-n-plus-one"
@@ -184,8 +197,80 @@ export default function DjangoNPlusOneArticle() {
 						</aside>
 
 						<div className="min-w-0 text-lg leading-8 text-gray-700">
-							<section id="what-is-n-plus-one" className="scroll-mt-28">
-								<p className="text-xl leading-9 text-gray-800">
+							<figure className="mb-12">
+								<img
+									src={post.image}
+									alt="Diagram showing a Django endpoint reduced from 21 database queries to 2 with select_related and prefetch_related"
+									width="1200"
+									height="630"
+									className="w-full rounded-2xl border border-gray-800 bg-gray-950 shadow-xl"
+								/>
+								<figcaption className="mt-3 text-center text-sm text-gray-500">
+									The query count should stay bounded as the number of rows
+									grows.
+								</figcaption>
+							</figure>
+
+							<section id="why-it-mattered" className="scroll-mt-28">
+								<h2 className="text-3xl font-bold text-gray-950 font-shadow-into-light">
+									Why this mattered in production
+								</h2>
+								<p className="mt-5 text-xl leading-9 text-gray-800">
+									At Numer, an analytics page had reached roughly four minutes
+									of loading time. After profiling N+1 behavior, optimizing the
+									SQL, and adding a purpose-built cache, it loaded in about
+									500–800 milliseconds.
+								</p>
+								<p className="mt-5">
+									That result was not one clever ORM call. It came from treating
+									performance as an entire request-path problem: expose the
+									hidden queries, reduce redundant database work, make the
+									remaining SQL cheaper, and cache only the stable result.
+								</p>
+								<p className="mt-5">
+									I met the same class of problem later at Vertex while removing
+									backend bottlenecks from a B2B wellbeing platform. There, N+1
+									and SQL optimization sat beside another boundary: deciding
+									which work belonged in the request and which belonged in
+									asynchronous Celery and Redis processing.
+								</p>
+								<div className="my-8 rounded-xl border-l-4 border-amber-400 bg-amber-50 p-5 text-base leading-7 text-amber-950">
+									<strong>About the example below:</strong> the 21-to-2 query
+									case uses a simplified user-management data model. It explains
+									the technical pattern without exposing client code or private
+									data.
+								</div>
+							</section>
+
+							<section id="impedance-mismatch" className="scroll-mt-28 pt-12">
+								<h2 className="text-3xl font-bold text-gray-950 font-shadow-into-light">
+									The deeper cause: object–relational impedance mismatch
+								</h2>
+								<p className="mt-5">
+									Application code naturally speaks in objects and
+									relationships: a user has a profile and belongs to roles. A
+									relational database stores rows in separate tables and is
+									strongest when it processes data in sets. An ORM connects
+									those two models, but it cannot erase the difference between
+									them.
+								</p>
+								<p className="mt-5">
+									That difference is the impedance mismatch. Reading
+									<code className="mx-1 rounded bg-gray-100 px-1.5 py-0.5 text-base text-gray-900">
+										user.profile
+									</code>
+									looks like an ordinary in-memory property access, while the
+									data may actually require a network round trip and a SQL
+									query. Lazy loading keeps code convenient, but it can hide I/O
+									inside a loop, template, or serializer.
+								</p>
+							</section>
+
+							<section id="what-is-n-plus-one" className="scroll-mt-28 pt-12">
+								<h2 className="text-3xl font-bold text-gray-950 font-shadow-into-light">
+									What the N+1 select problem means
+								</h2>
+								<p className="mt-5 text-xl leading-9 text-gray-800">
 									The N+1 select problem happens when an application runs one
 									query to load a collection, then runs another query for every
 									item in that collection to load related data.
