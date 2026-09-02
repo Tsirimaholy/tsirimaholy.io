@@ -1,83 +1,167 @@
 {
-	"buildManifest": {
-		"serverBundles": {
-			"nodejs_eyJydW50aW1lIjoibm9kZWpzIn0": {
-				"id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-				"file": "build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
-				"config": {
-					"runtime": "nodejs"
-				}
-			}
-		},
-		"routeIdToServerBundleId": {
-			"routes/index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-			"routes/home": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
-		},
-		"routes": {
-			"root": {
-				"path": "",
-				"id": "root",
-				"file": "app/root.tsx",
-				"config": {}
-			},
-			"routes/index": {
-				"id": "routes/index",
-				"parentId": "root",
-				"file": "app/routes/index.tsx",
-				"index": true,
-				"config": {
-					"runtime": "nodejs"
-				}
-			},
-			"routes/home": {
-				"id": "routes/home",
-				"parentId": "root",
-				"file": "app/routes/home.tsx",
-				"path": "is-ssr",
-				"config": {
-					"runtime": "nodejs"
-				}
-			}
-		}
-	},
-	"reactRouterConfig": {
-		"appDirectory": "/home/tsirimaholy/Data/CodingWorkspace/Personal/tsirimaholy-pf/app",
-		"basename": "/",
-		"buildDirectory": "/home/tsirimaholy/Data/CodingWorkspace/Personal/tsirimaholy-pf/build",
-		"future": {
-			"unstable_middleware": false,
-			"unstable_optimizeDeps": false,
-			"unstable_splitRouteModules": false,
-			"unstable_subResourceIntegrity": false,
-			"unstable_viteEnvironmentApi": false
-		},
-		"prerender": ["/"],
-		"routes": {
-			"root": {
-				"path": "",
-				"id": "root",
-				"file": "root.tsx"
-			},
-			"routes/index": {
-				"id": "routes/index",
-				"parentId": "root",
-				"file": "routes/index.tsx",
-				"index": true
-			},
-			"routes/home": {
-				"id": "routes/home",
-				"parentId": "root",
-				"file": "routes/home.tsx",
-				"path": "is-ssr"
-			}
-		},
-		"serverBuildFile": "index.js",
-		"serverModuleFormat": "esm",
-		"ssr": true
-	},
-	"viteConfig": {
-		"build": {
-			"assetsDir": "assets"
-		}
-	}
+  "buildManifest": {
+    "serverBundles": {
+      "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0": {
+        "id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+        "file": "build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    },
+    "routeIdToServerBundleId": {
+      "root": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/robots[.]txt": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/sitemap[.]xml": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/contact": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/about": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/blogs": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/django-n-plus-one-problem": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
+    },
+    "routes": {
+      "root": {
+        "path": "",
+        "id": "root",
+        "file": "app/root.tsx",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/robots[.]txt": {
+        "id": "routes/robots[.]txt",
+        "parentId": "root",
+        "file": "app/routes/robots[.]txt.tsx",
+        "path": "robots.txt",
+        "config": {}
+      },
+      "routes/sitemap[.]xml": {
+        "id": "routes/sitemap[.]xml",
+        "parentId": "root",
+        "file": "app/routes/sitemap[.]xml.tsx",
+        "path": "sitemap.xml",
+        "config": {}
+      },
+      "routes/contact": {
+        "id": "routes/contact",
+        "parentId": "root",
+        "file": "app/routes/contact.tsx",
+        "path": "contact",
+        "config": {}
+      },
+      "routes/main-layout": {
+        "id": "routes/main-layout",
+        "parentId": "root",
+        "file": "app/routes/main-layout.tsx",
+        "config": {}
+      },
+      "routes/index": {
+        "id": "routes/index",
+        "parentId": "routes/main-layout",
+        "file": "app/routes/index.tsx",
+        "index": true,
+        "config": {}
+      },
+      "routes/about": {
+        "id": "routes/about",
+        "parentId": "routes/main-layout",
+        "file": "app/routes/about.tsx",
+        "path": "about",
+        "config": {}
+      },
+      "routes/blogs": {
+        "id": "routes/blogs",
+        "parentId": "routes/main-layout",
+        "file": "app/routes/blogs.tsx",
+        "path": "blog",
+        "index": true,
+        "config": {}
+      },
+      "routes/django-n-plus-one-problem": {
+        "id": "routes/django-n-plus-one-problem",
+        "parentId": "routes/main-layout",
+        "file": "app/routes/django-n-plus-one-problem.tsx",
+        "path": "blog/django-n-plus-one-problem",
+        "config": {}
+      }
+    }
+  },
+  "reactRouterConfig": {
+    "appDirectory": "/Users/user/Code/personal/tsirimaholy.io/app",
+    "basename": "/",
+    "buildDirectory": "/Users/user/Code/personal/tsirimaholy.io/build",
+    "future": {
+      "unstable_middleware": false,
+      "unstable_optimizeDeps": false,
+      "unstable_splitRouteModules": false,
+      "unstable_subResourceIntegrity": false,
+      "unstable_viteEnvironmentApi": false
+    },
+    "prerender": [
+      "/"
+    ],
+    "routes": {
+      "root": {
+        "path": "",
+        "id": "root",
+        "file": "root.tsx"
+      },
+      "routes/robots[.]txt": {
+        "id": "routes/robots[.]txt",
+        "parentId": "root",
+        "file": "routes/robots[.]txt.tsx",
+        "path": "robots.txt"
+      },
+      "routes/sitemap[.]xml": {
+        "id": "routes/sitemap[.]xml",
+        "parentId": "root",
+        "file": "routes/sitemap[.]xml.tsx",
+        "path": "sitemap.xml"
+      },
+      "routes/contact": {
+        "id": "routes/contact",
+        "parentId": "root",
+        "file": "routes/contact.tsx",
+        "path": "contact"
+      },
+      "routes/main-layout": {
+        "id": "routes/main-layout",
+        "parentId": "root",
+        "file": "routes/main-layout.tsx"
+      },
+      "routes/index": {
+        "id": "routes/index",
+        "parentId": "routes/main-layout",
+        "file": "routes/index.tsx",
+        "index": true
+      },
+      "routes/about": {
+        "id": "routes/about",
+        "parentId": "routes/main-layout",
+        "file": "routes/about.tsx",
+        "path": "about"
+      },
+      "routes/blogs": {
+        "id": "routes/blogs",
+        "parentId": "routes/main-layout",
+        "file": "routes/blogs.tsx",
+        "path": "blog",
+        "index": true
+      },
+      "routes/django-n-plus-one-problem": {
+        "id": "routes/django-n-plus-one-problem",
+        "parentId": "routes/main-layout",
+        "file": "routes/django-n-plus-one-problem.tsx",
+        "path": "blog/django-n-plus-one-problem"
+      }
+    },
+    "serverBuildFile": "index.js",
+    "serverModuleFormat": "esm",
+    "ssr": true
+  },
+  "viteConfig": {
+    "build": {
+      "assetsDir": "assets"
+    }
+  }
 }
