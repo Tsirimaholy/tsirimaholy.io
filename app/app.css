@@ -164,6 +164,16 @@ body {
 	}
 }
 
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto !important;
+	}
+
+	::view-transition-group(*) {
+		animation-duration: 0s;
+	}
+}
+
 @keyframes movePen {
 	0% {
 		transform: translate(0, 0);

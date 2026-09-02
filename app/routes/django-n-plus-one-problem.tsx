@@ -91,6 +91,7 @@ export default function DjangoNPlusOneArticle() {
 					<div className="container mx-auto max-w-4xl">
 						<Link
 							to="/blog"
+							viewTransition
 							className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-gray-600 transition hover:text-primary"
 						>
 							<ArrowLeft className="size-4" aria-hidden="true" />
@@ -604,6 +605,7 @@ for user in users:
 							<div className="mt-14 flex flex-col gap-4 border-t border-gray-200 pt-8 sm:flex-row sm:items-center sm:justify-between">
 								<Link
 									to="/blog"
+									viewTransition
 									className="inline-flex items-center gap-2 font-semibold text-gray-700 hover:text-primary"
 								>
 									<ArrowLeft className="size-4" aria-hidden="true" />
@@ -611,6 +613,7 @@ for user in users:
 								</Link>
 								<Link
 									to="/#contact"
+									viewTransition
 									className="inline-flex items-center gap-2 font-semibold text-primary"
 								>
 									Discuss a performance problem

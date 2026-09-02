@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { href, Link, NavLink, useMatch } from "react-router";
+import { href, Link, NavLink, useLocation, useMatch } from "react-router";
 import { cn } from "~/lib/utils";
 import { Button } from "./ui/button";
 
@@ -10,6 +10,7 @@ export function Navbar() {
 	const navRef = useRef<HTMLElement>(null);
 	const isBlogRoute = useMatch("/blog/*");
 	const isAboutRoute = useMatch("/about");
+	const location = useLocation();
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
@@ -55,6 +56,18 @@ export function Navbar() {
 		{ section: "contact", textLabel: "Contact" },
 		{ section: "blog", textLabel: "Blog" },
 	];
+
+	const navTarget = (section: string) => {
+		if (section === "blog") return href("/blog");
+		if (section === "about") return href("/about");
+		return `${href("/")}#${section}`;
+	};
+
+	const shouldUseViewTransition = (section: string) => {
+		if (section === "blog") return location.pathname !== "/blog";
+		if (section === "about") return location.pathname !== "/about";
+		return location.pathname !== "/";
+	};
 	return (
 		<header
 			ref={navRef}
@@ -63,7 +76,7 @@ export function Navbar() {
 			<nav className="container mx-auto px-4 py-4 relative flex justify-between items-center">
 				{/* Logo */}
 				<div className="pb-2.5 pr-1 border-r-2 border-b-2">
-					<NavLink to={href("/")}>
+					<NavLink to={href("/")} viewTransition={location.pathname !== "/"}>
 						<span className="block text-sm font-bold -rotate-10 border p-2 border-blue-500">
 							BuildThings
 						</span>
@@ -84,14 +97,8 @@ export function Navbar() {
 						{navItems.map((nav) => (
 							<li key={nav.section}>
 								<NavLink
-									viewTransition={true}
-									to={
-										nav.section === "blog"
-											? href("/blog")
-											: nav.section === "about"
-												? href("/about")
-												: `${href("/")}#${nav.section}`
-									}
+									viewTransition={shouldUseViewTransition(nav.section)}
+									to={navTarget(nav.section)}
 									className={({ isActive: isActivePage }) => {
 										return cn(
 											"relative py-2 px-1 transition duration-300 ease-in-out capitalize",
@@ -127,11 +134,8 @@ export function Navbar() {
 							].map((section) => (
 								<li key={section} className="py-2">
 									<NavLink
-										to={
-											section === "about"
-												? href("/about")
-												: `${href("/")}#${section}`
-										}
+										to={navTarget(section)}
+										viewTransition={shouldUseViewTransition(section)}
 										className={({ isActive: isActivePage }) =>
 											`block px-2 py-2 transition duration-300 ${
 												isActivePage && activeSection === section
@@ -149,6 +153,7 @@ export function Navbar() {
 							<li key={"blog"} className="py-2">
 								<NavLink
 									to={href("/blog")}
+									viewTransition={location.pathname !== "/blog"}
 									className={({ isActive }) =>
 										`block px-2 py-2 transition duration-300 ${
 											isActive || activeSection === "blog"
@@ -168,7 +173,11 @@ export function Navbar() {
 					</div>
 				</div>
 				<Button asChild className="hidden md:block">
-					<Link key={"talk-to-me"} to={`${href("/")}#contact`}>
+					<Link
+						key={"talk-to-me"}
+						to={`${href("/")}#contact`}
+						viewTransition={location.pathname !== "/"}
+					>
 						<div className="size-2 bg-white rounded-full inline-block mr-2"></div>
 						<strong>Start a project</strong>
 					</Link>
