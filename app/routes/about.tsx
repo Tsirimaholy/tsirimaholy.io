@@ -72,10 +72,10 @@ const chapters = [
 								aria-label="Official HEI university website"
 							/>
 						</a>
-						, a university in Madagascar. I applied, was accepted, and found
-						the environment where I could strengthen my full-stack skills.
-						Within nine months, I landed my first professional role as a React
-						Native developer.
+						, a university in Madagascar. I applied, was accepted, and found the
+						environment where I could strengthen my full-stack skills. Within
+						nine months, I landed my first professional role as a React Native
+						developer.
 					</>
 				),
 			},
@@ -176,13 +176,15 @@ export default function AboutPage() {
 					</p>
 					<div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
 						<Button asChild size="lg">
-							<Link to="/#contact">
+							<Link to="/#contact" viewTransition>
 								Start a project
 								<ArrowRight className="size-4" aria-hidden="true" />
 							</Link>
 						</Button>
 						<Button asChild size="lg" variant="outline">
-							<Link to="/#projects">See my projects</Link>
+							<Link to="/#projects" viewTransition>
+								See my projects
+							</Link>
 						</Button>
 					</div>
 				</div>

@@ -49,6 +49,7 @@ export default function Blog() {
 							>
 								<Link
 									to={`/blog/${post.slug}`}
+									viewTransition
 									className="grid md:grid-cols-[14rem_1fr]"
 								>
 									<div className="min-h-48 overflow-hidden bg-gray-950">
