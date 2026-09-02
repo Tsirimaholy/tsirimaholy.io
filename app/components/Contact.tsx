@@ -6,7 +6,7 @@ import {
 	MapPin,
 } from "lucide-react";
 import { motion } from "motion/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useFetcher } from "react-router";
 import { Button } from "~/components/ui/button";
 import {
@@ -30,6 +30,87 @@ export function Contact() {
 			formRef.current?.reset();
 		}
 	}, [fetcher.data]);
+
+	const widgetContainerRef = useRef<HTMLDivElement>(null);
+	const widgetIdRef = useRef<string | undefined>(undefined);
+	const [turnstileToken, setTurnstileToken] = useState("");
+	const [localError, setLocalError] = useState<string | null>(null);
+	const prevFetcherStateRef = useRef(fetcher.state);
+
+	// Load the Turnstile script once and render the widget explicitly so we
+	// can reset it between attempts (tokens are single-use and the page stays
+	// active after a submission).
+	useEffect(() => {
+		let cancelled = false;
+		let renderedWidgetId: string | undefined;
+
+		const scriptId = "turnstile-api-script";
+		if (!document.getElementById(scriptId)) {
+			const script = document.createElement("script");
+			script.id = scriptId;
+			script.src =
+				"https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+			script.async = true;
+			script.defer = true;
+			document.head.appendChild(script);
+		}
+
+		const tryRender = (): boolean => {
+			if (renderedWidgetId) {
+				return true;
+			}
+			const container = widgetContainerRef.current;
+			if (
+				!container ||
+				cancelled ||
+				typeof window.turnstile?.render !== "function"
+			) {
+				return false;
+			}
+			renderedWidgetId = window.turnstile.render(container, {
+				sitekey: "0x4AAAAAAEk21h3l4jPquaiZ",
+				action: "contact",
+				callback: (freshToken) => {
+					setTurnstileToken(freshToken);
+					setLocalError(null);
+				},
+				"expired-callback": () => setTurnstileToken(""),
+				"error-callback": () => setTurnstileToken(""),
+			});
+			widgetIdRef.current = renderedWidgetId;
+			return true;
+		};
+
+		tryRender();
+		const intervalId = window.setInterval(() => {
+			if (tryRender()) {
+				window.clearInterval(intervalId);
+			}
+		}, 100);
+
+		return () => {
+			cancelled = true;
+			window.clearInterval(intervalId);
+			if (renderedWidgetId && window.turnstile?.remove) {
+				window.turnstile.remove(renderedWidgetId);
+			}
+			widgetIdRef.current = undefined;
+		};
+	}, []);
+
+	// Reset the single-use token whenever a submission attempt finishes, so a
+	// retry always starts from a fresh challenge.
+	useEffect(() => {
+		const previousState = prevFetcherStateRef.current;
+		prevFetcherStateRef.current = fetcher.state;
+		if (previousState === "submitting" && fetcher.state === "idle") {
+			const widgetId = widgetIdRef.current;
+			if (widgetId && window.turnstile?.reset) {
+				window.turnstile.reset(widgetId);
+			}
+			setTurnstileToken("");
+		}
+	}, [fetcher.state]);
 
 	// Animation variants for container and items
 	const containerVariants = {
@@ -155,36 +236,34 @@ export function Contact() {
 								<CardDescription>Here's how you can reach me</CardDescription>
 							</CardHeader>
 							<CardContent className="flex flex-col gap-4">
-								{contactInformations.map(
-									({ icon: Icon, text, href }) => (
-										<motion.div
-											key={href ?? text}
-											className="flex items-center gap-3 group/item"
-											whileHover={{ x: 5 }}
-											transition={{
-												type: "spring",
-												stiffness: 400,
-												damping: 10,
-											}}
-										>
-											<Icon className="h-5 w-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
-											{href ? (
-												<Link
-													to={href}
-													target="_blank"
-													rel="noopener noreferrer"
-													className="transition-colors"
-												>
-													{text}
-												</Link>
-											) : (
-												<p className="group-hover/item:text-primary transition-colors">
-													{text}
-												</p>
-											)}
-										</motion.div>
-									),
-								)}
+								{contactInformations.map(({ icon: Icon, text, href }) => (
+									<motion.div
+										key={href ?? text}
+										className="flex items-center gap-3 group/item"
+										whileHover={{ x: 5 }}
+										transition={{
+											type: "spring",
+											stiffness: 400,
+											damping: 10,
+										}}
+									>
+										<Icon className="h-5 w-5 text-muted-foreground group-hover/item:text-primary transition-colors" />
+										{href ? (
+											<Link
+												to={href}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="transition-colors"
+											>
+												{text}
+											</Link>
+										) : (
+											<p className="group-hover/item:text-primary transition-colors">
+												{text}
+											</p>
+										)}
+									</motion.div>
+								))}
 							</CardContent>
 						</Card>
 					</motion.div>
@@ -206,6 +285,14 @@ export function Contact() {
 									className="flex flex-col gap-4"
 									method="POST"
 									action="/contact"
+									onSubmit={(event) => {
+										if (!turnstileToken) {
+											event.preventDefault();
+											setLocalError(
+												"Please complete the security check before sending.",
+											);
+										}
+									}}
 								>
 									{[
 										{
@@ -228,10 +315,7 @@ export function Contact() {
 											className="grid gap-2"
 											variants={itemVariants}
 										>
-											<label
-												htmlFor={name}
-												className="text-sm font-medium"
-											>
+											<label htmlFor={name} className="text-sm font-medium">
 												{label}
 											</label>
 											<Input
@@ -246,10 +330,7 @@ export function Contact() {
 										</motion.div>
 									))}
 									<motion.div className="grid gap-2" variants={itemVariants}>
-										<label
-											htmlFor="message"
-											className="text-sm font-medium"
-										>
+										<label htmlFor="message" className="text-sm font-medium">
 											Your message
 										</label>
 										<Textarea
@@ -260,16 +341,26 @@ export function Contact() {
 											className="min-h-[150px] bg-white sketchy-border-sm focus:border-primary transition-colors shadow-sketchy-sm"
 										/>
 									</motion.div>
-									{hasResponse && (
+									<motion.div
+										ref={widgetContainerRef}
+										variants={itemVariants}
+										aria-label="Security check"
+									/>
+									<input
+										type="hidden"
+										name="cf-turnstile-response"
+										value={turnstileToken}
+									/>
+									{(hasResponse || localError) && (
 										<output
 											className={
-												fetcher.data?.success
+												fetcher.data?.success && !localError
 													? "text-sm text-green-700"
 													: "text-sm text-destructive"
 											}
 											aria-live="polite"
 										>
-											{fetcher.data?.message}
+											{localError ?? fetcher.data?.message}
 										</output>
 									)}
 									<motion.div variants={itemVariants}>
