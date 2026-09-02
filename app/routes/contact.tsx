@@ -5,6 +5,11 @@ import { sendEmail } from "~/lib/email";
 const TURNSTILE_VERIFY_URL =
 	"https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const CONTACT_ACTION = "contact";
+const DEFAULT_TURNSTILE_HOSTNAMES = [
+	"tsirimaholy.com",
+	"www.tsirimaholy.com",
+	...(process.env.NODE_ENV === "production" ? [] : ["localhost", "127.0.0.1"]),
+];
 
 interface TurnstileVerifyResponse {
 	success: boolean;
@@ -13,12 +18,13 @@ interface TurnstileVerifyResponse {
 }
 
 function expectedHostnames(): Set<string> {
-	return new Set(
-		(process.env.TURNSTILE_HOSTNAMES ?? "")
+	return new Set([
+		...DEFAULT_TURNSTILE_HOSTNAMES,
+		...(process.env.TURNSTILE_HOSTNAMES ?? "")
 			.split(",")
 			.map((hostname) => hostname.trim())
 			.filter(Boolean),
-	);
+	]);
 }
 
 async function verifyTurnstileToken(
