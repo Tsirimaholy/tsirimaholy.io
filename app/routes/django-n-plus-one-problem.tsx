@@ -98,7 +98,7 @@ export default function DjangoNPlusOneArticle() {
 							All articles
 						</Link>
 						<div className="flex flex-wrap items-center gap-3 text-sm">
-							<span className="rounded-full bg-blue-50 px-3 py-1 font-semibold text-blue-700">
+							<span className="bg-blue-50 px-3 py-1 font-semibold text-blue-700 border-blue-200 border-1">
 								{post.category}
 							</span>
 							<span className="flex items-center gap-1.5 text-gray-500">
@@ -204,7 +204,7 @@ export default function DjangoNPlusOneArticle() {
 									alt="Diagram showing a Django endpoint reduced from 21 database queries to 2 with select_related and prefetch_related"
 									width="1200"
 									height="630"
-									className="w-full rounded-2xl border border-gray-800 bg-gray-950 shadow-xl"
+									className="w-full border border-gray-300 bg-gray-950 shadow-sm"
 								/>
 								<figcaption className="mt-3 text-center text-sm text-gray-500">
 									The query count should stay bounded as the number of rows
@@ -276,7 +276,7 @@ export default function DjangoNPlusOneArticle() {
 									query to load a collection, then runs another query for every
 									item in that collection to load related data.
 								</p>
-								<div className="my-8 rounded-xl border-l-4 border-primary bg-blue-50 p-5 text-blue-950">
+								<div className="my-8 border-l-4 border-primary bg-blue-50 p-5 text-blue-950">
 									<p className="font-semibold">The context</p>
 									<p className="mt-2 text-base leading-7">
 										Imagine a{" "}

@@ -45,7 +45,7 @@ export default function Blog() {
 						{blogPosts.map((post) => (
 							<article
 								key={post.slug}
-								className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+								className="group overflow-hidden border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
 							>
 								<Link
 									to={`/blog/${post.slug}`}
@@ -63,7 +63,7 @@ export default function Blog() {
 									</div>
 									<div className="flex flex-col justify-center p-7 md:p-9">
 										<div className="mb-4 flex flex-wrap items-center gap-3 text-sm">
-											<span className="rounded-full bg-blue-50 px-3 py-1 font-semibold text-blue-700">
+											<span className="bg-blue-50 px-3 py-1 font-semibold text-blue-700 border-blue-200 border-1">
 												{post.category}
 											</span>
 											<span className="flex items-center gap-1.5 text-gray-500">
