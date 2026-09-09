@@ -154,7 +154,7 @@ export async function action({ request }: ActionFunctionArgs) {
 			"hei.tsirimaholy@gmail.com",
 			`New contact from ${name} - ${email}`,
 			emailHtml,
-			"Acme <onboarding@resend.dev>",
+			"contact@tsirimaholy.com",
 		);
 
 		return data({ success: true, message: "Message sent successfully." });
