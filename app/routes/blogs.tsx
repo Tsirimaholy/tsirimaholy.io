@@ -1,5 +1,6 @@
 import { ArrowRight, BookOpen, Gauge } from "lucide-react";
 import { Link } from "react-router";
+import { BackToTop } from "~/components/blog/back-to-top";
 import { blogPosts } from "~/content/blog-posts";
 import { generateMetaTags, SITE_URL } from "~/lib/seo";
 import type { Route } from "./+types/blogs";
@@ -91,6 +92,7 @@ export default function Blog() {
 					</div>
 				</div>
 			</section>
+			<BackToTop />
 		</main>
 	);
 }

@@ -8,6 +8,11 @@ import {
 	Lightbulb,
 } from "lucide-react";
 import { Link } from "react-router";
+import { Callout } from "~/components/blog/callout";
+import { TableOfContents } from "~/components/blog/table-of-contents";
+import { BackToTop } from "~/components/blog/back-to-top";
+import { CodeBlock } from "~/components/blog/code-block";
+import { HeadingSection } from "~/components/blog/heading-section";
 import { blogPosts } from "~/content/blog-posts";
 import {
 	generateArticleStructuredData,
@@ -19,6 +24,16 @@ import type { Route } from "./+types/django-n-plus-one-problem";
 
 const post = blogPosts[0];
 const articleUrl = `${SITE_URL}/blog/${post.slug}`;
+
+const tableOfContents = [
+	{ id: "why-it-mattered", title: "Why it mattered" },
+	{ id: "impedance-mismatch", title: "Impedance mismatch" },
+	{ id: "what-is-n-plus-one", title: "What N+1 select means" },
+	{ id: "real-example", title: "The 21-query example" },
+	{ id: "the-fix", title: "The two-query fix" },
+	{ id: "choose-the-tool", title: "Which tool to choose" },
+	{ id: "detect-and-prevent", title: "Detect and prevent it" },
+];
 
 export function meta(_args: Route.MetaArgs) {
 	return [
@@ -70,19 +85,6 @@ export function meta(_args: Route.MetaArgs) {
 	];
 }
 
-function CodeBlock({ label, children }: { label: string; children: string }) {
-	return (
-		<div className="my-7 overflow-hidden rounded-xl border border-gray-800 bg-gray-950 shadow-lg">
-			<div className="border-b border-gray-800 px-5 py-3 font-mono text-xs text-gray-400">
-				{label}
-			</div>
-			<pre className="overflow-x-auto p-5 text-sm leading-7 text-gray-100">
-				<code>{children}</code>
-			</pre>
-		</div>
-	);
-}
-
 export default function DjangoNPlusOneArticle() {
 	return (
 		<main className="min-h-screen bg-white pt-24 text-gray-900">
@@ -119,7 +121,7 @@ export default function DjangoNPlusOneArticle() {
 							Django’s ORM, and keep it from returning.
 						</p>
 						<div className="mt-8 flex items-center gap-3 border-t border-gray-100 pt-6">
-							<div className="flex size-11 items-center justify-center rounded-full bg-gray-950 font-bold text-white">
+							<div className="flex size-11 items-center justify-center bg-gray-950 font-bold text-white">
 								TR
 							</div>
 							<div>
@@ -138,64 +140,16 @@ export default function DjangoNPlusOneArticle() {
 					</div>
 				</header>
 
-				<div className="px-4 py-14">
-					<div className="container mx-auto grid max-w-6xl gap-12 lg:grid-cols-[14rem_minmax(0,48rem)] lg:justify-center">
-						<aside className="hidden lg:block">
-							<nav
-								aria-label="Table of contents"
-								className="sticky top-28 border-l-2 border-gray-200 pl-5"
-							>
-								<p className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-400">
-									In this article
-								</p>
-								<ul className="space-y-3 text-sm text-gray-600">
-									<li>
-										<a className="hover:text-primary" href="#why-it-mattered">
-											Why it mattered
-										</a>
-									</li>
-									<li>
-										<a
-											className="hover:text-primary"
-											href="#impedance-mismatch"
-										>
-											Impedance mismatch
-										</a>
-									</li>
-									<li>
-										<a
-											className="hover:text-primary"
-											href="#what-is-n-plus-one"
-										>
-											What N+1 select means
-										</a>
-									</li>
-									<li>
-										<a className="hover:text-primary" href="#real-example">
-											The 21-query example
-										</a>
-									</li>
-									<li>
-										<a className="hover:text-primary" href="#the-fix">
-											The two-query fix
-										</a>
-									</li>
-									<li>
-										<a className="hover:text-primary" href="#choose-the-tool">
-											Which tool to choose
-										</a>
-									</li>
-									<li>
-										<a
-											className="hover:text-primary"
-											href="#detect-and-prevent"
-										>
-											Detect and prevent it
-										</a>
-									</li>
-								</ul>
-							</nav>
-						</aside>
+				<div className="px-4">
+					<div
+						className="container bg-gray-50 pt-14 pb-10 mx-auto border-x-1 border-dashed grid max-w-6xl gap-12 lg:grid-cols-[14rem_minmax(0,48rem)] lg:justify-center"
+						style={{
+							backgroundImage:
+								"url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M3 7l4-4M13 17l4-4' fill='none' stroke='%239ca3af' stroke-opacity='.1' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E\")",
+							backgroundSize: "20px 20px",
+						}}
+					>
+						<TableOfContents items={tableOfContents} />
 
 						<div className="min-w-0 text-lg leading-8 text-gray-700">
 							<figure className="mb-12">
@@ -213,9 +167,10 @@ export default function DjangoNPlusOneArticle() {
 							</figure>
 
 							<section id="why-it-mattered" className="scroll-mt-28">
-								<h2 className="text-3xl font-bold text-gray-950 font-shadow-into-light">
-									Why this mattered in production
-								</h2>
+								<HeadingSection
+									title="Why this mattered in production"
+									to="#why-it-mattered"
+								/>
 								<p className="mt-5 text-xl leading-9 text-gray-800">
 									At Numer, an analytics page had reached roughly four minutes
 									of loading time. After profiling N+1 behavior, optimizing the
@@ -235,18 +190,19 @@ export default function DjangoNPlusOneArticle() {
 									which work belonged in the request and which belonged in
 									asynchronous Celery and Redis processing.
 								</p>
-								<div className="my-8 rounded-xl border-l-4 border-amber-400 bg-amber-50 p-5 text-base leading-7 text-amber-950">
+								<Callout tone="amber" variant="accent" className="text-base leading-7">
 									<strong>About the example below:</strong> the 21-to-2 query
 									case uses a simplified user-management data model. It explains
 									the technical pattern without exposing client code or private
 									data.
-								</div>
+								</Callout>
 							</section>
 
 							<section id="impedance-mismatch" className="scroll-mt-28 pt-12">
-								<h2 className="text-3xl font-bold text-gray-950 font-shadow-into-light">
-									The deeper cause: object–relational impedance mismatch
-								</h2>
+								<HeadingSection
+									title="The deeper cause: object–relational impedance mismatch"
+									to="#impedance-mismatch"
+								/>
 								<p className="mt-5">
 									Application code naturally speaks in objects and
 									relationships: a user has a profile and belongs to roles. A
@@ -257,7 +213,7 @@ export default function DjangoNPlusOneArticle() {
 								</p>
 								<p className="mt-5">
 									That difference is the impedance mismatch. Reading
-									<code className="mx-1 rounded bg-gray-100 px-1.5 py-0.5 text-base text-gray-900">
+									<code className="mx-1 bg-gray-100 px-1.5 py-0.5 text-base text-gray-900">
 										user.profile
 									</code>
 									looks like an ordinary in-memory property access, while the
@@ -268,19 +224,20 @@ export default function DjangoNPlusOneArticle() {
 							</section>
 
 							<section id="what-is-n-plus-one" className="scroll-mt-28 pt-12">
-								<h2 className="text-3xl font-bold text-gray-950 font-shadow-into-light">
-									What the N+1 select problem means
-								</h2>
+								<HeadingSection
+									title="What the N+1 select problem means"
+									to="#what-is-n-plus-one"
+								/>
 								<p className="mt-5 text-xl leading-9 text-gray-800">
 									The N+1 select problem happens when an application runs one
 									query to load a collection, then runs another query for every
 									item in that collection to load related data.
 								</p>
-								<div className="my-8 border-l-4 border-primary bg-blue-50 p-5 text-blue-950">
+								<Callout tone="blue" variant="accent">
 									<p className="font-semibold">The context</p>
 									<p className="mt-2 text-base leading-7">
 										Imagine a{" "}
-										<code className="rounded bg-white px-1.5 py-0.5 text-sm">
+										<code className="bg-white px-1.5 py-0.5 text-sm">
 											GET /api/users
 										</code>{" "}
 										endpoint that returns a directory. Each row needs the user’s
@@ -288,17 +245,17 @@ export default function DjangoNPlusOneArticle() {
 										loads the users, but the serializer then discovers that it
 										also needs two relationships for every row.
 									</p>
-								</div>
+								</Callout>
 
 								<div className="my-10 grid gap-4 sm:grid-cols-3">
-									<div className="rounded-xl border border-gray-200 p-5">
+									<div className="border border-gray-200 p-5">
 										<p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
 											Initial query
 										</p>
 										<p className="mt-2 text-4xl font-bold text-gray-950">1</p>
 										<p className="mt-1 text-sm text-gray-500">Load all users</p>
 									</div>
-									<div className="rounded-xl border border-red-200 bg-red-50 p-5">
+									<div className="border border-red-200 bg-red-50 p-5">
 										<p className="text-sm font-semibold uppercase tracking-wider text-red-700">
 											Related queries
 										</p>
@@ -309,7 +266,7 @@ export default function DjangoNPlusOneArticle() {
 											Profile and roles per user
 										</p>
 									</div>
-									<div className="rounded-xl border border-gray-900 bg-gray-950 p-5 text-white">
+									<div className="border border-gray-900 bg-gray-950 p-5 text-white">
 										<p className="text-sm font-semibold uppercase tracking-wider text-gray-400">
 											For 10 users
 										</p>
@@ -329,16 +286,17 @@ export default function DjangoNPlusOneArticle() {
 							</section>
 
 							<section id="real-example" className="scroll-mt-28 pt-12">
-								<h2 className="text-3xl font-bold text-gray-950 font-shadow-into-light">
-									A real example: users, profiles, and roles
-								</h2>
+								<HeadingSection
+									title="A real example: users, profiles, and roles"
+									to="#real-example"
+								/>
 								<p className="mt-5">
 									In a user-management API, each user had one profile and could
 									have multiple roles. This was the relationship being loaded:
 								</p>
 								<figure
 									aria-labelledby="relationship-schema-caption"
-									className="my-8 rounded-2xl border border-gray-200 bg-gray-50 p-5 md:p-8"
+									className="my-8 border border-gray-200 bg-gray-50 p-5 md:p-8"
 								>
 									<figcaption
 										id="relationship-schema-caption"
@@ -347,7 +305,7 @@ export default function DjangoNPlusOneArticle() {
 										Simplified data model
 									</figcaption>
 									<div className="mx-auto max-w-lg">
-										<div className="mx-auto w-48 rounded-xl border-2 border-gray-950 bg-gray-950 p-4 text-center text-white shadow-md">
+										<div className="mx-auto w-48 border-2 border-gray-950 bg-gray-950 p-4 text-center text-white shadow-md">
 											<Database
 												className="mx-auto mb-2 size-5 text-blue-400"
 												aria-hidden="true"
@@ -371,8 +329,8 @@ export default function DjangoNPlusOneArticle() {
 													className="absolute left-1/2 top-0 h-7 w-px bg-gray-400"
 													aria-hidden="true"
 												/>
-												<div className="h-full rounded-xl border-2 border-blue-200 bg-white p-4 text-center">
-													<span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-bold text-blue-700">
+												<div className="h-full border-2 border-blue-200 bg-white p-4 text-center">
+													<span className="bg-blue-100 px-2 py-0.5 text-xs font-bold text-blue-700">
 														1 : 1
 													</span>
 													<p className="mt-2 font-mono text-sm font-bold text-gray-950 md:text-base">
@@ -388,8 +346,8 @@ export default function DjangoNPlusOneArticle() {
 													className="absolute left-1/2 top-0 h-7 w-px bg-gray-400"
 													aria-hidden="true"
 												/>
-												<div className="h-full rounded-xl border-2 border-amber-200 bg-white p-4 text-center">
-													<span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-800">
+												<div className="h-full border-2 border-amber-200 bg-white p-4 text-center">
+													<span className=" bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-800">
 														1 : many
 													</span>
 													<p className="mt-2 font-mono text-sm font-bold text-gray-950 md:text-base">
@@ -403,15 +361,15 @@ export default function DjangoNPlusOneArticle() {
 										</div>
 									</div>
 									<div className="mt-7 flex flex-wrap items-center justify-center gap-2 border-t border-gray-200 pt-5 font-mono text-xs text-gray-600 md:text-sm">
-										<span className="rounded bg-white px-2 py-1 shadow-sm">
+										<span className=" bg-white px-2 py-1 shadow-sm">
 											1 query: users
 										</span>
 										<span aria-hidden="true">+</span>
-										<span className="rounded bg-red-50 px-2 py-1 text-red-700 shadow-sm">
+										<span className=" bg-red-50 px-2 py-1 text-red-700 shadow-sm">
 											N queries: profiles
 										</span>
 										<span aria-hidden="true">+</span>
-										<span className="rounded bg-red-50 px-2 py-1 text-red-700 shadow-sm">
+										<span className="bg-red-50 px-2 py-1 text-red-700 shadow-sm">
 											N queries: roles
 										</span>
 									</div>
@@ -424,11 +382,11 @@ for user in users:
     roles = user.role_set.all()`}</CodeBlock>
 								<p>
 									The first line executes one query for the users. Accessing{" "}
-									<code className="rounded bg-gray-100 px-1.5 py-0.5 text-base text-gray-900">
+									<code className=" bg-gray-100 px-1.5 py-0.5 text-base text-gray-900">
 										user.userprofile
 									</code>{" "}
 									adds one query per user, and calling{" "}
-									<code className="rounded bg-gray-100 px-1.5 py-0.5 text-base text-gray-900">
+									<code className=" bg-gray-100 px-1.5 py-0.5 text-base text-gray-900">
 										user.role_set.all()
 									</code>{" "}
 									adds another.
@@ -440,24 +398,21 @@ WHERE userprofile.user_id = <user_id>;
 
 SELECT * FROM role
 WHERE role.user_id = <user_id>;`}</CodeBlock>
-								<div className="my-8 flex gap-4 rounded-xl border border-amber-200 bg-amber-50 p-5 text-amber-950">
-									<CircleAlert
-										className="mt-1 size-5 shrink-0"
-										aria-hidden="true"
-									/>
+								<Callout tone="amber" icon={CircleAlert}>
 									<p>
 										The query count grows with the result size. Ten users
 										produce 21 queries; 100 users produce 201. This is why the
 										endpoint can look fast in development and degrade sharply
 										with production data.
 									</p>
-								</div>
+								</Callout>
 							</section>
 
 							<section id="the-fix" className="scroll-mt-28 pt-12">
-								<h2 className="text-3xl font-bold text-gray-950 font-shadow-into-light">
-									The fix: load the data intentionally
-								</h2>
+								<HeadingSection
+									title="The fix: load the data intentionally"
+									to="#the-fix"
+								/>
 								<p className="mt-5">
 									The solution is eager loading, but each relationship needs the
 									right strategy:
@@ -471,7 +426,7 @@ WHERE role.user_id = <user_id>;`}</CodeBlock>
 for user in users:
     profile = user.userprofile
     roles = user.role_set.all()`}</CodeBlock>
-								<div className="my-10 overflow-hidden rounded-2xl bg-gray-950 p-7 text-white md:p-9">
+								<div className="my-10 overflow-hidden  bg-gray-950 p-7 text-white md:p-9">
 									<div className="flex items-center gap-3">
 										<Database
 											className="size-7 text-blue-400"
@@ -503,10 +458,11 @@ for user in users:
 							</section>
 
 							<section id="choose-the-tool" className="scroll-mt-28 pt-12">
-								<h2 className="text-3xl font-bold text-gray-950 font-shadow-into-light">
-									`select_related` or `prefetch_related`?
-								</h2>
-								<div className="mt-7 overflow-x-auto rounded-xl border border-gray-200">
+								<HeadingSection
+									title="`select_related` or `prefetch_related`?"
+									to="#choose-the-tool"
+								/>
+								<div className="mt-7 overflow-x-auto border border-gray-200">
 									<table className="w-full min-w-[38rem] text-left text-base">
 										<thead className="bg-gray-50 text-gray-950">
 											<tr>
@@ -543,24 +499,21 @@ for user in users:
 									memory and network bandwidth. Start from what the endpoint
 									actually reads, then fetch that graph deliberately.
 								</p>
-								<div className="my-8 flex gap-4 rounded-xl border border-blue-200 bg-blue-50 p-5 text-blue-950">
-									<Lightbulb
-										className="mt-1 size-5 shrink-0"
-										aria-hidden="true"
-									/>
+								<Callout tone="blue" icon={Lightbulb}>
 									<p>
 										GraphQL does not remove the N+1 select problem by itself. A
 										GraphQL resolver can create the same pattern unless the
 										server batches and caches loads with a tool such as
 										DataLoader.
 									</p>
-								</div>
+								</Callout>
 							</section>
 
 							<section id="detect-and-prevent" className="scroll-mt-28 pt-12">
-								<h2 className="text-3xl font-bold text-gray-950 font-shadow-into-light">
-									How to detect it before production
-								</h2>
+								<HeadingSection
+									title="How to detect it before production"
+									to="#detect-and-prevent"
+								/>
 								<ul className="mt-7 space-y-4">
 									{[
 										"Inspect requests with Django Debug Toolbar during development.",
@@ -570,7 +523,7 @@ for user in users:
 										"Review serializers and templates, where relationship access is easy to overlook.",
 									].map((item) => (
 										<li key={item} className="flex gap-3">
-											<span className="mt-1.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700">
+											<span className="mt-1.5 flex size-5 shrink-0 items-center justify-center bg-green-100 text-green-700">
 												<Check className="size-3.5" aria-hidden="true" />
 											</span>
 											<span>{item}</span>
@@ -586,7 +539,7 @@ for user in users:
     self.assertEqual(response.status_code, 200)`}</CodeBlock>
 							</section>
 
-							<section className="mt-14 rounded-2xl border-2 border-gray-900 p-7 shadow-[5px_5px_0_#111827] md:p-9">
+							<section className="mt-14 border-2 border-gray-900 p-7 shadow-[5px_5px_0_#111827] md:p-9">
 								<p className="text-sm font-bold uppercase tracking-widest text-primary">
 									The takeaway
 								</p>
@@ -624,6 +577,7 @@ for user in users:
 					</div>
 				</div>
 			</article>
+			<BackToTop />
 		</main>
 	);
 }
