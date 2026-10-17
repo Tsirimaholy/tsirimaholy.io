@@ -162,6 +162,9 @@ body {
 	.sketchy-border-sm {
 		@apply border-2 border-dashed border-gray-400;
 	}
+	.article-link {
+		@apply underline hover:decoration-blue-500 dark:hover:decoration-blue-400;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
