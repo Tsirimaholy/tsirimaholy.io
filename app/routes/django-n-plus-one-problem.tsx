@@ -172,10 +172,10 @@ export default function DjangoNPlusOneArticle() {
 									to="#why-it-mattered"
 								/>
 								<p className="mt-5 text-xl leading-9 text-gray-800">
-									At Numer, an analytics page had reached roughly four minutes
-									of loading time. After profiling N+1 behavior, optimizing the
-									SQL, and adding a purpose-built cache, it loaded in about
-									500–800 milliseconds.
+									At a previous company, an analytics page had reached roughly
+									four minutes of loading time. After profiling N+1 behavior,
+									optimizing the SQL, and adding a purpose-built cache, it loaded
+									in about 500–800 milliseconds.
 								</p>
 								<p className="mt-5">
 									That result was not one clever ORM call. It came from treating
