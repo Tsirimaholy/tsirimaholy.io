@@ -123,29 +123,21 @@ export function Navbar() {
 						}`}
 					>
 						<ul className="flex flex-col pt-4 pb-2 border-t mt-4">
-							{[
-								"hero",
-								"about",
-								"testimonials",
-								"service",
-								"skills",
-								"projects",
-								"contact",
-							].map((section) => (
-								<li key={section} className="py-2">
+							{navItems.slice(0, -1).map((nav) => (
+								<li key={nav.section} className="py-2">
 									<NavLink
-										to={navTarget(section)}
-										viewTransition={shouldUseViewTransition(section)}
+										to={navTarget(nav.section)}
+										viewTransition={shouldUseViewTransition(nav.section)}
 										className={({ isActive: isActivePage }) =>
 											`block px-2 py-2 transition duration-300 ${
-												isActivePage && activeSection === section
+												isActivePage && activeSection === nav.section
 													? "text-primary font-medium bg-primary/10 rounded border-l-4 border-primary"
 													: "text-gray-700 hover:text-primary hover:bg-gray-100 rounded"
 											}`
 										}
 										onClick={() => setIsMenuOpen(false)}
 									>
-										{section.charAt(0).toUpperCase() + section.slice(1)}
+										{nav.textLabel}
 									</NavLink>
 								</li>
 							))}
