@@ -33,7 +33,7 @@ export function Skills() {
 							<BrainCircuit className="h-7 w-7 text-gray-700" />
 						</motion.div>
 					</div>
-					<h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900 font-shadow-into-light">
+					<h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900">
 						Tools I trust in production
 					</h2>
 					<p className="text-gray-600 mt-2">
@@ -56,10 +56,7 @@ export function Skills() {
 							<div className="p-3 rounded-full bg-blue-200 border-2 border-dashed border-blue-400">
 								<MonitorSmartphone className="h-8 w-8 text-blue-600" />
 							</div>
-							<h3
-								className="text-xl font-semibold text-blue-800"
-								style={{ fontFamily: "'Shadows Into Light', cursive" }}
-							>
+							<h3 className="text-xl font-semibold text-blue-800">
 								Frontend
 							</h3>
 						</div>
@@ -98,10 +95,7 @@ export function Skills() {
 							<div className="p-3 rounded-full bg-green-200 border-2 border-dashed border-green-400">
 								<Server className="h-8 w-8 text-green-600" />
 							</div>
-							<h3
-								className="text-xl font-semibold text-green-800"
-								style={{ fontFamily: "'Shadows Into Light', cursive" }}
-							>
+							<h3 className="text-xl font-semibold text-green-800">
 								Backend & Data
 							</h3>
 						</div>
@@ -142,7 +136,7 @@ export function Skills() {
 							<div className="p-3 rounded-full bg-orange-200 border-2 border-dashed border-orange-400">
 								<Cloud className="h-8 w-8 text-orange-600" />
 							</div>
-							<h3 className="text-xl font-semibold text-orange-800 font-shadow-into-light">
+							<h3 className="text-xl font-semibold text-orange-800">
 								DevOps & Infrastructure
 							</h3>
 						</div>
@@ -182,10 +176,7 @@ export function Skills() {
 							<div className="p-3 rounded-full bg-purple-200 border-2 border-dashed border-purple-400">
 								<Layers className="h-8 w-8 text-purple-600" />
 							</div>
-							<h3
-								className="text-xl font-semibold text-purple-800"
-								style={{ fontFamily: "'Shadows Into Light', cursive" }}
-							>
+							<h3 className="text-xl font-semibold text-purple-800">
 								Engineering Practices
 							</h3>
 						</div>

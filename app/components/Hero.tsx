@@ -71,7 +71,7 @@ export function Hero() {
 					className="flex min-w-0 w-full flex-col items-center text-center lg:items-start lg:text-left"
 				>
 					<AvailabilityBadge />
-					<h1 className="mt-6 max-w-full text-4xl font-extrabold leading-[0.95] tracking-[-0.055em] text-slate-950 font-shadow-into-light sm:text-6xl lg:text-7xl">
+					<h1 className="mt-6 max-w-full text-4xl font-extrabold leading-[0.95] tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-7xl">
 						Hi, I'm <span className="block sm:inline">Tsirimaholy.</span>
 					</h1>
 

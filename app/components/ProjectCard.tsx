@@ -49,7 +49,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 
 			{/* Content */}
 			<div className="flex-1 p-4">
-				<h3 className="text-xl font-semibold text-gray-800 font-shadow-into-light">
+				<h3 className="text-xl font-semibold text-gray-800">
 					{project.title}
 				</h3>
 				<p className="text-sm text-gray-600 mt-2 line-clamp-2">

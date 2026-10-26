@@ -163,10 +163,7 @@ export function Contact() {
 					transition={{ duration: 0.5 }}
 					className="relative flex flex-col items-center justify-center gap-4 text-center max-w-3xl mx-auto"
 				>
-					<h2
-						className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl bg-gradient-to-r from-primary to-green-500 bg-clip-text text-transparent"
-						style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
-					>
+					<h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl bg-gradient-to-r from-primary to-green-500 bg-clip-text text-transparent">
 						Get in Touch
 					</h2>
 					<p className="text-muted-foreground">

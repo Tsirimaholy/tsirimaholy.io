@@ -194,7 +194,7 @@ export function Projects() {
 				<p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-slate-500">
 					Selected work
 				</p>
-				<h2 className="text-4xl font-bold text-gray-900 font-shadow-into-light sm:text-5xl">
+				<h2 className="text-4xl font-bold text-gray-900 sm:text-5xl">
 					Products I've built and improved
 				</h2>
 				<p className="mt-4 text-lg leading-7 text-gray-600">

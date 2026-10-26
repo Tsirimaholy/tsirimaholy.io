@@ -4,7 +4,7 @@ import { cn } from "~/lib/utils";
 
 export function HeadingSection({ title, to }: { title: string; to: string }) {
 	return (
-		<h2 className="group w-fit text-3xl font-bold text-gray-950 font-shadow-into-light">
+		<h2 className="group w-fit text-3xl font-bold text-gray-950">
 			<Link to={to} className="no-underline">
 				{title}{" "}
 				<span

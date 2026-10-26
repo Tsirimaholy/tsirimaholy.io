@@ -113,7 +113,7 @@ export default function DjangoNPlusOneArticle() {
 							</span>
 							<span className="text-gray-500">Real-world case study</span>
 						</div>
-						<h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight font-shadow-into-light md:text-6xl">
+						<h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight md:text-6xl">
 							The Django N+1 Select Problem: From 21 Queries to 2
 						</h1>
 						<p className="mt-6 max-w-3xl text-xl leading-8 text-gray-600">
@@ -548,7 +548,7 @@ for user in users:
 								<p className="text-sm font-bold uppercase tracking-widest text-primary">
 									The takeaway
 								</p>
-								<h2 className="mt-3 text-3xl font-bold text-gray-950 font-shadow-into-light">
+								<h2 className="mt-3 text-3xl font-bold text-gray-950">
 									Query count should follow the shape of the request, not the
 									number of rows.
 								</h2>

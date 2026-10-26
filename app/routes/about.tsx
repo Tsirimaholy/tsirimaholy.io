@@ -116,7 +116,7 @@ export default function AboutPage() {
 					<p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
 						My story
 					</p>
-					<h1 className="mx-auto max-w-3xl text-4xl font-bold leading-tight font-shadow-into-light md:text-6xl">
+					<h1 className="mx-auto max-w-3xl text-4xl font-bold leading-tight md:text-6xl">
 						A long way into the ocean of coding
 					</h1>
 					<p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
@@ -150,7 +150,7 @@ export default function AboutPage() {
 									<p className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary">
 										{chapter.period}
 									</p>
-									<h2 className="mb-6 text-2xl font-bold font-shadow-into-light md:text-3xl">
+									<h2 className="mb-6 text-2xl font-bold md:text-3xl">
 										{chapter.title}
 									</h2>
 									<div className="space-y-5 text-lg leading-8 text-gray-700">
@@ -167,7 +167,7 @@ export default function AboutPage() {
 
 			<section className="px-4 py-20 text-center">
 				<div className="container mx-auto max-w-2xl">
-					<h2 className="text-3xl font-bold font-shadow-into-light">
+					<h2 className="text-3xl font-bold">
 						Let’s build something useful together
 					</h2>
 					<p className="mt-4 text-lg text-gray-600">

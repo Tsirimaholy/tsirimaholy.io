@@ -102,17 +102,11 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
 					<h3
 						id="project-modal-title"
 						className="text-2xl font-bold mb-2 text-gray-800"
-						style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
 					>
 						{project.title}
 					</h3>
 					<p className="text-gray-600 mb-4">{project.detailedDescription}</p>
-					<h4
-						className="font-semibold text-lg mb-2"
-						style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
-					>
-						Key Features
-					</h4>
+					<h4 className="font-semibold text-lg mb-2">Key Features</h4>
 					<ul className="list-disc pl-5 mb-4 text-gray-600">
 						{project.features.map((f: string) => (
 							<li key={f}>{f}</li>
@@ -120,12 +114,7 @@ const ProjectModal = React.forwardRef<HTMLDivElement, ProjectModalProps>(
 					</ul>
 					{project.challenges.length > 0 && (
 						<>
-							<h4
-								className="font-semibold text-lg mb-2"
-								style={{ fontFamily: "'Shadows Into Light', cursive" }} // Handwritten font
-							>
-								Challenges
-							</h4>
+							<h4 className="font-semibold text-lg mb-2">Challenges</h4>
 							<ul>
 								{project.challenges.map((c: string) => (
 									<li key={c}>{c}</li>

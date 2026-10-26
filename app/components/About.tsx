@@ -61,7 +61,7 @@ export function About() {
 					<p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
 						About me
 					</p>
-					<h2 className="mb-5 text-3xl font-bold text-gray-900 font-shadow-into-light md:text-4xl">
+					<h2 className="mb-5 text-3xl font-bold text-gray-900 md:text-4xl">
 						Curiosity started the journey. Resilience shaped it.
 					</h2>
 					<p className="text-lg leading-relaxed text-gray-600">

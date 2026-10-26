@@ -90,7 +90,7 @@ export function Service() {
 						<span className="h-px w-8 bg-slate-400" />
 						What I do
 					</p>
-					<h2 className="max-w-md text-5xl font-extrabold leading-[0.95] tracking-[-0.045em] text-slate-950 font-shadow-into-light sm:text-6xl">
+					<h2 className="max-w-md text-5xl font-extrabold leading-[0.95] tracking-[-0.045em] text-slate-950 sm:text-6xl">
 						Build it.
 						<br />
 						Fix it.
