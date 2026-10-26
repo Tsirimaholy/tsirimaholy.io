@@ -8,11 +8,11 @@ import {
 	Lightbulb,
 } from "lucide-react";
 import { Link } from "react-router";
-import { Callout } from "~/components/blog/callout";
-import { TableOfContents } from "~/components/blog/table-of-contents";
 import { BackToTop } from "~/components/blog/back-to-top";
+import { Callout } from "~/components/blog/callout";
 import { CodeBlock } from "~/components/blog/code-block";
 import { HeadingSection } from "~/components/blog/heading-section";
+import { TableOfContents } from "~/components/blog/table-of-contents";
 import { blogPosts } from "~/content/blog-posts";
 import {
 	generateArticleStructuredData,
@@ -94,6 +94,7 @@ export default function DjangoNPlusOneArticle() {
 						<Link
 							to="/blog"
 							viewTransition
+							prefetch="intent"
 							className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-gray-600 transition hover:text-primary"
 						>
 							<ArrowLeft className="size-4" aria-hidden="true" />
@@ -174,8 +175,8 @@ export default function DjangoNPlusOneArticle() {
 								<p className="mt-5 text-xl leading-9 text-gray-800">
 									At a previous company, an analytics page had reached roughly
 									four minutes of loading time. After profiling N+1 behavior,
-									optimizing the SQL, and adding a purpose-built cache, it loaded
-									in about 500–800 milliseconds.
+									optimizing the SQL, and adding a purpose-built cache, it
+									loaded in about 500–800 milliseconds.
 								</p>
 								<p className="mt-5">
 									That result was not one clever ORM call. It came from treating
@@ -190,7 +191,11 @@ export default function DjangoNPlusOneArticle() {
 									which work belonged in the request and which belonged in
 									asynchronous Celery and Redis processing.
 								</p>
-								<Callout tone="amber" variant="accent" className="text-base leading-7">
+								<Callout
+									tone="amber"
+									variant="accent"
+									className="text-base leading-7"
+								>
 									<strong>About the example below:</strong> the 21-to-2 query
 									case uses a simplified user-management data model. It explains
 									the technical pattern without exposing client code or private
@@ -559,6 +564,7 @@ for user in users:
 								<Link
 									to="/blog"
 									viewTransition
+									prefetch="intent"
 									className="inline-flex items-center gap-2 font-semibold text-gray-700 hover:text-primary"
 								>
 									<ArrowLeft className="size-4" aria-hidden="true" />

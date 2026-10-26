@@ -113,7 +113,7 @@ export function About() {
 
 				<div className="mt-10 text-center">
 					<Button asChild size="lg">
-						<Link to="/about" viewTransition>
+						<Link to="/about" viewTransition prefetch="intent">
 							Read my full story
 							<ArrowRight className="size-4" aria-hidden="true" />
 						</Link>
